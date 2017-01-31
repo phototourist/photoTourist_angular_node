@@ -1,6 +1,6 @@
 /*jshint node:true*/
 'use strict';
-
+require('dotenv').load();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-app.use('/api', require('./routes'));
+//app.use('/api', require('./routes'));
 
-console.log('apppPPP');
 require('./camtourist/camtourist.routes')(app);
+require('./contact/contact.routes')(app);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

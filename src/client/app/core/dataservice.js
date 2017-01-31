@@ -9,36 +9,34 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      getPeople: getPeople,
-      getMessageCount: getMessageCount,
-      getCamtourist: getCamtourist
+      getCamtourist: getCamtourist,
+      sendEmail: sendEmail
     };
-
     return service;
 
-    function getMessageCount() { return $q.when(72); }
+    function sendEmail(data) {
 
-    function getPeople() {
-      return $http.get('/api/people')
+      return $http.post('/api/sendmail', data)
         .then(success)
         .catch(fail);
 
-      function success(response) {
-        return response.data;
+      function success() {
+        return true;
       }
 
-      function fail(e) {
-        return exception.catcher('XHR Failed for getPeople')(e);
+      function fail() {
+        return false;
       }
     }
 
-    function getCamtourist() {
+  function getCamtourist() {
       console.log('deeo');
       return $http.get('/api/camtourist')
         .then(success)
         .catch(fail);
 
       function success(response) {
+        console.log(response);
         return response.data;
       }
 

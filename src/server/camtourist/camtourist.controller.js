@@ -1,23 +1,25 @@
-var Camtourist = require('./camtourist.model.js');
+var Camtourist = require('./camtourist.model');
 
 exports.getCamtouristTotals = function(req, res) {
+
   Camtourist.getCamtouristTotals(
-    function(err, data) {
+    function(err, camtourist) {
       if (err)
         res.send(err)
-console.log(data);
-      res.json(200, data);
+        console.log(camtourist);
+      res.json(camtourist);
     }
   );
 }
 
+
 exports.getCamtouristEspecifico = function(req, res) {
   Camtourist.getCamtouristEspecifico(req.param.camtourist_id,
-    function(err, data) {
+    function(err, camtourist) {
       if (err)
         res.send(err)
-
-      res.json(200, data);
+        console.log(camtourist);
+      res.json(camtourist);
     }
   );
 }

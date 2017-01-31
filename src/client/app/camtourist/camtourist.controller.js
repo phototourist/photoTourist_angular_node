@@ -7,10 +7,12 @@
 
   CamtouristController.$inject = ['dataservice', '$q', 'logger'];
   /* @ngInject */
-  function CamtouristController(dataservice, $q, logger) {
+  function CamtouristController(dataservice, $q, logger ) {
     var vm = this;
     vm.title = 'yey';
-    vm.camtourist = [];
+    vm.camtourists = [];
+
+
 
     vm.map = {
       center: {
@@ -43,9 +45,10 @@
  function getCamtourist() {
    console.log( 'deeo');
       return dataservice.getCamtourist().then(function(data) {
-        console.log(data + 'deeo');
-        vm.camtourist = data;
-        return vm.messageCount;
+        console.log(data);
+        vm.camtourists = data;
+        console.log(vm.camtourists[0].id);
+        return vm.camtourists;
       });
     }
 

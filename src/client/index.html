@@ -34,28 +34,14 @@
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="src/client/images/PhotoTourist_icono.ico">
 
-    <script type="application/x-javascript">
-      addEventListener("load", function() {
-        setTimeout(hideURLbar, 0);
-      }, false);
-      function hideURLbar() {
-        window.scrollTo(0, 1);
-      }
-    </script>
-
     <!-- GOOGLE MAPS-->
     <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyBR-8gQxDQ9y5A6JrC1M0cRUoT7Eh9p_-M'></script>
-
-    <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="frontend/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
 
     <!-- Código para definir estilo CSS general de la página-->
     <link href="src/client/styles/style.css" rel='stylesheet' type='text/css'/>
 
     <!-- //////////////////ESTO DESPUES///////////////////////////// Código para definir estilo CSS de geolocalización
   <link href="<?php echo CAMTOURIST_CSS_PATH ?>geolocation.css" rel='stylesheet' type='text/css' />-->
-
-    <link href="frontend/modules/user/view/css/users.css" rel='stylesheet' type='text/css'/>
 
     <!-- Código para obtener las tipografías elegidas de Google Font-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -69,21 +55,11 @@
     <!-- //////////////////ESTO DESPUES///////////////////////////// Llamada al init.js donde damos información al usuario
 <script type="text/javascript" src="<?php echo USERS_JS_PATH ?>init.js"></script>-->
 
-    <!-- Llamada al cookies.js --->
-    <script type="text/javascript" src="frontend/assets/js/cookies.js"></script>
-
-    <!-- start-smoth-scrolling---->
-    <script type="text/javascript" src="frontend/assets/js/move-top.js"></script>
-    <script type="text/javascript" src="frontend/assets/js/easing.js"></script>
-
-    <!-- //////////////////ESTO DESPUES///////////////////////////// Código para definir estilo CSS de productos
-<link href="<?php echo PRODUCTS_CSS_PATH ?>main.css" rel="stylesheet">-->
 
     <!--DatePicker-->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
-    <script src="frontend/assets/js/datepicker-es.js"></script>
 
-    <script type="text/javascript">
+  <!--  <script type="text/javascript">
       jQuery(document).ready(function($) {
         $(".scroll").click(function(event) {
           event.preventDefault();
@@ -92,7 +68,7 @@
           }, 1000);
         });
       });
-    </script>
+    </script>-->
 
   </head>
 
@@ -143,6 +119,7 @@
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/camtourist/camtourist.module.js"></script>
+    <script src="/src/client/app/contact/contact.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
@@ -155,6 +132,8 @@
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
     <script src="/src/client/app/camtourist/camtourist.controller.js"></script>
     <script src="/src/client/app/camtourist/camtourist.route.js"></script>
+    <script src="/src/client/app/contact/contact.controller.js"></script>
+    <script src="/src/client/app/contact/contact.route.js"></script>
     <script src="/src/client/app/core/config.js"></script>
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>

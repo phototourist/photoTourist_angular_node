@@ -17,11 +17,18 @@
           <ui-gmap-marker coords="vm.marker.coords" options="vm.marker.options" events="vm.marker.events" idkey="vm.marker.id"></ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
-      <tr ng-repeat="p in vm.camtourist">
-        <td>{{p.id}}</td>
-        <td>{{p.categoria}}</td>
-        <td>{{p.ciudad}}</td>
+      <div>
+        {{ vm.personas }}
+      </div>
+
+       <table>
+      <tr ng-repeat="camtourist in vm.camtourists">
+        <td>{{camtourist.id}}</td>
+          <td>{{camtourist.ciudad}}</td>
+          <td>{{camtourist.provincia}}</td>
+          <td>{{camtourist.pais}}</td>
       </tr>
+ </table>
     </div>
   </section>
 </section>
