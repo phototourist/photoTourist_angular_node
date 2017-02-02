@@ -23,7 +23,7 @@
           title: 'Contact',
           settings: {
             nav: 3,
-            content: '<i class="fa fa-lock"></i> Contact'
+            content: '<i class="fa fa-envelope"></i> Contact'
           }
         }
       }

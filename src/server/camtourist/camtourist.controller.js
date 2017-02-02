@@ -1,7 +1,6 @@
 var Camtourist = require('./camtourist.model');
 
 exports.getCamtouristTotals = function(req, res) {
-
   Camtourist.getCamtouristTotals(
     function(err, camtourist) {
       if (err)

@@ -5,19 +5,19 @@
 
 <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="src/client/styles/custom.css">
-<link rel="stylesheet" href="src/client/styles/bootstrap.min.css">
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>-->
 
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>-->
 <div class="container">
     <form id="contact_form" name="vm.contact_form" class="form-contact">
         <h2 class="form-contact-heading">Contact Us</h2>
 
         <div class="control-group">
-            <input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name" class="input-block-level" dir="auto" maxlength="100">
+            <input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name" class="form-control" dir="auto" maxlength="100">
             <span class="text-danger" ng-show="vm.contact_form.inputName.$error.required && (vm.contact_form.inputName.$dirty || vm.contact_form.inputName.$touched)">El campo es obligatorio</span>
         </div>
         <div class="control-group">
-            <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" class="input-block-level" maxlength="100">
+            <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" class="form-control" maxlength="100">
             <span class="text-danger" ng-show="vm.contact_form.inputEmail.$error.required && (vm.contact_form.inputEmail.$dirty || vm.contact_form.inputEmail.$touched)">El campo es obligatorio</span>
             <span class="text-danger" ng-show="vm.contact_form.inputEmail.$error.email">Email no valido</span>
         </div>
@@ -32,7 +32,7 @@
             </select>
         </div>
         <div class="control-group">
-              <textarea required ng-model="vm.inputMessage" class="input-block-level" rows="4" name="inputMessage" placeholder="Message *" style="max-width: 100%;" dir="auto"></textarea>
+              <textarea required ng-model="vm.inputMessage" class="form-control" rows="4" name="inputMessage" placeholder="Message *" style="max-width: 100%;" dir="auto"></textarea>
               <span class="text-danger" ng-show="vm.contact_form.inputMessage.$error.required && (vm.contact_form.inputMessage.$dirty || vm.contact_form.inputMessage.$touched)">El campo es obligatorio</span>
         </div>
 

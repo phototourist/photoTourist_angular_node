@@ -1,5 +1,5 @@
-var mysql = require ('../config.db');
-console.log(mysql);
+var mysql = require ('../config/database');
+//console.log(mysql);
 
 //console.log(connection);
 var camtouristModel = {};

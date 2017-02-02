@@ -29,6 +29,8 @@
       }
     }
 
+
+
   function getCamtourist() {
       console.log('deeo');
       return $http.get('/api/camtourist')

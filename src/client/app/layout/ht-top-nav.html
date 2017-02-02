@@ -1,8 +1,42 @@
-<!-- Header -->
+<!--<div ng-controller="SidebarController as vm">
+    <div class="logo">
+      <a href="#/"><img src="src/client/images/logo.png" alt="" /></a>
+    </div>
+  <nav>
+    <ul>
+      <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+        <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
+      </li>
+      <div class="clearfix"> </div>
+    </ul>
+      <a href="" class="right_bt" id="pull"><span> </span> </a>
+      </nav>
+
+  <script type="text/javascript">
+  $(function() {
+     var pull = $('#pull');
+     menu = $('nav ul');
+     menuHeight = menu.height();
+
+     $(pull).on('click', function(e) {
+         e.preventDefault();
+         menu.slideToggle();
+     });
+ });
+
+ $(window).resize(function(){
+     var w = $(window).width();
+     if(w > 320 && menu.is(':hidden')) {
+         menu.removeAttr('style');
+     }
+ });
+</script>
+</div>->
+<!-- Header-->
 <div ng-controller="SidebarController as vm">
 
   <div id="alertbanner" ng-show="bannerV"><a ng-class='bannerClass'>{{bannerText}}</a></div>
-    <!--header-->
+
     <div class="header-top" id="home">
       <div class="container">
         <div class="head">
@@ -16,26 +50,46 @@
           </div>
           <div class="clearfix"> </div>
           <div class="top-nav">
-              <div class="nav-icon">
-                <a href="" class="right_bt" id="activator"><span ng-click="myCssVar='css-class'"> </span> </a>
-              </div>
-               <div class="dada" id="box" ng-class="myCssVar">
-                 <div class="box_content">
-                  <div class="box_content_center">
-                    <div class="form_content">
-                      <div class="menu_box_list">
-                        <ul>
-                          <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
-                            <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
-                          </li>                          
-                          <div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                      <a class="boxclose" id="boxclose"> <span ng-click="myCssVar=''"> </span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <nav>
+                <ul>
+                  <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+                    <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
+                  </li>
+                  <li ng-hide="vm.authData"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
+                  <li ng-click="vm.singin('facebook')" ng-hide="vm.authData" class="login">
+                    <a class="btn btn-block btn-social-icon btn-facebook">
+                      <span class="fa fa-facebook"></span>
+                    </a>
+                  </li>
+                  <li ng-click="vm.singin('twitter')" ng-hide="vm.authData" class="login">
+                    <a class="btn btn-social-icon btn-twitter">
+                <span class="fa fa-twitter"></span>
+                </a>
+                </li>
+                  <div class="clearfix"> </div>
+                </ul>
+                  <a href="" class="right_bt" id="pull"><span> </span> </a>
+                  </nav>
+
+              <script type="text/javascript">
+              $(function() {
+                 var pull = $('#pull');
+                 menu = $('nav ul');
+                 menuHeight = menu.height();
+
+                 $(pull).on('click', function(e) {
+                     e.preventDefault();
+                     menu.slideToggle();
+                 });
+             });
+
+             $(window).resize(function(){
+                 var w = $(window).width();
+                 if(w > 320 && menu.is(':hidden')) {
+                     menu.removeAttr('style');
+                 }
+             });
+            </script>
             <!---start-click-drop-down-menu----->
                 <!--start-dropdown--->
               <!--   <script type="text/javascript">
@@ -59,7 +113,7 @@
               });
             </script>-->
             <!---//End-click-drop-down-menu----->
-            <!--top-nav---->
+            <!--top-nav-->
           </div>
           <div id="sb-search" class="sb-search">
               <form>

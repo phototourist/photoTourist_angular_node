@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[helloWorld Error] ',
-    appTitle: 'helloWorld'
+    appErrorPrefix: '[PhotoTourist Error] ',
+    appTitle: 'PhotoTourist'
   };
 
   core.value('config', config);

@@ -17,6 +17,109 @@ body a{
 	-ms-transition: 0.5s all ease;
 }
 
+/* Clearfix */
+.clear:before, .clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
+}
+
+.clear {
+    *zoom: 1;
+}
+
+a#pull {
+    display: none;
+}
+
+nav {
+    height: 50px;
+    width: 100%;
+    background: white;
+    position: relative;
+    border-bottom: solid 1px #DDD;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0 auto;
+    width: 650px;
+    height: 40px;
+}
+
+nav li {
+    display: inline;
+    float: left;
+}
+
+nav a {
+    color: #1a8a7c;
+    display: inline-block;
+    width: 110px;
+    text-align: center;
+    line-height: 40px;
+}
+
+nav li a {
+  
+
+}
+
+nav li:last-child a {
+    border-right: 0;
+}
+
+nav a:hover, nav a:active {
+    background-color: #ffd200;
+}
+
+
+@media only screen and (max-width : 650px) {
+    nav {
+        border-bottom: 0;
+        height: auto;
+    }
+
+    nav ul {
+        display: none;
+        height: auto;
+        width: 100%;
+    }
+
+    nav li {
+        width: 50%;
+        float: left;
+        position: relative;
+    }
+
+    nav a {
+        text-align: left;
+        width: 100%;
+        text-indent: 25px;
+    }
+
+    nav a#pull {
+        display: block;
+        background: #FFF;
+        width: 100%;
+        position: relative;
+    }
+
+    nav a#pull:after {
+        content:"";
+        background: white;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+}
+
 .angular-google-map-container { height: 400px; }
 
 .dada{
@@ -39,16 +142,11 @@ body a{
 .css-class-add.css-class-add-active {
   top:0px;
   position: absolute;
-
-
 }
 
 .css-class-remove.css-class-remove-active {
   top:-1000px;
   position: absolute;
-
-
-
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -69,6 +167,7 @@ body a:hover{
 	width:50%;
 	float:left;
 }
+
 .logo {
   	margin-top: 9px;
 }
