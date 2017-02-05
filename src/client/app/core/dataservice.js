@@ -10,7 +10,8 @@
   function dataservice($http, $q, exception, logger) {
     var service = {
       getCamtourist: getCamtourist,
-      sendEmail: sendEmail
+      sendEmail: sendEmail,
+      submitSignUp: submitSignUp
     };
     return service;
 
@@ -46,5 +47,27 @@
         return exception.catcher('XHR Failed for camtourist')(e);
       }
     }
+
+  function submitSignUp(data){
+
+    console.log("dataservice " + data);
+
+    return $http.post('/api/signup', data)
+      .then(success)
+      .catch(fail);
+
+    function success(response) {
+      console.log(response);
+
+      return response;
+    }
+
+    function fail() {
+      return response;
+    }
+
+
+  }
+
   }
 })();

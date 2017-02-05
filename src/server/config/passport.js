@@ -1,9 +1,11 @@
 var LocalStrategy    = require('passport-local').Strategy;
-
+var passport = require('passport');
 var mysql = require ('./database');
+//var bcrypt   = require('bcrypt-nodejs');
+var password = require ('../utils/password');
 
+module.exports = function() {
 
-module.exports = function(passport) {
     // =========================================================================
     // passport session setup ==================================================
     // =========================================================================
@@ -32,27 +34,32 @@ module.exports = function(passport) {
       passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
   },
   function(req, email, pass, done) {
+
+    var pass_ = password.generateHash(pass);
+
     mysql.connection.query("select * from users where email = '"+email+"'",function(err, rows){
-      console.log(rows);
-      console.log("aove row object");
+      //console.log("req"+ req);
+    //  console.log("rows"+ rows);
+    //  console.log("aove row object");
 
         if (err)
           return done(err);
           if(rows.length){
-            return done(null, false, req.flash('singupMessage', 'That email is already taken.'));
+          //  console.log("rows.length"+ rows.length);
+            return done(null, false, false);
           }else {
             //create the user
             var newUserMysql = new Object();
 
             newUserMysql.email = email;
-            newUserMysql.password = pass;
+            newUserMysql.password = pass_;
 
-            var insertQuery = "INSERT INTO users (email, pass) values ('"+ email +"','"+pass+"')";
-            console.log(insertQuery);
+            var insertQuery = "INSERT INTO users (email, pass) values ('"+ email +"','"+pass_+"')";
+            console.log("insertQuery"+ insertQuery);
             mysql.connection.query(insertQuery,function(err,rows){
               newUserMysql.id = rows.insertId;
 
-              return done(null, newUserMysql);
+              return done(null, newUserMysql, true);
             });
           }
         });

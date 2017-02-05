@@ -8,7 +8,9 @@
     'app.dashboard',
     'app.camtourist',
     'app.layout',
-    'app.contact'
+    'app.contact',
+    'app.users'
+
 
   ]);
 

@@ -34,7 +34,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./camtourist/camtourist.routes')(app);
 require('./contact/contact.routes')(app);
-require('./users/users.routes')(app, passport);
+require('./users/users.routes')(app);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

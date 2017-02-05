@@ -37,7 +37,7 @@
 
     <!-- Código para definir estilo CSS general de la página-->
     <link href="src/client/styles/style.css" rel='stylesheet' type='text/css'/>
-
+    <link href="src/client/styles/users.css" rel='stylesheet' type='text/css'/>
     <!-- Código para obtener las tipografías elegidas de Google Font-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,8 +45,11 @@
 
   </head>
   <body>
+    <div id="alertbanner" ng-show="bannerV"><a ng-class='bannerClass'>{{bannerText}}</a></div>
     <div>
+
       <div ng-include="'app/layout/shell.html'"></div>
+
       <div id="splash-page" ng-show="showSplash">
         <div class="page-splash">
           <div class="page-splash-message">
@@ -95,6 +98,7 @@
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
+    <script src="/src/client/app/users/users.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
@@ -112,10 +116,13 @@
     <script src="/src/client/app/core/dataservice.js"></script>
     <script src="/src/client/app/dashboard/dashboard.controller.js"></script>
     <script src="/src/client/app/dashboard/dashboard.route.js"></script>
+    <script src="/src/client/app/layout/commonService.js"></script>
     <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
     <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
     <script src="/src/client/app/layout/shell.controller.js"></script>
     <script src="/src/client/app/layout/sidebar.controller.js"></script>
+    <script src="/src/client/app/users/users.controller.js"></script>
+    <script src="/src/client/app/users/users.route.js"></script>
     <script src="/src/client/app/widgets/configApiGoogleMaps.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>

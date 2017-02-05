@@ -33,9 +33,8 @@
 </script>
 </div>->
 <!-- Header-->
-<div ng-controller="SidebarController as vm">
 
-  <div id="alertbanner" ng-show="bannerV"><a ng-class='bannerClass'>{{bannerText}}</a></div>
+<div >
 
     <div class="header-top" id="home">
       <div class="container">
@@ -51,11 +50,11 @@
           <div class="clearfix"> </div>
           <div class="top-nav">
                 <nav>
-                <ul>
+                <ul ng-controller="SidebarController as vm">
                   <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
                     <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
                   </li>
-                  <li ng-hide="vm.authData"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
+                  <li ng-hide="vm.authData" ng-click="vm.openModal()"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
                   <li ng-click="vm.singin('facebook')" ng-hide="vm.authData" class="login">
                     <a class="btn btn-block btn-social-icon btn-facebook">
                       <span class="fa fa-facebook"></span>

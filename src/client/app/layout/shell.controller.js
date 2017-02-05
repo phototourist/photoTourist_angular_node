@@ -12,6 +12,7 @@
     vm.busyMessage = 'Please wait ...';
     vm.isBusy = true;
     $rootScope.showSplash = true;
+      $rootScope.bannerV = false;
     vm.navline = {
       title: config.appTitle,
       text: 'Created by John Papa',

@@ -23,7 +23,8 @@
     "express-session": "^1.0.0",
     "connect-flash" : "~0.1.1",
     "body-parser": "~1.0.0",
-    "cookie-parser": "~1.0.0"
+    "cookie-parser": "~1.0.0",
+    "bcrypt-nodejs" : "latest"
   },
   "devDependencies": {
     "browser-sync": "~2.11.2",
