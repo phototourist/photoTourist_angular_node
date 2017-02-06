@@ -1,25 +1,37 @@
 var mysql = require ('../config.db');
-console.log("TRTRTTRT");
-
+console.log(mysql);
+//console.log(connection);
 var camtouristModel = {};
 
 camtouristModel.getCamtouristTotals = function(callback){
-    console.log("DINS TOTALS");
     if (mysql.connection) {
         mysql.connection.query('SELECT * FROM camtourist ORDER BY id', function(error, rows) {
             if(error){
                 throw error;
             }else{
+              console.log(rows);
                 callback(null, rows);
-
             }
         });
     }
 }
 
-camtouristModel.getCamtouristEspecifico = function(id,callback){
+camtouristModel.getCamtouristCities = function(callback){
     if (mysql.connection) {
-        var sql = 'SELECT * FROM camtourist WHERE id = ' + mysql.connection.escape(id);
+        mysql.connection.query('SELECT DISTINCT ciudad FROM camtourist ORDER BY ciudad', function(error, rows) {
+            if(error){
+                throw error;
+            }else{
+              console.log(rows);
+                callback(null, rows);
+            }
+        });
+    }
+}
+
+camtouristModel.getCamtouristEspecifico = function(data,callback){
+    if (mysql.connection) {
+        var sql = 'SELECT * FROM camtourist WHERE ciudad = "' + data.camtourist_id + '"';
         mysql.connection.query(sql, function(error, row) {
             if(error){
                 throw error;

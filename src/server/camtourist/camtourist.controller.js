@@ -1,23 +1,36 @@
-var Camtourist = require('./camtourist.model.js');
+var Camtourist = require('./camtourist.model');
 
 exports.getCamtouristTotals = function(req, res) {
-  Camtourist.getCamtouristTotals(
-    function(err, data) {
-      if (err)
-        res.send(err)
-console.log(data);
-      res.json(200, data);
-    }
-  );
+    Camtourist.getCamtouristTotals(
+        function(err, camtourist) {
+            if (err)
+                res.send(err)
+
+            console.log(camtourist);
+            res.json(camtourist);
+        }
+    );
+}
+//Funcion para recoger todos los marcadores
+exports.getCamtouristCities = function(req, res) {
+    Camtourist.getCamtouristCities(
+        function(err, camtourist) {
+            if (err)
+                res.send(err)
+            res.json(camtourist);
+        }
+    );
 }
 
+//Funcion para recoger marcador especifico según ciudad
 exports.getCamtouristEspecifico = function(req, res) {
-  Camtourist.getCamtouristEspecifico(req.param.camtourist_id,
-    function(err, data) {
-      if (err)
-        res.send(err)
+    Camtourist.getCamtouristEspecifico(req.params,
+        function(err, camtourist) {
+            if (err)
+                res.send(err)
 
-      res.json(200, data);
-    }
-  );
+            console.log(camtourist);
+            res.json(camtourist);
+        }
+    );
 }
