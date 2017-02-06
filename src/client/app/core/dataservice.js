@@ -11,7 +11,8 @@
     var service = {
       getCamtourist: getCamtourist,
       sendEmail: sendEmail,
-      submitSignUp: submitSignUp
+      submitSignUp: submitSignUp,
+      login: login
     };
     return service;
 
@@ -30,8 +31,6 @@
       }
     }
 
-
-
   function getCamtourist() {
       console.log('deeo');
       return $http.get('/api/camtourist')
@@ -49,25 +48,35 @@
     }
 
   function submitSignUp(data){
-
     console.log("dataservice " + data);
-
     return $http.post('/api/signup', data)
       .then(success)
       .catch(fail);
-
     function success(response) {
       console.log(response);
-
       return response;
     }
-
     function fail() {
+      return false;
+    }
+  }
+
+  function login(data){
+
+
+    return $http.post('/api/login', data)
+      .then(success)
+      .catch(fail);
+    function success(response) {
+      console.log(response);
+    //  alert(response.data);
       return response;
     }
-
-
+    function fail() {
+      return false;
+    }
   }
+
 
   }
 })();

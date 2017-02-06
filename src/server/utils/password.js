@@ -10,8 +10,8 @@ return bcrypt.hashSync(pass, bcrypt.genSaltSync(8), null);
 };
 
 
-function validPassword(pass){
+function validPassword(pass, password){
 
-return bcrypt.compareSync(password, this.local.password);
+return bcrypt.compareSync(pass, password);
 
 };

@@ -5,7 +5,7 @@ console.log(ControllerUsers);
 module.exports = function(app, passport) {
 
     app.post('/api/signup',  ControllerUsers.signupUser);
-
+    app.post('/api/login',  ControllerUsers.login);
 
 };
 

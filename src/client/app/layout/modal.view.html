@@ -2,16 +2,17 @@
     <!-- <div class="row"> -->
         <div class='col-md-3'></div>
         <div class="col-md-6">
-            <div class="login-box well">
-                    <form action="">
+            <div class="login-box well" ng-controller="SidebarController as vm">
+                    <form id="modal_form" name="modal_form">
                         <legend>Sign In</legend>
                         <div class="form-group">
-                            <label for="username-email">E-mail or Username</label>
-                            <input value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                            <label for="useremail">E-mail or Username</label>
+                            <input required ng-model="vm.userEmail" value='' id="username-email" name="useremail" placeholder="E-mail" type="text" class="form-control" maxlength="100"/>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input id="password" value='' placeholder="Password" type="text" class="form-control" />
+                            <input required ng-model="vm.password" id="password" name="password" value='' placeholder="Password" type="text" class="form-control" maxlength="100"/>
+                            <span class='error' ng-show="err"> {{errorpass}}</span>
                         </div>
                         <div class="input-group">
                           <div class="checkbox">
@@ -21,12 +22,12 @@
                           </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login" />
+                            <input type="submit" ng-click="vm.login()" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login"   ng-show="modal_form.useremail.$valid && modal_form.password.$valid"/>
                         </div>
                         <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">
                             <p class="text-center m-t-xs text-sm">Do not have an account?</p>
-                            <a href="/signup" class="btn btn-default btn-block m-t-md">Create an account</a>
+                            <a ng-click="vm.close()" href="/signup" class="btn btn-default btn-block m-t-md">Create an account</a>
                         </div>
                     </form>
 
