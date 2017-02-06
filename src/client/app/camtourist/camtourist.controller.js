@@ -45,7 +45,6 @@
                 });
         }
 
-
         //Funcion para cargar inicialmente todos los marcadores y lista
         function getCamtourist() {
             return dataservice.getCamtourist().then(function(data) {

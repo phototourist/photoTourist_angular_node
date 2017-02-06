@@ -7,7 +7,11 @@
     'app.admin',
     'app.dashboard',
     'app.camtourist',
-    'app.layout'
+    'app.layout',
+    'app.contact',
+    'app.users'
+
+
   ]);
 
 })();

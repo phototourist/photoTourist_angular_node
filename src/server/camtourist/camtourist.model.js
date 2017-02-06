@@ -1,6 +1,7 @@
-var mysql = require ('../config.db');
-console.log(mysql);
-//console.log(connection);
+
+var mysql = require ('../config/database');
+//console.log(mysql);
+
 var camtouristModel = {};
 
 camtouristModel.getCamtouristTotals = function(callback){
