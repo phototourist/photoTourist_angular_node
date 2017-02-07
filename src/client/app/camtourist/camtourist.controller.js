@@ -22,6 +22,10 @@
             zoom: 10
         };
 
+       vm.icon = {
+          url: '../../images/localizacion_maps.png'
+        };
+
         activate();
 
         function activate() {
@@ -64,7 +68,8 @@
                     id: i,
                     latitude: latitud,
                     longitude: longitud,
-                    principal: principal
+                    principal: principal,
+                    icon: vm.icon
                 };
                 vm.markers.push(marker);
             }
