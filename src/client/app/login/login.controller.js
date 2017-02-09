@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('app.users')
-    .controller('UsersController', UsersController);
+    .module('app.login')
+    .controller('LoginController', LoginController);
 
-  UsersController.$inject = ['logger', 'dataservice', 'commonService', '$state'];
+  LoginController.$inject = ['logger', 'dataservice', 'commonService', '$state'];
   /* @ngInject */
-  function UsersController(logger, dataservice, commonService, $state) {
+  function LoginController(logger, dataservice, commonService, $state) {
     var vm = this;
-    vm.title = 'Users';
+    vm.title = 'Login';
     vm.inputEmail = "";
     vm.inputPass = "";
     vm.submitSignUp = submitSignUp;
@@ -29,20 +29,14 @@
           console.log("tete" +response);
                     $state.go('dashboard');
                     commonService.banner("El usuario se ha dado de alta correctamente, revisa su correo para activarlo", "");
-                    
+
             }else {
               console.log('fatal');
             }
 
 
       });
-
-
     }
-
-
-
-
 
 
     activate();

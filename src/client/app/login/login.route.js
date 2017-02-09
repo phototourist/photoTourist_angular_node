@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.users')
+    .module('app.login')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -17,10 +17,17 @@
         state: 'signup',
         config: {
           url: '/signup',
-          templateUrl: 'app/users/signup.view.html',
-          controller: 'UsersController',
+          templateUrl: 'app/login/signup.view.html',
+          controller: 'LoginController',
           controllerAs: 'vm',
           title: 'signup'
+        }
+      },
+      {
+        state: 'successFacebook',
+        config: {
+          url: '/successFacebook',
+          controller: 'SocialController'
         }
       }
     ];

@@ -13,8 +13,12 @@ var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var flash = require('connect-flash');
-
+var cors = require('cors');
 var environment = process.env.NODE_ENV;
+var ControllerUsers = require('./users/users.controller');
+
+app.use(cors());
+
 app.use(cookieParser());
 
 app.use(favicon(__dirname + '/favicon.ico'));
@@ -26,7 +30,8 @@ app.use(logger('dev'));
 require('./config/passport')(passport);
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch'
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -39,6 +44,40 @@ require('./users/users.routes')(app);
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
+
+/*
+app.get('/auth/facebook',
+   function(req, res, next) {
+     var redirect = encodeURIComponent(req.query.redirect || '/');
+     passport.authenticate('facebook',{scope: ['email'],
+     callbackURL: 'http://localhost:3000/auth/facebook/callback?redirect=' + redirect
+       })(req, res, next);
+   });
+
+ app.get('/auth/facebook/callback',
+   function(req, res, next) {
+     var url = 'http://localhost:3000/auth/facebook/callback?redirect=' + encodeURIComponent(req.query.redirect);
+     passport.authenticate('facebook', { callbackURL: url })(req, res, next);
+   },
+   function(req, res) {
+     //res.redirect(req.query.redirect);
+       console.log(req.user);
+       //res.json(req.user.id);
+       res.redirect('/signup');
+   });
+*/
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect : '/successFacebook', failureRedirect : '/404'}));
+
+
+app.get('/auth/facebook/success', function(req, res) {
+
+        res.json(req.user);
+
+    });
+
+
 
 switch (environment) {
   case 'build':

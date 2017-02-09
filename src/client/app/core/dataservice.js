@@ -12,7 +12,8 @@
       getCamtourist: getCamtourist,
       sendEmail: sendEmail,
       submitSignUp: submitSignUp,
-      login: login
+      login: login,
+      signupFacebook: signupFacebook
     };
     return service;
 
@@ -62,8 +63,6 @@
   }
 
   function login(data){
-
-
     return $http.post('/api/login', data)
       .then(success)
       .catch(fail);
@@ -76,6 +75,21 @@
       return false;
     }
   }
+
+  function signupFacebook(){
+    return $http.get('/auth/facebook/success')
+      .then(success)
+      .catch(fail);
+    function success(response) {
+      console.log(response);
+    //  alert(response.data);
+      return response;
+    }
+    function fail() {
+      return false;
+    }
+  }
+
 
 
   }

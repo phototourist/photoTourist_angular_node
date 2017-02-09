@@ -6,6 +6,7 @@ var password = require ('../utils/password');
 var usersModel = {};
 
 usersModel.localSignup = function(email, pass_, callback){
+  console.log('mysql');
     if (mysql.connection) {
       mysql.connection.query("select * from users where email = '"+email+"'",function(err, rows){
         //console.log("req"+ req);

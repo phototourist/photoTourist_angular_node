@@ -9,7 +9,7 @@
     'app.camtourist',
     'app.layout',
     'app.contact',
-    'app.users'
+    'app.login'
 
 
   ]);

@@ -112,7 +112,7 @@ exports.sendEmail = function (req, res) {
  var options = {
      auth: {
          //api_key: 'YOUR_SENDGRID_API_KEY'
-         api_key: process.env.SENDMAIL_SECRET_KEY//'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'
+         api_key: process.env.SENDMAIL_SECRET_KEY
      }//process.env.SENDMAIL_SECRET_KEY
  }
  var mailer = nodemailer.createTransport(sgTransport(options));

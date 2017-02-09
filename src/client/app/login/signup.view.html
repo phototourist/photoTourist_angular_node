@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="src/client/styles/signup_view/signup.css" />
+
+<section id="pagina_alta">
+    <div class="titulo">
+            <p class="lead">Forma parte de la Familia PhotoTourist ;)
+            </p>
+            <hr>
+      </div>
+        <form id="signup_form" name="signup_form" class="">
+
+        <div class="control_signup">
+          <div class="redes_sociales">
+              <ul class="social">
+                  <li ui-sref="login">
+                    <a class="btn btn-block btn-social-icon btn-facebook" id="fb" href="#">
+                        <span class="fa fa-facebook"></span>
+                    </a>
+                  </li>
+                    <li>
+                    <a class="btn btn-social-icon btn-twitter" id="twlogin" href="#">
+                        <span class="fa fa-twitter"></span>
+                      </a>
+                    </li>
+              </ul>
+            </div>
+
+
+            <div class="control_inputs">
+              <label>Email *</label>
+              <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail"
+              placeholder="Email" class="form_inputs"  maxlength="100"
+              ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i" ng-change="change_signup()">
+              <span class="error_input" ng-show="signup_form.inputEmail.$error.required && (signup_form.inputEmail.$dirty || signup_form.inputEmail.$touched)">El campo es obligatorio</span>
+              <span class="error_input" ng-show="signup_form.inputEmail.$error.email">Email no valido</span>
+
+          </div>
+
+            <div class="control_inputs">
+                <label>Password *</label><br>
+                <input ng-model="vm.inputPass" ng-pattern="/^.{6,12}$/" ng-change="change_signup()" type="password" id="inputPass" name="inputPass" placeholder="password" class="form-inputs" value="" required><br>
+                <span class="error_input" ng-show="signup_form.inputPass.$error.required && (signup_form.inputPass.$dirty || signup_form.inputPass.$touched)">El campo es obligatorio</span>
+                <span class="error_input" ng-show="signup_form.inputPass.$error.pattern">Password no válido</span>
+
+                <div id="e_singup_password"></div>
+            </div>
+            <br/>
+
+            <div class="control_submit">
+                <button type="Submit" id="registrar_user" name="registrar_user" class="btn btn-primary btn-lg centrado" value="REGISTRARSE"
+                 ng-show="signup_form.inputEmail.$valid && signup_form.inputPass.$valid" ng-click="vm.submitSignUp()" >REGISTRARSE</button>
+            </div>
+            <div class=""><hr></div>
+        <!--/.row-->
+      </div>
+
+</form>
+    <!--/.container-->
+</section>
+<!--/#contact-page-->
