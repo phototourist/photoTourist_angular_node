@@ -19,9 +19,9 @@
                   <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
                     <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
                   </li>
-                  <li ng-hide="vm.authData" ng-click="vm.openModal()"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
-                  <li ng-click="vm.singin('facebook')" ng-hide="vm.authData" class="login">
-                    <a class="btn btn-block btn-social-icon btn-facebook">
+                  <li ng-show="$root.signin" ng-click="vm.openModal()"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
+                  <li  ng-hide="vm.authData" class="login">
+                    <a href="http://projects.com:3000/auth/facebook"  class="btn btn-block btn-social-icon btn-facebook">
                       <span class="fa fa-facebook"></span>
                     </a>
                   </li>

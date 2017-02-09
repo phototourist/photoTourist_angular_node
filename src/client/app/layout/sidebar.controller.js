@@ -5,9 +5,9 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['$rootScope', '$state', 'routerHelper', '$uibModal', 'dataservice'];
+  SidebarController.$inject = ['$rootScope', '$state', 'routerHelper', '$uibModal', 'dataservice', 'toastr'];
   /* @ngInject */
-  function SidebarController($rootScope, $state, routerHelper, $uibModal, dataservice) {
+  function SidebarController($rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
     var vm = this;
     var states = routerHelper.getStates();
 
@@ -15,10 +15,11 @@
     vm.password = "";
     vm.close = close;
     vm.login = login;
-
+    vm.singinFacebook = singinFacebook;
     //$rootScope.bannerText = "";
     vm.isCurrent = isCurrent;
     vm.openModal = openModal;
+    $rootScope.signin = true;
 
     activate();
 
@@ -46,7 +47,7 @@
       $rootScope.modalInstance = $uibModal.open({
           animation: 'true',
           templateUrl: 'app/layout/modal.view.html',
-          controller: 'UsersController',
+          controller: 'LoginController',
           size: 'lg'
 
       });
@@ -59,18 +60,34 @@
 
 function login() {
   close();
-console.log("login");
+  console.log("login");
     var data = {"email": vm.userEmail,
     "pass": vm.password,
           };
-
           dataservice.login(data).then(function (response) {
+            console.log(response.data);
 
+            if (!response.data.rows) {
+              console.log(response.data.inf);
+                toastr.error(response.data.inf, "Error");
+            }else {
+              toastr.success(response.data.inf, "Alta");
+                $rootScope.signin = false;
+            }
+
+          });
+}
+
+function singinFacebook() {
+
+console.log("singinFacebook");
+
+          dataservice.singinFacebook().then(function (response) {
             console.log(response.data);
 
           });
-
 }
+
 
   }
 })();

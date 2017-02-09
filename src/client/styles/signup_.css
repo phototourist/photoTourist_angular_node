@@ -1,0 +1,86 @@
+#pagina_alta {
+  font-weight: 800;
+  background-color: #FFFFFF;
+}
+
+form{
+background-color: #FFFFFF;
+}
+hr {
+  border-top: 1px solid #eee;
+  width: 80%;
+}
+
+p {
+  text-align: center;
+  font-size: 21px;
+}
+
+ul.social{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.social li {
+  float: left;
+  width: 20%;
+}
+
+ul.social li a {
+  display: block;
+
+  text-decoration: none;
+}
+
+.control_signup {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.redes_sociales {
+  width: 33%;
+  padding-left: 129px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
+
+.control_inputs {
+  width: 40%;
+  padding-left: 89px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.control_inputs label {
+  width: 100%;
+  font-size: 1.2em;
+}
+.control_inputs input {
+  border: 1px solid #006666;
+  background-color: #c3cfd4;
+  -moz-border-radius: 5px 5px;
+  -webkit-border-radius: 5px 5px;
+  -khtml-border-radius: 5px 5px;
+  -o-border-radius: 5px 5px;
+  border-radius: 5px 5px;
+  width: 60%;
+  padding: 1%;
+  margin-right: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+ul {
+  padding: 0;
+}
+
+.control_submit {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.error_input {
+  color: #EA1D1D;
+}
+
+/*# sourceMappingURL=signup.css.map */

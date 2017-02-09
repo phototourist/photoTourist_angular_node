@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('app.users', [
+  angular.module('app.login', [
     'app.core',
     'app.widgets',
-    'app.layout'
+    //'app.layout'
   ]);
 
 })();
