@@ -9,3 +9,4 @@ congig/
 sengrid.env
 config.db.js
 .env
+database.js
