@@ -1,113 +1,32 @@
 <section class="mainbar">
-  <section class="matter">
-    <div class="container">
-      <div class="row">
-        <div class="widget wviolet">
-          <div ht-widget-header title="{{vm.title}}"></div>
-          <div class="widget-content user">
-            <h3>CamTourist Prueba</h3>
-          </div>
-          <div class="widget-foot">
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
-          <ui-gmap-marker coords="vm.marker.coords" options="vm.marker.options" events="vm.marker.events" idkey="vm.marker.id"></ui-gmap-marker>
-        </ui-gmap-google-map>
-      </div>
-      <div>
-        {{ vm.personas }}
-      </div>
+    <section class="matter">
+        <!--<div class="container">-->
+        <select ng-model="selectedCities" ng-options="city.ciudad for city in vm.cities track by city.ciudad" ng-change="getCityMap()"></select>
+        <!-- -->
 
-       <table>
-      <tr ng-repeat="camtourist in vm.camtourists">
-        <td>{{camtourist.id}}</td>
-          <td>{{camtourist.ciudad}}</td>
-          <td>{{camtourist.provincia}}</td>
-          <td>{{camtourist.pais}}</td>
-      </tr>
- </table>
-    </div>
-  </section>
-</section>
-<!--<html class="no-js" ng-app="meanMapApp">
-  MAPETA!!
-  <div class="row content">
-    <!-- Google Map -->
-<!--<div class="col-md-7">
-      <div id="map"><img src="holder.js/645x645"></div>
-    </div>
-    <!-- Side Panel -->
-<!--<div class="col-md-5">
-      <div class="panel panel-default">
-        <!-- Panel Title -->
-<!--<div class="panel-heading">
-          <h2 class="panel-title text-center">Join the Scotch Team!
-            <span class="glyphicon glyphicon-map-marker"></span>
-          </h2>
+        <div class="mapa">
+            <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom">
+                <!--<ui-gmap-marker idkey="vm.marker.id" coords="vm.marker.coords"></ui-gmap-marker>-->
+                <ui-gmap-markers models="vm.markers" coords="'self'" icon="'icon'"></ui-gmap-markers>
+
+            </ui-gmap-google-map>
         </div>
-        <!-- Panel Body -->
-<!--<div class="panel-body">
-          <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
-<!--<form name="addForm" novalidate>
-            <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
-<!--<div class="form-group">
-              <label for="username">Username
-                <span class="badge">All fields required</span>
-              </label>
-              <input type="text" class="form-control" id="username" placeholder="OldandGold" ng-model="formData.username" required>
-            </div>
-            <label class="radio control-label">Gender</label>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-                Male
-              </label>
-            </div>
-            <div class="radio" required>
-              <label>
-                <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-                Female
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="radioother" value="What's it to ya?" ng-model="formData.gender">
-                What's it to ya?
-              </label>
-            </div>
-            <div class="form-group">
-              <label for="age">Age</label>
-              <input type="number" class="form-control" id="age" placeholder="72" ng-model="formData.age" required>
-            </div>
-            <div class="form-group">
-              <label for="language">Favorite Language</label>
-              <input type="text" class="form-control" id="language" placeholder="Fortran" ng-model="formData.favlang" required>
-            </div>
-            <div class="form-group">
-              <label for="latitude">Latitude</label>
-              <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
-            </div>
-            <div class="form-group">
-              <label for="longitude">Longitude</label>
-              <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
-            </div>
-            <div class="form-group">
-              <label for="verified">HTML5 Verified Location?
-                <span>
-                  <button class="btn btn-default btn-xs">
-                    <span class="glyphicon glyphicon-refresh"></span>
-                  </button>
-                </span>
-              </label>
-              <input type="text" class="form-control" id="verified" placeholder="Nope (Thanks for spamming my map...)" ng-model="formData.htmlverified" readonly>
-            </div>
-            <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
-<!--<button type="submit" class="btn btn-danger btn-block" ng-disabled="addForm.$invalid">Submit</button>
-          </form>
-        </div>
+        <!--  <table>
+                <tr ng-repeat="camtourist in vm.camtourists">
+                    <td>{{camtourist.id}}</td>
+                    <td>{{camtourist.ciudad}}</td>
+                    <td>{{camtourist.provincia}}</td>
+                    <td>{{camtourist.pais}}</td>
+                </tr>
+            </table>-->
+        <div class="camtourist">
+            <div class="camtourist" ng-repeat="camtourist in vm.camtourists track by camtourist.id">
+                <div class="punto_interes">{{camtourist.punto_interes}}</div>
+                <div class="ciudad">
+                    Ciudad:
+                    {{camtourist.ciudad}}</div>
+                <div class="pais">
+                    Pais:
+                    {{camtourist.pais}}</div>
+                <div class="details">{{camtourist.descripcion}}</div>
       </div>
-    </div>
-  </div>-->

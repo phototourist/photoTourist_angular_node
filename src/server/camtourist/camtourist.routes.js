@@ -1,8 +1,8 @@
 var ControllerCamtourist = require('./camtourist.controller');
-//console.log(ControllerCamtourist);
+console.log(ControllerCamtourist);
 
 module.exports = function(app) {
   app.get('/api/camtourist',  ControllerCamtourist.getCamtouristTotals); //ControllerCamtourist.getCamtouristTotals
-
-  //app.get('/api/camtourist/:camtourist_id', ControllerCamtourist.getCamtouristEspecifico);
+  app.get('/api/camtouristCities',  ControllerCamtourist.getCamtouristCities);
+  app.get('/api/camtourist/:camtourist_id', ControllerCamtourist.getCamtouristEspecifico);
 };

@@ -26,7 +26,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-//app.use('/api', require('./routes'));
 require('./config/passport')(passport);
 
 // required for passport
@@ -35,7 +34,6 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch'
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 
 require('./camtourist/camtourist.routes')(app);
 require('./contact/contact.routes')(app);
