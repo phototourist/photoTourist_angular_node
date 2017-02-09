@@ -14,37 +14,59 @@
         vm.cities = [];
         vm.markers = [];
         vm.testMarkers = [];
+        //vm.onClick = onClick;
         vm.map = {
             center: {
                 latitude: 39.5770969,
                 longitude: -3.5280415
             },
-            zoom: 10
+            zoom: 12,
+            windows: {
+               model: {},
+                show: false,
+                options: {
+                    pixelOffset: {
+                        width: -1,
+                        height: -20
+                    }
+                }
+            },
+            markersEvents: {
+                click: function(marker, eventName, model, args) {
+                  console.log("Estoy Clickando!!");
+                    vm.map.windows.model = model;
+                    vm.map.windows.show = true;
+                    vm.infoWindow = "INFORMACION DE INFOWINDOW";
+                    //vm.infoWindow = getMenu(model.id);
+                    //vm.infoWindow = getCities();
+                },
+
+            }
         };
 
-       vm.icon = {
-          url: '../../images/localizacion_maps.png'
+        vm.icon = {
+            url: '../../images/localizacion_maps.png'
         };
+
 
         activate();
 
         function activate() {
+            //var promises = [getCamtourist(), getCities()]; // ahi dentro todas las promesas
+
             var promises = [getLocation(), getCamtourist(), getCities()]; // ahi dentro todas las promesas
             return $q.all(promises).then(function() {
                 logger.info('Activated Camtourist View');
             });
         }
 
-        //Geolocaizamos al usuario inicialmente
+        //Geolocalizamos al usuario inicialmente
         function getLocation() {
             return dataservice.getLocation().then(
                 function(data) {
-                    vm.map = {
-                        center: {
+                    vm.map.center = {
                             latitude: data.latitude,
                             longitude: data.longitude
-                        },
-                        zoom: 10
                     };
                 });
         }
@@ -52,6 +74,9 @@
         //Funcion para cargar inicialmente todos los marcadores y lista
         function getCamtourist() {
             return dataservice.getCamtourist().then(function(data) {
+
+              console.log("Devolucion datos getCamtourist " + data);
+
                 vm.camtourists = data;
                 getMarkers(vm.camtourists);
                 return vm.camtourists;
@@ -78,8 +103,9 @@
         //Funcion para cargar ciudades en desplegable desde BD
         function getCities() {
             return dataservice.getCities().then(function(data) {
-                console.log(data);
+                console.log("Las Ciudades" + data);
                 vm.cities = data;
+
                 return vm.cities;
             });
         }
@@ -95,25 +121,20 @@
                 var hasPrincipal = false; //variable para controlar si tenemos Principal en CamTourist BD
                 for (var i = 0; i < vm.markers.length; i++) {
                     if (vm.markers[i].principal == 1) {
-                        vm.map = {
-                            center: {
+                        vm.map.center = {
                                 latitude: vm.markers[i].latitude,
                                 longitude: vm.markers[i].longitude
-                            },
-                            zoom: 12
-                        };
+                            }
                         hasPrincipal = true;
                         break;
                     }
                 }
 
                 if (hasPrincipal == false) {
-                    vm.map = {
-                        center: {
+                    vm.map.center = {
                             latitude: vm.markers[0].latitude,
                             longitude: vm.markers[0].longitude
-                        },
-                        zoom: 10
+
                     };
                 }
             });

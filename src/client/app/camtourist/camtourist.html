@@ -7,9 +7,17 @@
         <div class="mapa">
             <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom">
                 <!--<ui-gmap-marker idkey="vm.marker.id" coords="vm.marker.coords"></ui-gmap-marker>-->
-                <ui-gmap-markers models="vm.markers" coords="'self'" icon="'icon'"></ui-gmap-markers>
+                <ui-gmap-markers models="vm.markers" coords="'self'" icon="'icon'" events="vm.map.markersEvents"></ui-gmap-markers>
+
+                <!--<ui-gmap-markers models="vm.map.markers" idkey="'id'" coords="'self'" events="vm.map.markersEvents"></ui-gmap-markers>-->
+
+                <ui-gmap-window show="vm.map.windows.show" coords="vm.map.windows.model">
+                    <div>{{vm.infoWindow}}</div>
+                </ui-gmap-window>
 
             </ui-gmap-google-map>
+
+            <br>
         </div>
         <!--  <table>
                 <tr ng-repeat="camtourist in vm.camtourists">
@@ -29,4 +37,5 @@
                     Pais:
                     {{camtourist.pais}}</div>
                 <div class="details">{{camtourist.descripcion}}</div>
-      </div>
+            </div>
+        </div>
