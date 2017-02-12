@@ -8,5 +8,5 @@ bower_components/
 .tmp
 sengrid.env
 config.db.js
-.env
+*.env
 database.js

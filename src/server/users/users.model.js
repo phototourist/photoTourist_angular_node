@@ -90,6 +90,58 @@ usersModel.facebookLogin = function(req, profile, done){
         newUserMysql.email = rows[0].email;
         newUserMysql.id_facebook = rows[0].id_facebook;
         newUserMysql.name = rows[0].name;
+        newUserMysql.user = rows[0].user;
+        newUserMysql.avatar = rows[0].avatar;
+        newUserMysql.id = rows[0].id;
+        console.log(rows[0].email);
+
+          return done(null, newUserMysql, "Bienvenido a PhotoTourist");
+        }else {
+
+
+                    var newUserMysql = new Object();
+
+                    newUserMysql.email = req.user.emails[0].value;
+                    newUserMysql.id_facebook = req.user.id;
+                    newUserMysql.name = req.user.name.givenName;
+                    newUserMysql.displayName = req.user.displayName;
+                    newUserMysql.avatar = req.user.photos[0].value;
+
+                    var insertQuery = "INSERT INTO users (name, email, avatar, id_facebook) values ('"+ req.user.name.givenName +"','"+req.user.emails[0].value+"', '"+req.user.photos[0].value+"','"+req.user.id+"')";
+                    //console.log("insertQuery"+ insertQuery);
+                    mysql.connection.query(insertQuery,function(err,rows){
+                        newUserMysql.id = rows.insertId;
+
+                      return done(null, newUserMysql, true);
+
+                                });
+                              }
+                            });
+
+}
+
+usersModel.twitterLogin = function(req, profile, done){
+  req.user = profile;
+  console.log("fefe"+req.user);
+  console.log(req.user.id);
+  console.log(req.user.username);
+  //console.log(req.user.name.givenName);
+  console.log(req.user.displayName);
+  console.log(req.user.photos[0].value);
+  //console.log(req.user.gender);
+
+  mysql.connection.query("select * from users where user = '"+req.user.username+"'",function(err, rows){
+
+      if (err)
+        return done(err);
+        if(rows.length){
+        //  console.log("rows.length"+ rows.length);
+
+        var newUserMysql = new Object();
+
+        newUserMysql.email = rows[0].email;
+        //newUserMysql.id_facebook = rows[0].id_facebook;
+        newUserMysql.name = rows[0].name;
         newUserMysql.displayName = rows[0].displayName;
         newUserMysql.avatar = rows[0].avatar;
         newUserMysql.id = rows[0].id;
@@ -98,26 +150,26 @@ usersModel.facebookLogin = function(req, profile, done){
           return done(null, newUserMysql, "Bienvenido a PhotoTourist");
         }else {
 
-          var newUserMysql = new Object();
+            var newUserMysql = new Object();
 
-          newUserMysql.email = req.user.emails[0].value;
-          newUserMysql.id_facebook = req.user.id;
-          newUserMysql.name = req.user.name.givenName;
-          newUserMysql.displayName = req.user.displayName;
-          newUserMysql.avatar = req.user.photos[0].value;
+            //newUserMysql.email = req.user.emails[0].value;
+            //newUserMysql.id_facebook = req.user.id;
+            newUserMysql.name = req.user.displayName;
+          //  newUserMysql.displayName = req.user.displayName;
+            newUserMysql.avatar = req.user.photos[0].value;
+              newUserMysql.user = req.user.username;
 
-          var insertQuery = "INSERT INTO users (name, email, avatar, id_facebook) values ('"+ req.user.name.givenName +"','"+req.user.emails[0].value+"', '"+req.user.photos[0].value+"','"+req.user.id+"')";
-          //console.log("insertQuery"+ insertQuery);
-          mysql.connection.query(insertQuery,function(err,rows){
-              newUserMysql.id = rows.insertId;
+            var insertQuery = "INSERT INTO users (name, user, avatar ) values ('"+ req.user.displayName +"','"+req.user.username+"', '"+req.user.photos[0].value+"')";
+            //console.log("insertQuery"+ insertQuery);
+            mysql.connection.query(insertQuery,function(err,rows){
+                newUserMysql.id = rows.insertId;
 
-            return done(null, newUserMysql, true);
+              return done(null, newUserMysql, true);
+
           });
         }
       });
 
 }
-
-
 
 module.exports = usersModel;

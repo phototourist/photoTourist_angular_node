@@ -20,10 +20,32 @@ module.exports = function() {
     // passport needs ability to serialize and unserialize users out of session
 
     passport.serializeUser( function( user, done ) {
-        done( null, user );
+        done( null, user.id );
+        console.log('SERIALIZE USER '+ user.id);
     } );
-    passport.deserializeUser( function( obj, done ) {
-        done( null, obj );
+    passport.deserializeUser( function( id, done ) {
+        console.log('DESERIALIZE USER ' + id);
+        mysql.connection.query("select * from users where id = " + id, function(err, rows){
+
+          if (err)
+                done(err);
+
+                // if no user is found, return the message
+                if (!rows.length)
+                     done(null, null);
+
+                    // all is well, return user
+                          else
+
+                          var newUserMysql = new Object();
+
+                          newUserMysql.email = rows[0].email;
+                          newUserMysql.name = rows[0].name;
+                          newUserMysql.avatar = rows[0].avatar;
+                          newUserMysql.id = rows[0].id;
+
+          done(err, newUserMysql);
+        });
     } );
 /*
     // used to serialize the user for the session
@@ -144,9 +166,9 @@ module.exports = function() {
             });*/
         //  }));
         passport.use(new FacebookStrategy({
-          clientID        : '898487790287946',
-          clientSecret    : '2076b5a71f1114fbf594197a5c94cd78',
-          callbackURL     : '/auth/facebook/callback',
+          clientID        : process.env.FACEBOOK_CLIENT_ID,
+          clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
+          callbackURL     : process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['email', 'locale','id', 'displayName', 'name', 'gender','photos'],
           passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
       },
@@ -216,14 +238,17 @@ module.exports = function() {
               // TWITTER =================================================================
               // =========================================================================
               passport.use(new TwitterStrategy({
-                  consumerKey     : '5xpWZOW3655EHFcQ40ZA4sNVi',
-                  consumerSecret  : '492cwtsRefjzEstzVMNmjJbS4cD67OYRUnl9fBUZdnYb2HESPI',
-                  callbackURL     : '/api/twitter/callback',
+                consumerKey:  process.env.TWITTER_CLIENT_ID,
+                consumerSecret:  process.env.TWITTER_CLIENT_SECRET,
+                  callbackURL:  process.env.TWITTER_CALLBACK_URL,
                   passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
               },
               function(req, token, tokenSecret, profile, done) {
+                req.user = profile;
+              console.log('TWITTER login '+JSON.stringify(req.user));
 
-                  done(null, profile);
+              return usersModel.twitterLogin(req, profile, done);
+                //  done(null, profile);
 
 
               }));

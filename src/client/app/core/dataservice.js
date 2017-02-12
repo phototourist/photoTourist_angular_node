@@ -17,7 +17,8 @@
       sendEmail: sendEmail,
       submitSignUp: submitSignUp,
       login: login,
-      signupFacebook: signupFacebook
+      signupFacebook: signupFacebook,
+      isLoggedin: isLoggedin
     };
     return service;
 
@@ -127,7 +128,6 @@
 
     function login(data) {
 
-
       return $http.post('/api/login', data)
         .then(success)
         .catch(fail);
@@ -142,9 +142,29 @@
       }
     }
 
+    function isLoggedin(){
+          return $http.get('/api/loggedin')
+            .then(success)
+            .catch(fail);
+
+          function success(responseUser) {
+             if (responseUser.data === '0'){
+                  $rootScope.authUser = false;
+                 return false;
+            }else{
+              $rootScope.authUser = responseUser.data;
+              return responseUser.data;
+            }
+          }
+
+          function fail(e) {
+            return exception.catcher('XHR Failed for /api/loggedin')(e);
+          }
+        }
+
 
     function signupFacebook() {
-      return $http.get('/auth/facebook/success')
+      return $http.get('/auth/success')
         .then(success)
         .catch(fail);
 

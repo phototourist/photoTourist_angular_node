@@ -9,7 +9,6 @@ var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var passport = require('passport');
-var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var flash = require('connect-flash');
@@ -17,17 +16,15 @@ var cors = require('cors');
 var environment = process.env.NODE_ENV;
 var ControllerUsers = require('./users/users.controller');
 
-app.use(cors());
-
-app.use(cookieParser());
+//app.use(cors());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
+app.use(cookieParser());
 
-require('./config/passport')(passport);
-
+var session  = require('express-session');
 // required for passport
 app.use(session({
   secret: 'ilovescotchscotchyscotchscotch',
@@ -35,10 +32,13 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false}
 })); // session secret
+
+var passport = require('passport');
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-
+//app.use(flash()); // use connect-flash for flash messages stored in session
+require('./config/passport')(passport);
 //require('./camtourist/camtourist.routes')(app);
 //require('./contact/contact.routes')(app);
 //require('./users/users.routes')(app);
@@ -48,14 +48,6 @@ require('./config/routes').routes(app,passport);
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
-
-
-
-    app.get('api/logout', function(req, res){
-      req.logOut();
-      //res.redirect('/');
-      res.send(200);
-    });
 
 
 switch (environment) {

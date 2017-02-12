@@ -25,8 +25,8 @@
                       <span class="fa fa-facebook"></span>
                     </a>
                   </li>
-                  <li ng-click="vm.singin('twitter')" ng-hide="$root.authUser" class="login">
-                    <a class="btn btn-social-icon btn-twitter">
+                  <li ng-hide="$root.authUser" class="login">
+                    <a target="_self" href="/auth/twitter" class="btn btn-social-icon btn-twitter">
                 <span class="fa fa-twitter"></span>
                 </a>
                 </li>
@@ -64,7 +64,7 @@
 
           </div>
           <div id="sb-search" class="sb-search" ng-show="$root.authUser">
-              <a target="_self" href="api/logout"> <span class="sb-icon-search"> </span>Logout</a>
+              <a target="_self" href="/api/logout"> <span class="sb-icon-search"> </span>Logout</a>
             </div>
         </div>
       </div>
