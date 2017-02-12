@@ -9,8 +9,8 @@
               <a href="#/"><img src="src/client/images/logo.png" alt="" /></a>
             </div>
           </div>
-          <div class="header-right">
-            <p>+11 235 813 2134</p>
+          <div class="header-right" ng-show="$root.authUser">
+              <a>Hola {{$root.authUser.name }} <img src="{{ $root.authUser.avatar}}"/></a>
           </div>
           <div class="clearfix"> </div>
           <div class="top-nav">
@@ -19,13 +19,13 @@
                   <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
                     <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
                   </li>
-                  <li ng-show="$root.signin" ng-click="vm.openModal()"><a><i class="fa fa-sign-in"></i> Sign in</a></li>
-                  <li  ng-hide="vm.authData" class="login">
+                  <li  ng-hide="$root.authUser" ng-click="vm.openModal()"><a ><i class="fa fa-sign-in"></i> Sign in</a></li>
+                  <li   ng-hide="$root.authUser" class="login">
                     <a href="http://projects.com:3000/auth/facebook"  class="btn btn-block btn-social-icon btn-facebook">
                       <span class="fa fa-facebook"></span>
                     </a>
                   </li>
-                  <li ng-click="vm.singin('twitter')" ng-hide="vm.authData" class="login">
+                  <li ng-click="vm.singin('twitter')" ng-hide="$root.authUser" class="login">
                     <a class="btn btn-social-icon btn-twitter">
                 <span class="fa fa-twitter"></span>
                 </a>
@@ -63,12 +63,8 @@
             </script>
 
           </div>
-          <div id="sb-search" class="sb-search">
-              <form>
-                <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-                <input class="sb-search-submit" type="submit" value="">
-                <span class="sb-icon-search"> </span>
-              </form>
+          <div id="sb-search" class="sb-search" ng-show="$root.authUser">
+              <a target="_self" href="api/logout"> <span class="sb-icon-search"> </span>Logout</a>
             </div>
         </div>
       </div>

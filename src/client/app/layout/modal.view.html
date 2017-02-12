@@ -2,8 +2,8 @@
     <!-- <div class="row"> -->
         <div class='col-md-3'></div>
         <div class="col-md-6">
-            <div class="login-box well" ng-controller="SidebarController as vm">
-                    <form id="modal_form" name="modal_form">
+            <div class="login-box well" >
+                    <form id="modal_form" name="modal_form" >
                         <legend>Sign In</legend>
                         <div class="form-group">
                             <label for="useremail">E-mail or Username</label>
@@ -12,7 +12,7 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input required ng-model="vm.password" id="password" name="password" value='' placeholder="Password" type="text" class="form-control" maxlength="100"/>
-                            <span class='error' ng-show="err"> {{errorpass}}</span>
+                            <span class='error' ng-show="vm.error"> {{vm.error}}</span>
                         </div>
                         <div class="input-group">
                           <div class="checkbox">
@@ -22,7 +22,8 @@
                           </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" ng-click="vm.login()" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login"   ng-show="modal_form.useremail.$valid && modal_form.password.$valid"/>
+                            <input type="submit"  ng-click="vm.login()" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login"
+                            ng-show="modal_form.useremail.$valid && modal_form.password.$valid"/>
                         </div>
                         <span class='text-center'><a href="/resetting/request" class="text-sm">Forgot Password?</a></span>
                         <div class="form-group">

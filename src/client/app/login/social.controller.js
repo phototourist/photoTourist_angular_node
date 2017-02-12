@@ -9,13 +9,15 @@
   /* @ngInject */
   function SocialController(logger, dataservice, commonService, $state) {
 
-signupFacebook()
+//signupFacebook()
 
   function signupFacebook(){
 
-  console.log("submit");
+  //console.log("submit");
 
       dataservice.signupFacebook().then(function (response) {
+
+          //$rootScope.authUser = data;
 
         console.log(response);
         $state.go('dashboard');

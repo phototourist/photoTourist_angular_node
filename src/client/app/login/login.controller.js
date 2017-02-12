@@ -5,20 +5,20 @@
     .module('app.login')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['logger', 'dataservice', 'commonService', '$state'];
+  LoginController.$inject = ['$uibModal', '$rootScope', 'logger', 'dataservice', '$state'];
   /* @ngInject */
-  function LoginController(logger, dataservice, commonService, $state) {
+  function LoginController($uibModal, $rootScope, logger, dataservice, $state) {
     var vm = this;
     vm.title = 'Login';
     vm.inputEmail = "";
     vm.inputPass = "";
     vm.submitSignUp = submitSignUp;
-
-
+    vm.login = login;
+    vm.close = close;
+    vm.error= false;
 
     function submitSignUp(){
 
-  console.log("submit");
       var data = {"email": vm.inputEmail,
       "pass": vm.inputPass,
             };
@@ -26,16 +26,44 @@
       dataservice.submitSignUp(data).then(function (response) {
 
         if (response.data) {
-          console.log("tete" +response);
-                    $state.go('dashboard');
-                    commonService.banner("El usuario se ha dado de alta correctamente, revisa su correo para activarlo", "");
-
+          //console.log("tete" +response);
+                    toastr.success("El usuario se ha dado de alta correctamente, revise su correo", "Alta");
+                      $state.go('dashboard');
             }else {
-              console.log('fatal');
+                toastr.error("Error, intentelo de nuevo mas tarde", "Error");
             }
 
 
       });
+    }
+
+
+    function close() {
+      console.log("close");
+      $rootScope.modalInstance.close('a');
+    };
+
+
+    function login() {
+      close();
+      console.log("login");
+        var data = {"email": vm.userEmail,
+        "pass": vm.password,
+              };
+              dataservice.login(data).then(function (response) {
+                console.log(response.data);
+
+                if (!response.data.rows) {
+                  $rootScope.authUser = false;
+                    toastr.error(response.data.inf, "Error");
+                    vm.error=response.data.inf;                  
+                }else {
+                  toastr.success(response.data.inf, "Bienvenido");
+                    $rootScope.authUser = response.data.rows;
+                    console.log(response.data.rows);
+                }
+
+              });
     }
 
 

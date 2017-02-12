@@ -10,16 +10,9 @@
   function SidebarController($rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
     var vm = this;
     var states = routerHelper.getStates();
-
-    vm.userEmail = "";
-    vm.password = "";
-    vm.close = close;
-    vm.login = login;
-    vm.singinFacebook = singinFacebook;
-    //$rootScope.bannerText = "";
+  
     vm.isCurrent = isCurrent;
     vm.openModal = openModal;
-    $rootScope.signin = true;
 
     activate();
 
@@ -48,16 +41,14 @@
           animation: 'true',
           templateUrl: 'app/layout/modal.view.html',
           controller: 'LoginController',
+          controllerAs: 'vm',
           size: 'lg'
 
       });
   };
 
 
-    function close() {
-      $rootScope.modalInstance.close('a');
-    }
-
+/*
 function login() {
   close();
   console.log("login");
@@ -68,25 +59,17 @@ function login() {
             console.log(response.data);
 
             if (!response.data.rows) {
-              console.log(response.data.inf);
+              $rootScope.authUser = false;
                 toastr.error(response.data.inf, "Error");
             }else {
               toastr.success(response.data.inf, "Alta");
-                $rootScope.signin = false;
+                $rootScope.authUser = response.data.rows;
+                console.log(response.data.rows);
             }
 
           });
-}
+}*/
 
-function singinFacebook() {
-
-console.log("singinFacebook");
-
-          dataservice.singinFacebook().then(function (response) {
-            console.log(response.data);
-
-          });
-}
 
 
   }

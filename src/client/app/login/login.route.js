@@ -5,13 +5,13 @@
     .module('app.login')
     .run(appRun);
 
-  appRun.$inject = ['routerHelper'];
+  appRun.$inject = ['routerHelper', 'dataservice', '$rootScope', '$uibModal'];
   /* @ngInject */
-  function appRun(routerHelper) {
-    routerHelper.configureStates(getStates());
+  function appRun(routerHelper, dataservice, $rootScope, $uibModal) {
+    routerHelper.configureStates(getStates(dataservice, $rootScope,  $uibModal));
   }
 
-  function getStates() {
+  function getStates(dataservice, $rootScope,  $uibModal) {
     return [
       {
         state: 'signup',
@@ -24,10 +24,13 @@
         }
       },
       {
-        state: 'successFacebook',
+        state: 'successSocial',
         config: {
-          url: '/successFacebook',
-          controller: 'SocialController'
+          url: '/successSocial',
+          controller: 'LoginController',
+          resolve:{
+            facebook: dataservice.signupFacebook
+            }
         }
       }
     ];

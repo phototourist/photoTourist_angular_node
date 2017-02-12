@@ -29,52 +29,33 @@ app.use(logger('dev'));
 require('./config/passport')(passport);
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch'
+app.use(session({
+  secret: 'ilovescotchscotchyscotchscotch',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false}
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-require('./camtourist/camtourist.routes')(app);
-require('./contact/contact.routes')(app);
-require('./users/users.routes')(app);
+//require('./camtourist/camtourist.routes')(app);
+//require('./contact/contact.routes')(app);
+//require('./users/users.routes')(app);
+
+require('./config/routes').routes(app,passport);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
-/*
-app.get('/auth/facebook',
-   function(req, res, next) {
-     var redirect = encodeURIComponent(req.query.redirect || '/');
-     passport.authenticate('facebook',{scope: ['email'],
-     callbackURL: 'http://localhost:3000/auth/facebook/callback?redirect=' + redirect
-       })(req, res, next);
-   });
-
- app.get('/auth/facebook/callback',
-   function(req, res, next) {
-     var url = 'http://localhost:3000/auth/facebook/callback?redirect=' + encodeURIComponent(req.query.redirect);
-     passport.authenticate('facebook', { callbackURL: url })(req, res, next);
-   },
-   function(req, res) {
-     //res.redirect(req.query.redirect);
-       console.log(req.user);
-       //res.json(req.user.id);
-       res.redirect('/signup');
-   });
-*/
-
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect : '/successFacebook', failureRedirect : '/404'}));
 
 
-app.get('/auth/facebook/success', function(req, res) {
-
-        res.json(req.user);
-
+    app.get('api/logout', function(req, res){
+      req.logOut();
+      //res.redirect('/');
+      res.send(200);
     });
-
 
 
 switch (environment) {

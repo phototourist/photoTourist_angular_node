@@ -5,10 +5,10 @@
   angular
     .module('app.core')
     .factory('dataservice', dataservice);
-  dataservice.$inject = ['$window', '$http', '$q', 'exception', 'logger'];
+  dataservice.$inject = ['$window', '$http', '$q', 'exception', 'logger', '$rootScope', '$state'];
   /* @ngInject */
 
-  function dataservice($window, $http, $q, exception, logger) {
+  function dataservice($window, $http, $q, exception, logger, $rootScope, $state) {
     var service = {
       getCamtourist: getCamtourist2,
       getCities: getCities2,
@@ -134,7 +134,6 @@
 
       function success(response) {
         console.log(response);
-        //  alert(response.data);
         return response;
       }
 
@@ -150,13 +149,20 @@
         .catch(fail);
 
       function success(response) {
-        console.log(response);
-        //  alert(response.data);
-        return response;
-      }
+        if (!response.data){
+               $rootScope.authUser = false;
+              return false;
+         }else{
+           $rootScope.authUser = response.data;
+           console.log(response.data);
+           $state.go('dashboard');
+           return response.data;
+         }
+       }
 
-      function fail() {
-        return false;
+
+      function fail(e) {
+      return exception.catcher('XHR Failed for /auth/facebook')(e);
       }
     }
   }

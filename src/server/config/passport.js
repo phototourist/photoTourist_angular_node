@@ -147,13 +147,66 @@ module.exports = function() {
           clientID        : '898487790287946',
           clientSecret    : '2076b5a71f1114fbf594197a5c94cd78',
           callbackURL     : '/auth/facebook/callback',
-        profileFields: ['name', 'email', 'link', 'locale', 'timezone'],
+        profileFields: ['email', 'locale','id', 'displayName', 'name', 'gender','photos'],
           passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
       },
       function(req, token, refreshToken, profile, done) {
-        req.user = profile.name;
-        console.log(req.user);
-        return done( null, profile);
+
+
+        return usersModel.facebookLogin(req, profile, done);
+
+
+        /*
+        req.user = profile;
+
+        console.log(req.user.id);
+        console.log(req.user.emails[0].value);
+        console.log(req.user.name.givenName);
+        console.log(req.user.displayName);
+        console.log(req.user.photos[0].value);
+        console.log(req.user.gender);
+
+        mysql.connection.query("select * from users where email = '"+req.user.emails[0].value+"'",function(err, rows){
+
+            if (err)
+              return done(err);
+              if(rows.length){
+              //  console.log("rows.length"+ rows.length);
+
+              var newUserMysql = new Object();
+
+              newUserMysql.email = rows[0].email;
+              newUserMysql.id_facebook = rows[0].id_facebook;
+              newUserMysql.name = rows[0].name;
+              newUserMysql.displayName = rows[0].displayName;
+              newUserMysql.avatar = rows[0].avatar;
+              newUserMysql.id = rows[0].id;
+              console.log(rows[0].email);
+
+                return done(null, newUserMysql, "Bienvenido a PhotoTourist");
+              }else {
+
+                var newUserMysql = new Object();
+
+                newUserMysql.email = req.user.emails[0].value;
+                newUserMysql.id_facebook = req.user.id;
+                newUserMysql.name = req.user.name.givenName;
+                newUserMysql.displayName = req.user.displayName;
+                newUserMysql.avatar = req.user.photos[0].value;
+
+                var insertQuery = "INSERT INTO users (name, email, avatar, id_facebook) values ('"+ req.user.name.givenName +"','"+req.user.emails[0].value+"', '"+req.user.photos[0].value+"','"+req.user.id+"')";
+                //console.log("insertQuery"+ insertQuery);
+                mysql.connection.query(insertQuery,function(err,rows){
+                    newUserMysql.id = rows.insertId;
+
+                  return done(null, newUserMysql, true);
+                });
+              }
+            });*/
+
+
+
+        //return done( null, profile);
 
       }));
 

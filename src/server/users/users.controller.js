@@ -39,9 +39,5 @@ if (err)
 
 function singinFacebook(req, res, next) {
   console.log("lolololo");
-  //console.log(req.body);
-  //passport.authenticate('facebook')(req, res, next);
-
-  //passport.authenticate('facebook', { scope: ['email', 'public_profile'] })(req, res, next);
-//passport.authenticate('facebook', { scope: ['email', 'public_profile'] })(req, res, next);
+  passport.authenticate('facebook', { scope: ['email', 'public_profile'] })(req, res, next);
 };
