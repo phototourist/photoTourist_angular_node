@@ -100,7 +100,7 @@
         .catch(fail);
 
       function success(response) {
-        console.log("Localizaciones_GetCamtourist: " + response);
+      //  console.log("Localizaciones_GetCamtourist: " + response);
 
         return response.data;
       }
@@ -111,7 +111,7 @@
     }
 
     function submitSignUp(data) {
-      console.log("dataservice " + data);
+    //  console.log("dataservice " + data);
       return $http.post('/api/signup', data)
         .then(success)
         .catch(fail);

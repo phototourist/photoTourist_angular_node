@@ -114,7 +114,7 @@ exports.sendEmail = function (req, res) {
          //api_key: 'YOUR_SENDGRID_API_KEY'
          api_key: process.env.SENDMAIL_SECRET_KEY
      }//process.env.SENDMAIL_SECRET_KEY
- }
+ };
  var mailer = nodemailer.createTransport(sgTransport(options));
  mailer.sendMail(email, function(error, info){
      if(error){

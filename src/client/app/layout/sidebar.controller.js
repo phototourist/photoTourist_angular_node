@@ -5,7 +5,8 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['logger', '$q', '$rootScope', '$state', 'routerHelper', '$uibModal', 'dataservice', 'toastr'];
+  SidebarController.$inject = ['logger', '$q', '$rootScope', '$state',
+   'routerHelper', '$uibModal', 'dataservice', 'toastr'];
   /* @ngInject */
   function SidebarController(logger, $q, $rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
     var vm = this;
@@ -61,7 +62,7 @@
           size: 'lg'
 
       });
-  };
+  }
 
 
 /*

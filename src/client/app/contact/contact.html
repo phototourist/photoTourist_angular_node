@@ -9,17 +9,17 @@
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>-->
 <div class="container">
-    <form id="contact_form" name="vm.contact_form" class="form-contact">
+    <form id="contactForm" name="vm.contactForm" class="form-contact">
         <h2 class="form-contact-heading">Contact Us</h2>
 
         <div class="control-group">
             <input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name" class="form-control" dir="auto" maxlength="100">
-            <span class="text-danger" ng-show="vm.contact_form.inputName.$error.required && (vm.contact_form.inputName.$dirty || vm.contact_form.inputName.$touched)">El campo es obligatorio</span>
+            <span class="text-danger" ng-show="vm.contactForm.inputName.$error.required && (vm.contactForm.inputName.$dirty || vm.contactForm.inputName.$touched)">El campo es obligatorio</span>
         </div>
         <div class="control-group">
             <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" class="form-control" maxlength="100">
-            <span class="text-danger" ng-show="vm.contact_form.inputEmail.$error.required && (vm.contact_form.inputEmail.$dirty || vm.contact_form.inputEmail.$touched)">El campo es obligatorio</span>
-            <span class="text-danger" ng-show="vm.contact_form.inputEmail.$error.email">Email no valido</span>
+            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.required && (vm.contactForm.inputEmail.$dirty || vm.contactForm.inputEmail.$touched)">El campo es obligatorio</span>
+            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.email">Email no valido</span>
         </div>
         <div class="control-group">
             <label for="sel1">Subject</label>
@@ -33,13 +33,13 @@
         </div>
         <div class="control-group">
               <textarea required ng-model="vm.inputMessage" class="form-control" rows="4" name="inputMessage" placeholder="Message *" style="max-width: 100%;" dir="auto"></textarea>
-              <span class="text-danger" ng-show="vm.contact_form.inputMessage.$error.required && (vm.contact_form.inputMessage.$dirty || vm.contact_form.inputMessage.$touched)">El campo es obligatorio</span>
+              <span class="text-danger" ng-show="vm.contactForm.inputMessage.$error.required && (vm.contactForm.inputMessage.$dirty || vm.contactForm.inputMessage.$touched)">El campo es obligatorio</span>
         </div>
 
-        <input type="hidden" name="token" value="contact_form" />
+        <input type="hidden" name="token" value="contactForm" />
 
         <input class="btn btn-primary" type="submit" name="submit" id="submitBtn" value="Enviar"
-               ng-show="vm.contact_form.inputName.$valid && vm.contact_form.inputEmail.$valid && vm.contact_form.inputMessage.$valid"
+               ng-show="vm.contactForm.inputName.$valid && vm.contactForm.inputEmail.$valid && vm.contactForm.inputMessage.$valid"
                ng-click="vm.send()"/>
 
         <img ng-show="loader.loading" src="frontend/modules/contact/view/img/ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>

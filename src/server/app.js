@@ -10,7 +10,7 @@ var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
+var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var cors = require('cors');
 var environment = process.env.NODE_ENV;
@@ -19,18 +19,22 @@ var ControllerUsers = require('./users/users.controller');
 //app.use(cors());
 
 app.use(favicon(__dirname + '/favicon.ico'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cookieParser());
 
-var session  = require('express-session');
+var session = require('express-session');
 // required for passport
 app.use(session({
   secret: 'ilovescotchscotchyscotchscotch',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false}
+  cookie: {
+    secure: false
+  }
 })); // session secret
 
 var passport = require('passport');
@@ -43,7 +47,7 @@ require('./config/passport')(passport);
 //require('./contact/contact.routes')(app);
 //require('./users/users.routes')(app);
 
-require('./config/routes').routes(app,passport);
+require('./config/routes').routes(app, passport);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

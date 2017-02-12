@@ -49,9 +49,9 @@
 
                   $timeout(function () {
 
-                    vm.contact_form.inputEmail.$error.required = false;
-                    vm.contact_form.inputName.$error.required = false;
-                    vm.contact_form.inputMessage.$error.required = false;
+                    vm.contactForm.inputEmail.$error.required = false;
+                    vm.contactForm.inputName.$error.required = false;
+                    vm.contactForm.inputMessage.$error.required = false;
 
                   }, 30);
 

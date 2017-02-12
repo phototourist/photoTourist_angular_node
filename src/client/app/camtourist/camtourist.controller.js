@@ -12,9 +12,9 @@
         vm.title = 'yey';
         vm.camtourists = []; //Lista de Localizaciones lateral
         vm.cities = [];
+        vm.camtouristsByCity = {};
         vm.markers = [];
         vm.testMarkers = [];
-        //vm.onClick = onClick;
         vm.map = {
             center: {
                 latitude: 39.5770969,
@@ -22,8 +22,9 @@
             },
             zoom: 12,
             windows: {
-               model: {},
+                model: {},
                 show: false,
+                closeClick: closeInfoWindow,
                 options: {
                     pixelOffset: {
                         width: -1,
@@ -32,17 +33,21 @@
                 }
             },
             markersEvents: {
-                click: function(marker, eventName, model, args) {
-                  console.log("Estoy Clickando!!");
-                    vm.map.windows.model = model;
-                    vm.map.windows.show = true;
-                    vm.infoWindow = "INFORMACION DE INFOWINDOW";
-                    //vm.infoWindow = getMenu(model.id);
-                    //vm.infoWindow = getCities();
-                },
-
+                mouseover: mouseOverInfoWindow
             }
         };
+
+        function closeInfoWindow() {
+            vm.map.windows.show = false;
+        }
+
+        function mouseOverInfoWindow(marker, eventName, model, args) {
+            vm.map.windows.model = model;
+            vm.map.windows.show = true;
+            vm.infoWindow = getCamtouristInfoWindow(model.id);
+            marker.showWindow = false;
+            marker.visible = true;
+        }
 
         vm.icon = {
             url: '../../images/localizacion_maps.png'
@@ -65,8 +70,8 @@
             return dataservice.getLocation().then(
                 function(data) {
                     vm.map.center = {
-                            latitude: data.latitude,
-                            longitude: data.longitude
+                        latitude: data.latitude,
+                        longitude: data.longitude
                     };
                 });
         }
@@ -75,12 +80,24 @@
         function getCamtourist() {
             return dataservice.getCamtourist().then(function(data) {
 
-              console.log("Devolucion datos getCamtourist " + data);
-
                 vm.camtourists = data;
                 getMarkers(vm.camtourists);
+                getCamtouristsByCity(vm.camtourists);
                 return vm.camtourists;
             });
+        }
+
+        function getCamtouristsByCity(camtourists) {
+            var count = {};
+            camtourists.sort(function(camtourist1,camtourist2){
+              return camtourist1.ciudad > camtourist2.ciudad ? 1 : -1;
+            });
+
+            for (var camtourist in camtourists) {
+                if (count[camtourists[camtourist].ciudad]){ count[camtourists[camtourist].ciudad]++;}
+                else{count[camtourists[camtourist].ciudad] = 1;}
+            }
+            vm.camtouristsByCity = count;
         }
 
         //Funcion para crear los marcadores totales
@@ -90,12 +107,13 @@
                 var longitud = camtourists[i].longitud;
                 var principal = camtourists[i].principal.data[0];
                 var marker = {
-                    id: i,
+                    id: camtourists[i].id,
                     latitude: latitud,
                     longitude: longitud,
                     principal: principal,
                     icon: vm.icon
                 };
+
                 vm.markers.push(marker);
             }
         }
@@ -103,7 +121,7 @@
         //Funcion para cargar ciudades en desplegable desde BD
         function getCities() {
             return dataservice.getCities().then(function(data) {
-                console.log("Las Ciudades" + data);
+              
                 vm.cities = data;
 
                 return vm.cities;
@@ -120,24 +138,33 @@
 
                 var hasPrincipal = false; //variable para controlar si tenemos Principal en CamTourist BD
                 for (var i = 0; i < vm.markers.length; i++) {
-                    if (vm.markers[i].principal == 1) {
+                    if (vm.markers[i].principal === 1) {
                         vm.map.center = {
-                                latitude: vm.markers[i].latitude,
-                                longitude: vm.markers[i].longitude
-                            }
+                            latitude: vm.markers[i].latitude,
+                            longitude: vm.markers[i].longitude
+                        };
                         hasPrincipal = true;
                         break;
                     }
                 }
 
-                if (hasPrincipal == false) {
+                if (hasPrincipal === false) {
                     vm.map.center = {
-                            latitude: vm.markers[0].latitude,
-                            longitude: vm.markers[0].longitude
+                        latitude: vm.markers[0].latitude,
+                        longitude: vm.markers[0].longitude
 
                     };
                 }
             });
         };
+
+        function getCamtouristInfoWindow(camtouristId) {
+            console.log(vm.camtourists);
+            for (var i = 0; i < vm.camtourists.length; i++) {
+                if (vm.camtourists[i].id === camtouristId){return vm.camtourists[i];}
+
+            }
+
+        }
     }
 })();

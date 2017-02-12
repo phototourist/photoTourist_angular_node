@@ -1,34 +1,27 @@
 <section class="mainbar">
     <section class="matter">
-        <!--<div class="container">-->
+        <label>Selecciona una ciudad: </label>
         <select ng-model="selectedCities" ng-options="city.ciudad for city in vm.cities track by city.ciudad" ng-change="getCityMap()"></select>
-        <!-- -->
-
+        <label>Hay {{vm.markers.length}} camtourists </label>
+        <br>
+        <br>
         <div class="mapa">
             <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom">
-                <!--<ui-gmap-marker idkey="vm.marker.id" coords="vm.marker.coords"></ui-gmap-marker>-->
-                <ui-gmap-markers models="vm.markers" coords="'self'" icon="'icon'" events="vm.map.markersEvents"></ui-gmap-markers>
-
-                <!--<ui-gmap-markers models="vm.map.markers" idkey="'id'" coords="'self'" events="vm.map.markersEvents"></ui-gmap-markers>-->
-
-                <ui-gmap-window show="vm.map.windows.show" coords="vm.map.windows.model">
-                    <div>{{vm.infoWindow}}</div>
-                </ui-gmap-window>
-
+                <ui-gmap-markers models="vm.markers" coords="'self'" icon="'icon'" events="vm.map.markersEvents">
+                    <ui-gmap-window show="vm.map.windows.show" coords="vm.map.windows.model" closeClick="vm.map.windows.closeClick" isIconVisibleOnClick="false">
+                        <div>
+                            <img src="{{vm.infoWindow.imagen}}" width="50px;"/>
+                            <p>{{vm.infoWindow.punto_interes}}</p>
+                            <p>{{vm.infoWindow.ciudad}}</p>
+                        </div>
+                    </ui-gmap-window>
+                </ui-gmap-markers>
             </ui-gmap-google-map>
 
             <br>
         </div>
-        <!--  <table>
-                <tr ng-repeat="camtourist in vm.camtourists">
-                    <td>{{camtourist.id}}</td>
-                    <td>{{camtourist.ciudad}}</td>
-                    <td>{{camtourist.provincia}}</td>
-                    <td>{{camtourist.pais}}</td>
-                </tr>
-            </table>-->
         <div class="camtourist">
-            <div class="camtourist" ng-repeat="camtourist in vm.camtourists track by camtourist.id">
+            <div class="camtourist camtouristInt" ng-repeat="camtourist in vm.camtourists track by camtourist.id">
                 <div class="punto_interes">{{camtourist.punto_interes}}</div>
                 <div class="ciudad">
                     Ciudad:
@@ -38,4 +31,14 @@
                     {{camtourist.pais}}</div>
                 <div class="details">{{camtourist.descripcion}}</div>
             </div>
+        </div>
+        <div class="camtourist">
+          <div class="camtourist camtouristInt" ng-repeat="(key, value) in vm.camtouristsByCity track by key">
+              <div class="ciudad">
+                  Ciudad:
+                  {{key}}
+                   - Nº de Camtourist:
+                  {{value}}
+              </div>
+          </div>
         </div>

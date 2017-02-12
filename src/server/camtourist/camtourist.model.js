@@ -15,7 +15,7 @@ camtouristModel.getCamtouristTotals = function(callback){
             }
         });
     }
-}
+};
 
 camtouristModel.getCamtouristCities = function(callback){
     if (mysql.connection) {
@@ -28,11 +28,11 @@ camtouristModel.getCamtouristCities = function(callback){
             }
         });
     }
-}
+};
 
 camtouristModel.getCamtouristEspecifico = function(data,callback){
     if (mysql.connection) {
-        var sql = 'SELECT * FROM camtourist WHERE ciudad = "' + data.camtourist_id + '"';
+        var sql = 'SELECT * FROM camtourist WHERE ciudad = "' + data.camtouristId + '"';
         mysql.connection.query(sql, function(error, row) {
             if(error){
                 throw error;
@@ -41,5 +41,5 @@ camtouristModel.getCamtouristEspecifico = function(data,callback){
             }
         });
     }
-}
+};
 module.exports = camtouristModel;
