@@ -3,9 +3,10 @@
   background-color: #FFFFFF;
 }
 
-form{
-background-color: #FFFFFF;
+form {
+  background-color: #FFFFFF;
 }
+
 hr {
   border-top: 1px solid #eee;
   width: 80%;
@@ -16,7 +17,7 @@ p {
   font-size: 21px;
 }
 
-ul.social{
+ul.social {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -29,7 +30,6 @@ ul.social li {
 
 ul.social li a {
   display: block;
-
   text-decoration: none;
 }
 
@@ -40,14 +40,13 @@ ul.social li a {
 
 .redes_sociales {
   width: 33%;
-  padding-left: 129px;
-  padding-bottom: 30px;
+  padding-left: 89px;
   margin: 0 auto;
+  margin-top: 30px;
 }
 
 .control_inputs {
   width: 40%;
-  padding-left: 89px;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -56,7 +55,7 @@ ul.social li a {
   font-size: 1.2em;
 }
 .control_inputs input {
-  border: 1px solid #006666;
+  border: 2px solid #006666;
   background-color: #c3cfd4;
   -moz-border-radius: 5px 5px;
   -webkit-border-radius: 5px 5px;

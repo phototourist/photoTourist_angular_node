@@ -10,8 +10,5 @@
     'app.layout',
     'app.contact',
     'app.login'
-
-
   ]);
-
 })();

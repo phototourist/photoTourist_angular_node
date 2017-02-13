@@ -1,5 +1,5 @@
   var mysql = require('../config/database');
-  var password = require('../utils/password');
+  var password = require('./utils/password');
   //console.log(mysql);
 
   //console.log(connection);

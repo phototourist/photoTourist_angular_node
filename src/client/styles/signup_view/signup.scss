@@ -1,7 +1,9 @@
 $color_fondo:#c3cfd4;
 $color_borde:#006666;
 $color_error:#EA1D1D;
-$tamanyo_contenedores:25%;
+$tamanyo_contenedores:40%;
+$tamanyo_contenedores_social:33%;
+$tamanyo_contenedores_submit:25%;
 
 @import "bordes";
 
@@ -9,6 +11,11 @@ $tamanyo_contenedores:25%;
 
 #pagina_alta{
 	font-weight: 800;
+	background-color: #FFFFFF;
+}
+
+form{
+background-color: #FFFFFF;
 }
 
 hr{
@@ -21,47 +28,66 @@ p{
 	font-size: 21px;
 }
 
+ul.social{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.social li {
+  float: left;
+  width: 20%;
+}
+
+ul.social li a {
+  display: block;
+  text-decoration: none;
+}
+
 .control_signup{
 	width: 100%;
  	margin: 0 auto;
 }
 
 .redes_sociales{
-	width: $tamanyo_contenedores;
- 	margin: 0 auto;
+	width: $tamanyo_contenedores_social;
+	padding-left: 89px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .control_inputs{
-	width: $tamanyo_contenedores;    
+	width: $tamanyo_contenedores;
  	margin: 0 auto;
-	margin-top: 30px;    
+	margin-top: 30px;
 
-				label {;
+				label {
 				width: 100%;
     			font-size: 1.2em;
 				}
 
 				input {;
 				border: 2px solid $color_borde;
-				background-color: $color_fondo;    
-				@include border_rounder(60%, 5px);				
+				background-color: $color_fondo;
+				@include border_rounder(60%, 5px);
 				padding: 1%;
 				margin-right: 100%;
 				margin-top: 8px;
-				margin-bottom: 8px;    
+				margin-bottom: 8px;
 				}
+
+
 }
 
-ul{
-	padding: 0;
+ul {
+  padding: 0;
 }
-
 
 .control_submit {
-    width: $tamanyo_contenedores;
+    width: $tamanyo_contenedores_submit;
     margin: 0 auto;
 }
 
 .error_input{
-	color: $color_error;   
+	color: $color_error;
 }
