@@ -6,8 +6,6 @@ var passport = require('passport');
 var mysql = require ('./database');
 var password = require ('../users/utils/password');
 var usersModel = require ('../users/users.model');
-var OAuthStrategy = require('passport-oauth').OAuthStrategy; //encara que no es gaste, fa falta
-var OAuth2Strategy = require('passport-oauth').OAuth2Strategy; //encara que no es gaste, fa falta
 
 
 module.exports = function() {
