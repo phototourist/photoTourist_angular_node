@@ -9,4 +9,3 @@ bower_components/
 sengrid.env
 config.db.js
 *.env
-database.js
