@@ -17,7 +17,7 @@
       sendEmail: sendEmail,
       submitSignUp: submitSignUp,
       login: login,
-      signupFacebook: signupFacebook,
+      signupSocial: signupSocial,
       isLoggedin: isLoggedin
     };
     return service;
@@ -163,7 +163,7 @@
         }
 
 
-    function signupFacebook() {
+    function signupSocial() {
       return $http.get('/auth/success')
         .then(success)
         .catch(fail);

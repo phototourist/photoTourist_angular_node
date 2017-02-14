@@ -29,7 +29,7 @@
           url: '/successSocial',
           controller: 'LoginController',
           resolve:{
-            facebook: dataservice.signupFacebook
+            facebook: dataservice.signupSocial
             }
         }
       }
