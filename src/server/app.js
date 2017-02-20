@@ -33,10 +33,7 @@ var session = require('express-session');
 app.use(session({
   secret: 'ilovescotchscotchyscotchscotch',
   resave: true,
-  saveUninitialized: true,
-  cookie: {
-    secure: false
-  }
+  saveUninitialized: true
 })); // session secret
 
 var passport = require('passport');
