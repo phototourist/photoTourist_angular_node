@@ -1,0 +1,14 @@
+{
+    "CONTACT_BOX": "Contacta",
+    "ERROR-1": "El campo es requerido",
+    "ERROR-2": "Email no válido",
+    "SUBJECT": "Tema",
+    "SUBJECT-1": "Info relativa a tus fotos",
+    "SUBJECT-2": "Trabaja con nosotros",
+    "SUBJECT-3": "Haznos sugerencias",
+    "SUBJECT-4": "Atendemos tus reclamaciones",
+    "SUBJECT-5": "Algo diferente",
+    "PLACEHOLDER-1": "Nombre *",
+    "PLACEHOLDER-2": "Mensaje *",
+    "SEND": "Enviar"
+}

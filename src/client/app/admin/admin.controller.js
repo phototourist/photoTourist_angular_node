@@ -1,20 +1,22 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.admin')
-    .controller('AdminController', AdminController);
+    angular
+        .module('app.admin')
+        .controller('AdminController', AdminController);
 
-  AdminController.$inject = ['logger'];
-  /* @ngInject */
-  function AdminController(logger) {
-    var vm = this;
-    vm.title = 'Admin';
+    AdminController.$inject = ['$translatePartialLoader', 'logger'];
+    /* @ngInject */
+    function AdminController($translatePartialLoader, logger) {
+        var vm = this;
+        vm.title = 'Admin';
 
-    activate();
+        $translatePartialLoader.addPart('admin');
 
-    function activate() {
-      logger.info('Activated Admin View');
+        activate();
+
+        function activate() {
+            logger.info('Activated Admin View');
+        }
     }
-  }
 })();

@@ -1,0 +1,28 @@
+{
+    "DASHBOARD": "<i class='fa fa-dashboard'></i>Inicio",
+    "CONTACT": "<i class='fa fa-envelope'></i>Contactar",
+    "CAMTOURIST": "<i class='fa fa-map-marker'></i> Camtourist",
+    "ADMIN": " <i class='fa fa-lock' ></i> Admin",
+    "LANGUAGE_BUTTON": "Idioma",
+
+    "LOGIN": "Entrar",
+    "HI": "Hola",
+    "LOGOUT":"Salir",
+    "ERROR-1-LOGIN": "El campo es requerido",
+    "ERROR-2-LOGIN": "Email no válido",
+    "ERROR-3-LOGIN": "Contraseña no válida",
+    "LABEL-LOGIN": "Contraseña",
+    "PLACEHOLDER-LOGIN": "Contraseña",
+    "REMEMBER": "Recuérdame",
+    "FORGET": "¿Has perdido la contraseña?",
+    "NEW": "CREAR CUENTA",
+
+    "FOOTER-ABOUT": "Sobre Nosotros",
+    "FOOTER-JOBS": "Trabajos",
+    "FOOTER-HELP": "Ayuda",
+    "FOOTER-BLOG": "Blog",
+    "FOOTER-TERMS": "Términos",
+    "FOOTER-PAYMENT": "Pagos",
+    "FOOTER-SHIPPING": "Envíos",
+    "FOOTER-CONTACT": "Contacto"
+}

@@ -1,0 +1,10 @@
+{
+    "WELCOME": "Forma part de la Família PhotoTourist ;)",
+    "ERROR-1-SIGNUP": "El camp es requerit",
+    "ERROR-2-SIGNUP": "Email es requerit",
+    "ERROR-3-SIGNUP": "Contrasenya no vàlid",
+    "LABEL": "Contrasenya *",
+    "PLACEHOLDER-SIGNUP": "Contrasenya",
+    "SIGNUP_BUTTON": "Registrar-se",
+    "LOGIN-BUTTON-MODAL": "ACCEDIR"
+}

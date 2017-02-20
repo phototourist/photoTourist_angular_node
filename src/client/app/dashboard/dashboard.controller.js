@@ -5,9 +5,9 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$q', 'dataservice', 'logger'];
+  DashboardController.$inject = ['$translatePartialLoader','$q', 'dataservice', 'logger'];
   /* @ngInject */
-  function DashboardController($q, dataservice, logger) {
+  function DashboardController($translatePartialLoader,$q, dataservice, logger) {
     var vm = this;
     vm.news = {
       title: 'PhotoTourist',
@@ -16,6 +16,8 @@
     vm.messageCount = 0;
     vm.people = [];
     vm.title = 'Dashboard';
+
+    $translatePartialLoader.addPart('dashboard');
 
     activate();
 

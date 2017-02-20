@@ -19,7 +19,7 @@
                 templateUrl: 'app/camtourist/camtourist.html',
                 controller: 'CamtouristController',
                 controllerAs: 'vm',
-                title: 'Camtourist',
+                title: 'CAMTOURIST',
                 settings: {
                     nav: 3,
                     content: '<i class="fa fa-map-marker"></i> Camtourist'

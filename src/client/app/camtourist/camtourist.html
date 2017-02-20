@@ -1,8 +1,11 @@
 <section class="mainbar">
     <section class="matter">
-        <label>Selecciona una ciudad: </label>
+        <label>{{'LABEL-SELECT' | translate}}</label>
         <select ng-model="selectedCities" ng-options="city.ciudad for city in vm.cities track by city.ciudad" ng-change="getCityMap()"></select>
-        <label>Hay {{vm.markers.length}} camtourists </label>
+        <label>{{'WORD' | translate}}
+            {{vm.markers.length}}
+            camtourists
+        </label>
         <br>
         <br>
         <div class="mapa">
@@ -24,21 +27,21 @@
             <div class="camtourist camtouristInt" ng-repeat="camtourist in vm.camtourists track by camtourist.id">
                 <div class="punto_interes">{{camtourist.punto_interes}}</div>
                 <div class="ciudad">
-                    Ciudad:
+                    {{'LABEL-CITY' | translate}}
                     {{camtourist.ciudad}}</div>
                 <div class="pais">
-                    Pais:
+                    {{'LABEL-COUNTRY' | translate}}
                     {{camtourist.pais}}</div>
                 <div class="details">{{camtourist.descripcion}}</div>
             </div>
         </div>
         <div class="camtourist">
-          <div class="camtourist camtouristInt" ng-repeat="(key, value) in vm.camtouristsByCity track by key">
-              <div class="ciudad">
-                  Ciudad:
-                  {{key}}
-                   - Nº de Camtourist:
-                  {{value}}
-              </div>
-          </div>
+            <div class="camtourist camtouristInt" ng-repeat="(key, value) in vm.camtouristsByCity track by key">
+                <div class="ciudad">
+                    {{'LABEL-CITY' | translate}}
+                    {{key}}
+                    - {{'LABEL-NUMBER' | translate}}
+                    {{value}}
+                </div>
+            </div>
         </div>

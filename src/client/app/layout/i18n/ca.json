@@ -1,0 +1,28 @@
+{
+    "DASHBOARD": "<i class='fa fa-dashboard'></i>Inici",
+    "CONTACT": "<i class='fa fa-envelope'></i>Contactar",
+    "CAMTOURIST": "<i class='fa fa-map-marker'></i> Camtourist",
+    "ADMIN": " <i class='fa fa-lock' ></i> Admin",
+    "LANGUAGE_BUTTON": "Idioma",
+
+    "LOGIN":"Entrar",
+    "HI": "Hola",
+    "LOGOUT":"Eixir",
+    "ERROR-1-LOGIN": "El camp es requerit",
+    "ERROR-2-LOGIN": "Email no vàlid",
+    "ERROR-3-LOGIN": "Contrasenya no vàlid",
+    "LABEL-LOGIN": "Contrasenya",
+    "PLACEHOLDER-LOGIN": "Contrasenya",
+    "REMEMBER": "Recordeu-me",
+    "FORGET": "Heu perdut la contrasenya?",
+    "NEW": "CREAR COMPTE",
+
+    "FOOTER-ABOUT": "Sobre Nosaltres",
+    "FOOTER-JOBS": "Treballs",
+    "FOOTER-HELP": "Ajuda",
+    "FOOTER-BLOG": "Blog",
+    "FOOTER-TERMS": "Termes",
+    "FOOTER-PAYMENT": "Pagaments",
+    "FOOTER-SHIPPING": "Enviaments",
+    "FOOTER-CONTACT": "Contacte"
+}

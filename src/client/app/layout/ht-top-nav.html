@@ -1,73 +1,114 @@
-
 <div >
 
     <div class="header-top" id="home">
-      <div class="container">
-        <div class="head">
-          <div class="header-left">
-            <div class="logo">
-              <a href="#/"><img src="images/logo.png" alt="" /></a>
-            </div>
-          </div>
-          <div class="header-right" ng-show="$root.authUser">
-              <a>Hola {{$root.authUser.name }} <img src="{{ $root.authUser.avatar}}"/></a>
-          </div>
-          <div class="clearfix"> </div>
-          <div class="top-nav">
-                <nav ng-controller="SidebarController as vm">
-                <ul >
-                  <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
-                    <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
-                  </li>
-                  <li  ng-hide="$root.authUser" ng-click="vm.openModal()"><a ><i class="fa fa-sign-in"></i> Sign in</a></li>
-                  <li   ng-hide="$root.authUser" class="login">
-                    <a target="_self"  href="/auth/facebook"  class="btn btn-block btn-social-icon btn-facebook">
-                      <span class="fa fa-facebook"></span>
-                    </a>
-                  </li>
-                  <li ng-hide="$root.authUser" class="login">
-                    <a target="_self" href="/auth/twitter" class="btn btn-social-icon btn-twitter">
-                <span class="fa fa-twitter"></span>
-                </a>
-                </li>
-                  <div class="clearfix"> </div>
-                </ul>
-                  <a href="" class="right_bt" id="pull"><span></span> </a>
+        <div class="container">
+            <div class="head">
+                <div class="header-left">
+                    <div class="logo">
+                        <a href="#/"><img src="images/logo.png" alt=""/></a>
+                    </div>
+                </div>
+                <div class="header-right" ng-show="$root.authUser">
+                    <a>{{'HI' | translate}}
+                        {{$root.authUser.name }}
+                        <img src="{{ $root.authUser.avatar}}"/></a>
+                </div>
+                <div class="clearfix"></div>
+                <div class="top-nav">
+                    <nav ng-controller="SidebarController as vm">
+                        <ul >
+                            <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+                                <a ui-sref="{{r.name}}" translate="{{r.title}}"ng-bind-html="r.settings.content"></a>
+                            </li>
+                            <li class="nlightblue fade-selection-animation">
+                                <!--<img src="../images/flags/es.png" ng-click="vm.setLang('es')"/>
+                                <img src="../images/flags/en.png" ng-click="vm.setLang('en')"/>-->
 
-                         <table>
-                        <tr ng-repeat="data in vm.data">
-                          <td>{{data}}</td>
+                                <div class="dropdown nav navbar-nav pull-left">
+                                    <a data-toggle="dropdown" role="button"><!--{{'LANGUAGE_BUTTON' | translate}}-->
 
-                        </tr>
-                      </table>
-                  </nav>
+                                           <span>
+                                        <i class="fa fa-globe"></i>
+                                              {{'LANGUAGE_BUTTON' | translate}}</span>
+                                    </a>
 
-              <script type="text/javascript">
-              $(function() {
-                 var pull = $('#pull');
-                 menu = $('nav ul');
-                 menuHeight = menu.height();
+                                    <ul class="dropdown-menu" role="menu" style="height:auto; min-width: 112px;">
 
-                 $(pull).on('click', function(e) {
-                     e.preventDefault();
-                     menu.slideToggle();
-                 });
-             });
+                                        <li role="button">
+                                            <a ng-click="vm.setLang('ca')">
+                                                <img src="../images/flags/ca.png" title="Català"/>
+                                            </a>
+                                        </li>
+                                        <li role="button">
+                                            <a ng-click="vm.setLang('en')">
+                                                <img src="../images/flags/en.png" title="English"/>
+                                            </a>
+                                        </li>
+                                        <li role="button">
+                                            <a ng-click="vm.setLang('es')">
+                                                <img src="../images/flags/es.png" title="Español"/>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li ng-hide="$root.authUser" ng-click="vm.openModal()">
+                                <a role="button">
+                                    <i class="fa fa-sign-in"></i>
+                                    {{'LOGIN' | translate}}</a>
+                            </li>
+                            <li ng-hide="$root.authUser" class="login">
+                                <a target="_self" href="/auth/facebook" class="btn btn-block btn-social-icon btn-facebook">
+                                    <span class="fa fa-facebook"></span>
+                                </a>
+                            </li>
+                            <li ng-hide="$root.authUser" class="login">
+                                <a target="_self" href="/auth/twitter" class="btn btn-social-icon btn-twitter">
+                                    <span class="fa fa-twitter"></span>
+                                </a>
+                            </li>
 
-             $(window).resize(function(){
-                 var w = $(window).width();
-                 if(w > 320 && menu.is(':hidden')) {
-                     menu.removeAttr('style');
-                 }
-             });
-            </script>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <a href="" class="right_bt" id="pull">
+                            <span></span>
+                        </a>
 
-          </div>
-          <div id="sb-search" class="sb-search" ng-show="$root.authUser">
-              <a target="_self" href="/api/logout"> <span class="sb-icon-search"> </span>Logout</a>
+                        <table>
+                            <tr ng-repeat="data in vm.data">
+                                <td>{{data}}</td>
+
+                            </tr>
+                        </table>
+                    </nav>
+
+                    <script type="text/javascript">
+                        $(function() {
+                            var pull = $('#pull');
+                            menu = $('nav ul');
+                            menuHeight = menu.height();
+
+                            $(pull).on('click', function(e) {
+                                e.preventDefault();
+                                menu.slideToggle();
+                            });
+                        });
+
+                        $(window).resize(function() {
+                            var w = $(window).width();
+                            if (w > 320 && menu.is(':hidden')) {
+                                menu.removeAttr('style');
+                            }
+                        });
+                    </script>
+
+                </div>
+                <div id="sb-search" class="sb-search" ng-show="$root.authUser">
+                    <a target="_self" href="/api/logout">
+                        <span class="sb-icon-search"></span>Logout</a>{{'LOGOUT' | translate}}<!--NO TRADUCIX-->
+                </div>
             </div>
         </div>
-      </div>
     </div>
 
-      <div id="LoginModal"></div>
+    <div id="LoginModal"></div>

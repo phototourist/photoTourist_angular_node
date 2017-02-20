@@ -5,48 +5,45 @@
 
 <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">-->
 
-
-
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>-->
 <div class="container">
     <form id="contactForm" name="vm.contactForm" class="form-contact">
-        <h2 class="form-contact-heading">Contact Us</h2>
+        <h2 class="form-contact-heading">{{'CONTACT_BOX' | translate}}</h2>
 
         <div class="control-group">
-            <input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name" class="form-control" dir="auto" maxlength="100">
-            <span class="text-danger" ng-show="vm.contactForm.inputName.$error.required && (vm.contactForm.inputName.$dirty || vm.contactForm.inputName.$touched)">El campo es obligatorio</span>
+            <input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="{{'PLACEHOLDER-1' | translate}}" class="form-control" dir="auto" maxlength="100">
+            <span class="text-danger" ng-show="vm.contactForm.inputName.$error.required && (vm.contactForm.inputName.$dirty || vm.contactForm.inputName.$touched)">{{'ERROR-1' | translate}}</span>
         </div>
         <div class="control-group">
             <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" class="form-control" maxlength="100">
-            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.required && (vm.contactForm.inputEmail.$dirty || vm.contactForm.inputEmail.$touched)">El campo es obligatorio</span>
-            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.email">Email no valido</span>
+            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.required && (vm.contactForm.inputEmail.$dirty || vm.contactForm.inputEmail.$touched)">{{'ERROR-1' | translate}}</span>
+            <span class="text-danger" ng-show="vm.contactForm.inputEmail.$error.email">{{'ERROR-2' | translate}}</span>
         </div>
         <div class="control-group">
-            <label for="sel1">Subject</label>
+            <label for="sel1">{{'SUBJECT' | translate}}</label>
             <select ng-model="vm.inputSubject" class="form-control" id="inputSubject" name="inputSubject" title="Choose subject">
-                <option value="">Info relativa a tus fotos</option>
-                <option value="Trabaja">Trabaja con nosotros</option>
-                <option value="sugerencias">Haznos sugerencias</option>
-                <option value="reclamaciones">Atendemos tus reclamaciones</option>
-                <option value="diferente">Algo diferente</option>
+                <option value="">{{'SUBJECT-1' | translate}}</option>
+                <option value="Trabaja">{{'SUBJECT-2' | translate}}</option>
+                <option value="sugerencias">{{'SUBJECT-3' | translate}}</option>
+                <option value="reclamaciones">{{'SUBJECT-4' | translate}}</option>
+                <option value="diferente">{{'SUBJECT-5' | translate}}</option>
             </select>
         </div>
         <div class="control-group">
-              <textarea required ng-model="vm.inputMessage" class="form-control" rows="4" name="inputMessage" placeholder="Message *" style="max-width: 100%;" dir="auto"></textarea>
-              <span class="text-danger" ng-show="vm.contactForm.inputMessage.$error.required && (vm.contactForm.inputMessage.$dirty || vm.contactForm.inputMessage.$touched)">El campo es obligatorio</span>
+            <textarea required ng-model="vm.inputMessage" class="form-control" rows="4" name="inputMessage" placeholder="{{'PLACEHOLDER-2' | translate}}" style="max-width: 100%;" dir="auto"></textarea>
+            <span class="text-danger" ng-show="vm.contactForm.inputMessage.$error.required && (vm.contactForm.inputMessage.$dirty || vm.contactForm.inputMessage.$touched)">{{'ERROR-1' | translate}}</span>
         </div>
 
-        <input type="hidden" name="token" value="contactForm" />
+        <input type="hidden" name="token" value="contactForm"/>
 
-        <input class="btn btn-primary" type="submit" name="submit" id="submitBtn" value="Enviar"
-               ng-show="vm.contactForm.inputName.$valid && vm.contactForm.inputEmail.$valid && vm.contactForm.inputMessage.$valid"
-               ng-click="vm.send()"/>
+        <input class="btn btn-primary" type="submit" name="submit" id="submitBtn" value="{{'SEND' | translate}}" ng-show="vm.contactForm.inputName.$valid && vm.contactForm.inputEmail.$valid && vm.contactForm.inputMessage.$valid" ng-click="vm.send()"/>
 
-        <img ng-show="loader.loading" src="frontend/modules/contact/view/img/ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>
+        <img ng-show="loader.loading" src="frontend/modules/contact/view/img/ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader"/><br/><br/>
 
         <div id="resultMessage" ng-class="vm.class">{{vm.message}}</div>
     </form>
-</div> <!-- /container -->
+</div>
+<!-- /container -->
 
 <!--<section class="mainbar">
   <section class="matter">

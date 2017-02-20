@@ -5,11 +5,14 @@
         .module('app.camtourist')
         .controller('CamtouristController', CamtouristController); // Controlador y Funcion
 
-    CamtouristController.$inject = ['dataservice', '$q', 'logger', '$scope'];
+    CamtouristController.$inject = ['$translatePartialLoader','dataservice', '$q', 'logger', '$scope'];
     /* @ngInject */
-    function CamtouristController(dataservice, $q, logger, $scope) {
+    function CamtouristController($translatePartialLoader,dataservice, $q, logger, $scope) {
         var vm = this;
-        vm.title = 'yey';
+        vm.title = 'Camtourist';
+
+        $translatePartialLoader.addPart('camtourist');
+
         vm.camtourists = []; //Lista de Localizaciones lateral
         vm.cities = [];
         vm.camtouristsByCity = {};
@@ -121,7 +124,7 @@
         //Funcion para cargar ciudades en desplegable desde BD
         function getCities() {
             return dataservice.getCities().then(function(data) {
-              
+
                 vm.cities = data;
 
                 return vm.cities;

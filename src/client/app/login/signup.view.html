@@ -1,6 +1,6 @@
 <section id="pagina_alta">
     <div class="titulo">
-            <p class="lead">Forma parte de la Familia PhotoTourist ;)
+            <p class="lead">{{'WELCOME' | translate}}
             </p>
             <hr>
       </div>
@@ -24,16 +24,16 @@
               <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail"
               placeholder="Email" class="form_inputs"  maxlength="100"
               ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i" ng-change="change_signup()">
-              <span class="error_input" ng-show="signup_form.inputEmail.$error.required && (signup_form.inputEmail.$dirty || signup_form.inputEmail.$touched)">El campo es obligatorio</span>
-              <span class="error_input" ng-show="signup_form.inputEmail.$error.email">Email no valido</span>
+              <span class="error_input" ng-show="signup_form.inputEmail.$error.required && (signup_form.inputEmail.$dirty || signup_form.inputEmail.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
+              <span class="error_input" ng-show="signup_form.inputEmail.$error.email">{{'ERROR-2-SIGNUP' | translate}}</span>
 
           </div>
 
             <div class="control_inputs">
-                <label>Password *</label><br>
-                <input ng-model="vm.inputPass" ng-pattern="/^.{6,12}$/" ng-change="change_signup()" type="password" id="inputPass" name="inputPass" placeholder="password" class="form-inputs" value="" required><br>
-                <span class="error_input" ng-show="signup_form.inputPass.$error.required && (signup_form.inputPass.$dirty || signup_form.inputPass.$touched)">El campo es obligatorio</span>
-                <span class="error_input" ng-show="signup_form.inputPass.$error.pattern">Password no válido</span>
+                <label>{{'LABEL' | translate}}</label><br>
+                <input ng-model="vm.inputPass" ng-pattern="/^.{6,12}$/" ng-change="change_signup()" type="password" id="inputPass" name="inputPass" placeholder="{{'PLACEHOLDER-SIGNUP' | translate}}" class="form-inputs" value="" required><br>
+                <span class="error_input" ng-show="signup_form.inputPass.$error.required && (signup_form.inputPass.$dirty || signup_form.inputPass.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
+                <span class="error_input" ng-show="signup_form.inputPass.$error.pattern">{{'ERROR-3-SIGNUP' | translate}}</span>
 
                 <div id="e_singup_password"></div>
             </div>
@@ -41,7 +41,7 @@
 
             <div class="control_submit">
                 <button type="Submit" id="registrar_user" name="registrar_user" class="btn btn-primary btn-lg centrado" value="REGISTRARSE"
-                 ng-show="signup_form.inputEmail.$valid && signup_form.inputPass.$valid" ng-click="vm.submitSignUp()" >REGISTRARSE</button>
+                 ng-show="signup_form.inputEmail.$valid && signup_form.inputPass.$valid" ng-click="vm.submitSignUp()" >{{'SIGNUP_BUTTON' | translate}}</button>
             </div>
             <div class=""><hr></div>
         <!--/.row-->
