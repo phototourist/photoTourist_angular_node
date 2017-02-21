@@ -157,8 +157,8 @@
         var insertQuery = 'INSERT INTO users (name, user, avatar ) values (' + req.user.displayName + ',' + req.user.username + ', ' + req.user.photos[0].value + ')';
         //console.log("insertQuery"+ insertQuery);
         mysql.connection.query(insertQuery, function(err, rows) {
-          newUserMysql.id = rows.insert_id;
-console.log(rows.insert_id);
+          //newUserMysql.id = rows.insertId;
+console.log(rows[0].id);
           return done(null, newUserMysql, true);
 
         });
