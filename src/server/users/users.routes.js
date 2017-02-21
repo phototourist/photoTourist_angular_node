@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.get('/auth/success', function(req, res) {res.send(req.user);});
     //////////////////////////////////////////////////////////////////////////////
     app.get('/auth/twitter',   ControllerUsers.singinTwitter);
-    app.get('/auth/twitter/callback', passport.authenticate('twitter',
+    app.use('/auth/twitter/callback', passport.authenticate('twitter',
      { successRedirect : '/successSocial', failureRedirect : '/404'}));
     //////////////////////////////////////////////////////////////////////////////
     app.get('/api/loggedin', function(req, res) {
