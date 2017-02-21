@@ -115,9 +115,9 @@ module.exports = function() {
               // TWITTER =================================================================
               // =========================================================================
               passport.use(new TwitterStrategy({
-                consumerKey:  'XIS203jZpZyw4RJcnM6bqwMRl',//process.env.TWITTER_CLIENT_ID,
-                consumerSecret:  'u8vENDnsZESzLZbLbJl1fXYoET1MDqEUmvXsXuvAPrc3J6t0yC',//process.env.TWITTER_CLIENT_SECRET,
-                  callbackURL:  'https://josando.tk:3000/auth/twitter/callback',// process.env.TWITTER_CALLBACK_URL,
+                consumerKey:  process.env.TWITTER_CLIENT_ID,//'XIS203jZpZyw4RJcnM6bqwMRl',
+                consumerSecret:  process.env.TWITTER_CLIENT_SECRET,//'u8vENDnsZESzLZbLbJl1fXYoET1MDqEUmvXsXuvAPrc3J6t0yC',
+                  callbackURL:   process.env.TWITTER_CALLBACK_URL,//'https://josando.tk:3000/auth/twitter/callback',
                   passReqToCallback : true
               },
               function(req, token, tokenSecret, profile, done) {
