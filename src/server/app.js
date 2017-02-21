@@ -90,8 +90,8 @@ switch (environment) {
     app.use('/*', express.static('./build/index.html'));
     console.log('WARNING: OPEN BROWSER WITH HTTPS');
     https.createServer({
-      key: fs.readFileSync('privkey1.pem'),
-      cert: fs.readFileSync('cert1.pem')
+      key: fs.readFileSync('privkey.pem'),
+      cert: fs.readFileSync('fullchain.pem')
     }, app).listen(port);
 
     break;
