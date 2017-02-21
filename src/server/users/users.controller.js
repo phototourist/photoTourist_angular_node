@@ -45,5 +45,6 @@ function singinFacebook(req, res, next) {
 }
 
 function singinTwitter(req, res, next) {
+  console.log('Estoy en twitter');
   passport.authenticate('twitter')(req, res, next);
 }
