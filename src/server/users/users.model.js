@@ -158,7 +158,7 @@
         //console.log("insertQuery"+ insertQuery);
         mysql.connection.query(insertQuery, function(err, rows) {
           //newUserMysql.id = rows.insertId;
-console.log(rows[0].id);
+console.log(rows);
           return done(null, newUserMysql, true);
 
         });
