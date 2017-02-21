@@ -117,7 +117,7 @@ module.exports = function() {
               passport.use(new TwitterStrategy({
                 consumerKey:  'XIS203jZpZyw4RJcnM6bqwMRl',//process.env.TWITTER_CLIENT_ID,
                 consumerSecret:  'u8vENDnsZESzLZbLbJl1fXYoET1MDqEUmvXsXuvAPrc3J6t0yC',//process.env.TWITTER_CLIENT_SECRET,
-                  callbackURL:  '/auth/twitter/callback',// process.env.TWITTER_CALLBACK_URL,
+                  callbackURL:  'https://josando.tk:3000/auth/twitter/callback',// process.env.TWITTER_CALLBACK_URL,
                   passReqToCallback : true
               },
               function(req, token, tokenSecret, profile, done) {
