@@ -1,0 +1,10 @@
+{
+    "WELCOME": "Join the PhotoTourist Family ;)",
+    "ERROR-1-SIGNUP": "The field is required",
+    "ERROR-2-SIGNUP": "Email is not valid",
+    "ERROR-3-SIGNUP": "Password is not valid",
+    "LABEL": "Password *",
+    "PLACEHOLDER-SIGNUP": "Password",
+    "SIGNUP_BUTTON": "Sign Up",
+    "LOGIN-BUTTON-MODAL": "ACCESS"
+}

@@ -19,15 +19,15 @@
 
     $translatePartialLoader.addPart('dashboard');
 
-    activate();
+  //  activate();
 
-    function activate() {
+  //  function activate() {
       /*
       var promises = [getMessageCount(), getPeople()];
       return $q.all(promises).then(function() {
         logger.info('Activated Dashboard View');
       });*/
-    }
+  //  }
 /*
     function getMessageCount() {
       return dataservice.getMessageCount().then(function(data) {

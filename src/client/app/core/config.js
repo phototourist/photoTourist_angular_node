@@ -39,7 +39,7 @@
 
         $translatePartialLoaderProvider.addPart('core');
         $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: '/app/{part}/i18n/{lang}.json',
+            urlTemplate: '/i18n/{part}/{lang}.json',//'/app/{part}/i18n/{lang}.json',
             loadFailureHandler: 'MyErrorHandler'
         });
         $translateProvider.useCookieStorage();
