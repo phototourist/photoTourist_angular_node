@@ -6,6 +6,8 @@ describe('dashboard routes', function() {
     beforeEach(function() {
       module('app.dashboard', bard.fakeToastr);
       bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
+      $httpBackend.expectGET('/i18n/core/es.json').respond(200, '');
+      $httpBackend.flush();
     });
 
     beforeEach(function() {
@@ -23,6 +25,8 @@ describe('dashboard routes', function() {
     });
 
     it('of dashboard should work with $state.go', function() {
+      //$httpBackend.expectGET('/i18n/core/es.json').respond(200, '');
+      //$httpBackend.flush();
       $state.go('dashboard');
       $rootScope.$apply();
       expect($state.is('dashboard'));
