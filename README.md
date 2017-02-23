@@ -27,6 +27,12 @@ The project has also used **html**, **css** and **sass-css**.
 ###Deploy project automatically
 Everytime we do a push to master branch on github DEMO: gets updated with latest changes. We have created an app on heroku and We've linked to our gitthub repository.
 
+##Implement Free Certificate with Let's Encrypt
+We have implemented the free security certificate for our project. The Let's Encrypt service offers the possibility to do it simply. 
+
+###What is Let's Encrypt?
+*[Let's Encrypt](https://letsencrypt.org/)* is a free, automated and open certification authority (CA), which is run for the benefit of the public by the Internet Security Research Group (ISRG). This makes it possible to obtain browser trust certificates for your free domains that are renewed automatically every 90 days.
+
 ##Prerequisites
 
 1.Install Node.js
