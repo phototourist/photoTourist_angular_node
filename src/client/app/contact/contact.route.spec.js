@@ -1,29 +1,31 @@
 /* jshint -W117, -W030 */
-describe('admin routes', function() {
-  describe('state', function() {
-    var view = 'app/admin/admin.html';
+describe('contact routes', function() {
+    describe('state', function() {
+        var view = 'app/contact/contact.html';
 
-    beforeEach(function() {
-      module('app.admin', bard.fakeToastr);
-      bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
-    });
+        beforeEach(function() {
+            module('app.contact', bard.fakeToastr);
+            bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
+            $httpBackend.expectGET('/i18n/core/es.json').respond(200, '');
+            $httpBackend.flush();
+        });
 
-    beforeEach(function() {
-      $templateCache.put(view, '');
-    });
+        beforeEach(function() {
+            $templateCache.put(view, '');
+        });
 
-    it('should map state admin to url /admin ', function() {
-      expect($state.href('admin', {})).to.equal('/admin');
-    });
+        it('should map state contact to url /contact ', function() {
+            expect($state.href('contact', {})).to.equal('/contact');
+        });
 
-    it('should map /admin route to admin View template', function() {
-      expect($state.get('admin').templateUrl).to.equal(view);
-    });
+        it('should map /contact route to contact View template', function() {
+            expect($state.get('contact').templateUrl).to.equal(view);
+        });
 
-    it('of admin should work with $state.go', function() {
-      $state.go('admin');
-      $rootScope.$apply();
-      expect($state.is('admin'));
+        it('of contact should work with $state.go', function() {
+            $state.go('contact');
+            $rootScope.$apply();
+            expect($state.is('contact'));
+        });
     });
-  });
 });

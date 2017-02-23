@@ -5,9 +5,9 @@
         .module('app.camtourist')
         .controller('CamtouristController', CamtouristController); // Controlador y Funcion
 
-    CamtouristController.$inject = ['$translatePartialLoader','dataservice', '$q', 'logger', '$scope'];
+    CamtouristController.$inject = ['$rootScope', '$translatePartialLoader', 'dataservice', '$q', 'logger', '$scope'];
     /* @ngInject */
-    function CamtouristController($translatePartialLoader,dataservice, $q, logger, $scope) {
+    function CamtouristController($rootScope, $translatePartialLoader, dataservice, $q, logger, $scope) {
         var vm = this;
         vm.title = 'Camtourist';
 
@@ -92,13 +92,12 @@
 
         function getCamtouristsByCity(camtourists) {
             var count = {};
-            camtourists.sort(function(camtourist1,camtourist2){
-              return camtourist1.ciudad > camtourist2.ciudad ? 1 : -1;
+            camtourists.sort(function(camtourist1, camtourist2) {
+                return camtourist1.ciudad > camtourist2.ciudad ? 1 : -1;
             });
 
             for (var camtourist in camtourists) {
-                if (count[camtourists[camtourist].ciudad]){ count[camtourists[camtourist].ciudad]++;}
-                else{count[camtourists[camtourist].ciudad] = 1;}
+                if (count[camtourists[camtourist].ciudad]) { count[camtourists[camtourist].ciudad]++; } else { count[camtourists[camtourist].ciudad] = 1; }
             }
             vm.camtouristsByCity = count;
         }
@@ -164,7 +163,7 @@
         function getCamtouristInfoWindow(camtouristId) {
             console.log(vm.camtourists);
             for (var i = 0; i < vm.camtourists.length; i++) {
-                if (vm.camtourists[i].id === camtouristId){return vm.camtourists[i];}
+                if (vm.camtourists[i].id === camtouristId) { return vm.camtourists[i]; }
 
             }
 
