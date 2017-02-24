@@ -4,15 +4,15 @@ describe('ContactController', function() {
 
     beforeEach(function() {
         bard.appModule('app.contact');
-        bard.inject('$controller', '$log', '$rootScope');
+        bard.inject('$controller', '$rootScope', '$log');
     });
 
     beforeEach(function() {
         controller = $controller('ContactController');
-        //$rootScope.$apply();
+        $rootScope.$apply();
     });
 
-    //bard.verifyNoOutstandingHttpRequests();
+    bard.verifyNoOutstandingHttpRequests();
 
     describe('Contact controller', function() {
         it('should be created successfully', function() {

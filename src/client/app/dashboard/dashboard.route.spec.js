@@ -6,8 +6,6 @@ describe('dashboard routes', function() {
         beforeEach(function() {
             module('app.dashboard', bard.fakeToastr);
             bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
-            $httpBackend.expectGET('/i18n/core/es.json').respond(200, '');
-            $httpBackend.flush();
         });
 
         beforeEach(function() {

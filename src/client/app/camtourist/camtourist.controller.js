@@ -82,12 +82,12 @@
         //Funcion para cargar inicialmente todos los marcadores y lista
         function getCamtourist() {
             return dataservice.getCamtourist().then(function(data) {
-
                 vm.camtourists = data;
-                getMarkers(vm.camtourists);
-                getCamtouristsByCity(vm.camtourists);
                 return vm.camtourists;
             });
+
+            getMarkers(vm.camtourists);
+            getCamtouristsByCity(vm.camtourists);
         }
 
         function getCamtouristsByCity(camtourists) {
