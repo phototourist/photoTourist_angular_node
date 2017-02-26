@@ -49,7 +49,7 @@ There are different ways to install free certification. We choose to do it with 
 > 'npm install -g bower gulp nodemon'
  **Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)**
  
-#### Running PhotoTourist. HotTowel
+## Running PhotoTourist. HotTowel
 
 ### Linting
  - Run code analysis using `gulp vet`. This runs jshint, jscs, and plato.
@@ -69,9 +69,48 @@ There are different ways to install free certification. We choose to do it with 
 ### Running the optimized code
  - Run the optimize project from the build folder with `gulp serve-build`
 
-## Exploring HotTowel
-HotTowel Angular starter project
+## Any Gulp Tasks
 
-### Structure
-The structure also contains a gulpfile.js and a server folder. The server is there just so we can serve the app using node. Feel free to use any server you wish.
+### Task Listing
+
+- `gulp help`
+
+    Displays all of the available gulp tasks.
+
+### Code Analysis
+
+- `gulp vet`
+
+    Performs static code analysis on all javascript files. Runs jshint and jscs.
+
+- `gulp vet --verbose`
+
+    Displays all files affected and extended information about the code analysis.
+
+- `gulp plato`
+
+    Performs code analysis using plato on all javascript files. Plato generates a report in the reports folder.
+
+### Testing
+
+- `gulp serve-specs`
+
+    Serves and browses to the spec runner html page and runs the unit tests in it. Injects any changes on the fly and re runs the tests. Quick and easy view of tests as an alternative to terminal via `gulp test`.
+
+- `gulp test`
+
+    Runs all unit tests using karma runner, mocha, chai and sinon with phantomjs. Depends on vet task, for code analysis.
+
+- `gulp test --startServers`
+
+    Runs all unit tests and midway tests. Cranks up a second node process to run a server for the midway tests to hit a web api.
+
+- `gulp autotest`
+
+    Runs a watch to run all unit tests.
+
+- `gulp autotest --startServers`
+
+    Runs a watch to run all unit tests and midway tests. Cranks up a second node process to run a server for the midway tests to hit a web api.
+
  
