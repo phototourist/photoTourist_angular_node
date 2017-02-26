@@ -8,7 +8,7 @@
     SidebarController.$inject = ['$translate', '$translatePartialLoader', 'logger', '$q', '$rootScope', '$state',
         'routerHelper', '$uibModal', 'dataservice', 'toastr'
     ];
-    /* @ngInject */
+    /* @ngInjects */
     function SidebarController($translate, $translatePartialLoader, logger, $q,
         $rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
         var vm = this;
