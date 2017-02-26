@@ -20,15 +20,15 @@ describe('CamtouristController', function() {
         dsFake = {
             getLocation: function() {
                 return $q.when({
-                    latitude: '37.1899',
-                    longitude: '-3.607206'
+                    'latitude': '37.1899',
+                    'longitude': '-3.607206'
                 });
             },
             getCamtourist: function() {
                 return $q.when(camtourist);
             },
             getCities: function() {
-                return $q.when({ ciudad: 'Barcelona', ciudad: 'Madrid' });
+                return $q.when({ 'ciudad': 'Barcelona' }, { 'ciudad': 'Madrid' });
             }
         };
 

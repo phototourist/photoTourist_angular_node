@@ -21,10 +21,13 @@
 
     core.config(configure);
 
-    configure.$inject = ['$translatePartialLoaderProvider', '$translateProvider', '$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
+    configure.$inject = ['$translatePartialLoaderProvider', '$translateProvider',
+        '$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'
+    ];
 
     //FUNCIONES TRADUCCION
-    function configure($translatePartialLoaderProvider, $translateProvider, $logProvider, routerHelperProvider, exceptionHandlerProvider) {
+    function configure($translatePartialLoaderProvider, $translateProvider,
+        $logProvider, routerHelperProvider, exceptionHandlerProvider) {
 
         $translateProvider.registerAvailableLanguageKeys(['ca', 'en', 'es'], {
             'ca-ES': 'ca',

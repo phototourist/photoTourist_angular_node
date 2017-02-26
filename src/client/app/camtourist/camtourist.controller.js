@@ -72,6 +72,7 @@
         function getLocation() {
             return dataservice.getLocation().then(
                 function(data) {
+                    console.log(data);
                     vm.map.center = {
                         latitude: data.latitude,
                         longitude: data.longitude
@@ -83,11 +84,12 @@
         function getCamtourist() {
             return dataservice.getCamtourist().then(function(data) {
                 vm.camtourists = data;
+                getMarkers(vm.camtourists);
+                getCamtouristsByCity(vm.camtourists);
                 return vm.camtourists;
             });
 
-            getMarkers(vm.camtourists);
-            getCamtouristsByCity(vm.camtourists);
+
         }
 
         function getCamtouristsByCity(camtourists) {
@@ -97,7 +99,10 @@
             });
 
             for (var camtourist in camtourists) {
-                if (count[camtourists[camtourist].ciudad]) { count[camtourists[camtourist].ciudad]++; } else { count[camtourists[camtourist].ciudad] = 1; }
+                if (count[camtourists[camtourist].ciudad]) {
+                    count[camtourists[camtourist].ciudad]++;
+
+                } else { count[camtourists[camtourist].ciudad] = 1; }
             }
             vm.camtouristsByCity = count;
         }
@@ -107,12 +112,13 @@
             for (var i = 0; i < camtourists.length; i++) {
                 var latitud = camtourists[i].latitud;
                 var longitud = camtourists[i].longitud;
-                var principal = camtourists[i].principal.data[0];
+                //console.log(camtourists[i]);
+                //var principal = camtourists[i].principal.data[0];
                 var marker = {
                     id: camtourists[i].id,
                     latitude: latitud,
                     longitude: longitud,
-                    principal: principal,
+                    // principal: principal,
                     icon: vm.icon
                 };
 

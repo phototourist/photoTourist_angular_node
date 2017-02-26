@@ -9,7 +9,8 @@
         'routerHelper', '$uibModal', 'dataservice', 'toastr'
     ];
     /* @ngInject */
-    function SidebarController($translate, $translatePartialLoader, logger, $q, $rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
+    function SidebarController($translate, $translatePartialLoader, logger, $q,
+        $rootScope, $state, routerHelper, $uibModal, dataservice, toastr) {
         var vm = this;
         var states = routerHelper.getStates();
 
@@ -64,7 +65,6 @@
                 controller: 'LoginController',
                 controllerAs: 'vm',
                 size: 'lg'
-
             });
         }
 
@@ -72,31 +72,5 @@
             // You can change the language during runtime
             $translate.use(langKey);
         }
-
-
-        /*
-        function login() {
-          close();
-          console.log("login");
-            var data = {"email": vm.userEmail,
-            "pass": vm.password,
-                  };
-                  dataservice.login(data).then(function (response) {
-                    console.log(response.data);
-
-                    if (!response.data.rows) {
-                      $rootScope.authUser = false;
-                        toastr.error(response.data.inf, "Error");
-                    }else {
-                      toastr.success(response.data.inf, "Alta");
-                        $rootScope.authUser = response.data.rows;
-                        console.log(response.data.rows);
-                    }
-
-                  });
-        }*/
-
-
-
     }
 })();

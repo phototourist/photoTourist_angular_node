@@ -5,9 +5,12 @@
         .module('app.login')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$translatePartialLoader', 'toastr', '$uibModal', '$rootScope', 'logger', 'dataservice', '$state'];
+    LoginController.$inject = ['$translatePartialLoader', 'toastr', '$uibModal',
+        '$rootScope', 'logger', 'dataservice', '$state'
+    ];
     /* @ngInject */
-    function LoginController($translatePartialLoader, toastr, $uibModal, $rootScope, logger, dataservice, $state) {
+    function LoginController($translatePartialLoader, toastr, $uibModal,
+        $rootScope, logger, dataservice, $state) {
         var vm = this;
         vm.title = 'Login';
         vm.inputEmail = '';
