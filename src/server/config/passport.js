@@ -17,7 +17,8 @@ module.exports = function() {
     // passport needs ability to serialize and unserialize users out of session
 
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        if (user) { done(null, user.id); }
+
         console.log('SERIALIZE USER ' + user.id);
     });
     passport.deserializeUser(function(id, done) {
