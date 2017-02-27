@@ -101,7 +101,7 @@ switch (environment) {
             'CHECK IF ANY OTHER SERVER IS LISTENING ON SAME PORT (APACHE...)' +
             'WE WANT TO FORCE HTTP TO HTTPS REDIRECTION ALWAYS');
 
-        //http.createServer(app).listen(80);
+        http.createServer(app).listen(80);
 
         break;
     default:
