@@ -97,6 +97,7 @@ switch (environment) {
         }, app).listen(port);
 
         app.use(forceSSL); //MODULE USED TO FORCE REDIRECTION
+        app.use(app.router);
         console.log('WARNING: BE CAREFULL, WE ARE TRYING TO LAUNCH SERVER ON PORT 80.' +
             'CHECK IF ANY OTHER SERVER IS LISTENING ON SAME PORT (APACHE...)' +
             'WE WANT TO FORCE HTTP TO HTTPS REDIRECTION ALWAYS');
