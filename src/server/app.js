@@ -91,18 +91,18 @@ switch (environment) {
         // Any deep link calls should return index.html
         app.use('/*', express.static('./build/index.html'));
         console.log('WARNING: OPEN BROWSER WITH HTTPS');
-        https.createServer({
-            key: fs.readFileSync('privkey.pem'),
-            cert: fs.readFileSync('fullchain.pem')
-        }, app).listen(port);
 
         app.use(forceSSL); //MODULE USED TO FORCE REDIRECTION
-        app.use(app.router);
         console.log('WARNING: BE CAREFULL, WE ARE TRYING TO LAUNCH SERVER ON PORT 80.' +
             'CHECK IF ANY OTHER SERVER IS LISTENING ON SAME PORT (APACHE...)' +
             'WE WANT TO FORCE HTTP TO HTTPS REDIRECTION ALWAYS');
 
         http.createServer(app).listen(80);
+
+        https.createServer({
+            key: fs.readFileSync('privkey.pem'),
+            cert: fs.readFileSync('fullchain.pem')
+        }, app).listen(port);
 
         break;
     default:
