@@ -6,45 +6,48 @@ module.exports.singinFacebook = singinFacebook;
 module.exports.singinTwitter = singinTwitter;
 
 function signupUser(req, res, next) {
-  passport.authenticate('local-signup', function(err, user, info) {
+    passport.authenticate('local-signup', function(err, user, info) {
 
-    if (err) {
-      res.send(err);
-    }
-    //console.log("err " +err);
-    res.send(info);
+        if (err) {
+            res.send(err);
+        }
+        //console.log("err " +err);
+        res.send(info);
 
-  })(req, res, next);
+    })(req, res, next);
 }
 
 function login(req, res, next) {
-  passport.authenticate('local-login', function(err, user, info) {
-    var rows = {
-      rows: user,
-      inf: info
-    };
-    if (err) {
-      res.send(err);
-    }
+    passport.authenticate('local-login', function(err, user, info) {
+        var rows = {
+            rows: user,
+            inf: info
+        };
+        if (err) {
+            res.send(err);
+        }
 
-    res.send(rows);
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
+        //res.send(rows);
+        req.logIn(user, function(err) {
+            if (err) {
+                return next(err);
+            }
+            res.send(rows);
+            console.log('log' + JSON.stringify(req.user));
+            console.log('session ' + JSON.stringify(req.session));
 
-    });
-  })(req, res, next);
+        });
+    })(req, res, next);
 }
 
 
 function singinFacebook(req, res, next) {
-  passport.authenticate('facebook', {
-    scope: ['email', 'public_profile']
-  })(req, res, next);
+    passport.authenticate('facebook', {
+        scope: ['email', 'public_profile']
+    })(req, res, next);
 }
 
 function singinTwitter(req, res, next) {
-  console.log('Estoy en twitter');
-  passport.authenticate('twitter')(req, res, next);
+    console.log('Estoy en twitter');
+    passport.authenticate('twitter')(req, res, next);
 }
