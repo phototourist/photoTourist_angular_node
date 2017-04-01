@@ -9,4 +9,5 @@ build/
 .tmp
 sengrid.env
 config.db.js
+database.js
 *.env
