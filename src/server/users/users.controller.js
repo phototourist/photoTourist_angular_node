@@ -34,7 +34,7 @@ function login(req, res, next) {
             }
             res.send(rows);
             console.log('log' + JSON.stringify(req.user));
-            console.log('session ' + JSON.stringify(req.session));
+            console.log('Session ' + JSON.stringify(req.session));
 
         });
     })(req, res, next);
