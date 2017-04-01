@@ -52,7 +52,7 @@
               if (!password.validPassword(pass, rows[0].pass)) {
                   return callback(null, false, 'El password utilizado no es valido');
               }
-              // all is well, return user
+              // all is well, return users
               else {
 
                   var newUserMysql = {}; //= new Object();
