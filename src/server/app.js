@@ -19,8 +19,8 @@ var flash = require('connect-flash');
 var cors = require('cors');
 var environment = process.env.NODE_ENV;
 var ControllerUsers = require('./users/users.controller');
+var multer = require('multer');
 
-//app.use(cors());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({
@@ -53,6 +53,42 @@ require('./config/routes').routes(app, passport);
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
+
+
+/////////////////////////////////////////////////////////////////////////////////
+var storage = multer.diskStorage({ //multers disk storage settings
+    destination: function (req, file, cb) {        
+        cb(null, 'src/server/media/')
+    },
+    filename: function (req, file, cb) {
+        console.log(file);
+        var datetimestamp = Date.now();
+        console.log(datetimestamp);
+        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+    }
+});
+var upload = multer({ //multer settings
+    storage: storage
+}).any();
+/** API path that will upload the files */
+app.post('/uploadCamtourist', function (req, res) {
+    console.log(req);
+    upload(req, res, function (err) {
+        if (err) {
+            console.log(err);
+            res.json({ error_code: 1, err_desc: err });
+            return;
+        }
+        res.json({ error_code: 0, err_desc: null });
+    })
+});
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
 
 /*
 switch (environment) {

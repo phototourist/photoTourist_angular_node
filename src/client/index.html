@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css" />
     <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="/bower_components/dropzone/dist/min/dropzone.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/app.css -->
@@ -97,6 +98,8 @@
     <script src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
     <script src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="/bower_components/ng-dropzone/dist/ng-dropzone.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -108,11 +111,13 @@
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/camtourist/camtourist.module.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.module.js"></script>
     <script src="/src/client/app/contact/contact.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/login/login.module.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
@@ -122,6 +127,8 @@
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
     <script src="/src/client/app/camtourist/camtourist.controller.js"></script>
     <script src="/src/client/app/camtourist/camtourist.route.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.controller.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.route.js"></script>
     <script src="/src/client/app/contact/contact.controller.js"></script>
     <script src="/src/client/app/contact/contact.route.js"></script>
     <script src="/src/client/app/core/config.js"></script>
@@ -135,9 +142,12 @@
     <script src="/src/client/app/layout/sidebar.controller.js"></script>
     <script src="/src/client/app/login/login.controller.js"></script>
     <script src="/src/client/app/login/login.route.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.controller.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.route.js"></script>
     <script src="/src/client/app/widgets/configApiGoogleMaps.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
+    <script src="/src/client/app/widgets/modal-dialog.directive.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->

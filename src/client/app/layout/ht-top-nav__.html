@@ -1,0 +1,87 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="images/logo.png" alt="" /></a>
+        </div>
+        <div class="header-right" ng-show="$root.authUser">
+            <a>
+                {{'HI' | translate}}
+                {{$root.authUser.name }}
+                <img src="{{ $root.authUser.avatar}}" />
+            </a>
+        </div>
+        <div id="sb-search" class="sb-search" ng-show="$root.authUser">
+            <a target="_self" href="/api/logout">
+                <span class="sb-icon-search"></span>Logout
+            </a>{{'LOGOUT' | translate}}<!--NO TRADUCIX-->
+        </div>
+        <ul class="nav navbar-nav" ng-controller="SidebarController as vm">
+            <!--<li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>-->
+
+            <li g-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+                <a ui-sref="{{r.name}}" translate="{{r.title}}" ng-bind-html="r.settings.content"></a>
+            </li>
+            <li >
+                <!--<img src="../images/flags/es.png" ng-click="vm.setLang('es')"/>
+        <img src="../images/flags/en.png" ng-click="vm.setLang('en')"/>-->
+
+                <div class="dropdown nav navbar-nav pull-left">
+                    <a data-toggle="dropdown" role="button">
+                        <!--{{'LANGUAGE_BUTTON' | translate}}-->
+
+                        <span>
+                            <i class="fa fa-globe"></i>
+                            {{'LANGUAGE_BUTTON' | translate}}
+                        </span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu" style="height:auto; min-width: 112px;">
+
+                        <li role="button">
+                            <a ng-click="vm.setLang('ca')">
+                                <img src="../images/flags/ca.png" title="Català" />
+                            </a>
+                        </li>
+                        <li role="button">
+                            <a ng-click="vm.setLang('en')">
+                                <img src="../images/flags/en.png" title="English" />
+                            </a>
+                        </li>
+                        <li role="button">
+                            <a ng-click="vm.setLang('es')">
+                                <img src="../images/flags/es.png" title="Español" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li ng-hide="$root.authUser" ng-click="vm.openModal()">
+                <a role="button">
+                    <i class="fa fa-sign-in"></i>
+                    {{'LOGIN' | translate}}
+                </a>
+            </li>
+
+            <li ng-show="$root.authUser">
+                <a role="button" ui-sref="myPhotos">
+                    <i class="fa fa-sign-in"></i>
+                    {{'MyPhotos' | translate}}
+                </a>
+            </li>
+            <li ng-hide="$root.authUser" class="login">
+                <a target="_self" href="/auth/facebook" class="btn btn-block btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </li>
+            <li ng-hide="$root.authUser" class="login">
+                <a target="_self" href="/auth/twitter" class="btn btn-social-icon btn-twitter">
+                    <span class="fa fa-twitter"></span>
+                </a>
+            </li>                            
+        </ul>
+    </div>
+    
+</nav>
