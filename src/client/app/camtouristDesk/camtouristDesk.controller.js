@@ -11,6 +11,10 @@
         var vm = this;
         vm.title = 'CamtouristDesk';
         Dropzone.autoDiscover = false;
+        vm.verCrear = false;
+        vm.verSubir = false;
+        vm.inputEmail = '';        
+        vm.subirFotos = subirFotos;
 
         $translatePartialLoader.addPart('camtourisDesk');
 
@@ -21,7 +25,11 @@
             acceptedFiles: 'image/jpeg, images/jpg, image/png',
             addRemoveLinks: true,  
             dictDefaultMessage: 'Pulsa o arrastra las fotos que quieras subir',
-            dictFileTooBig: 'La foto es demasiado grande'
+            dictFileTooBig: 'La foto es demasiado grande',
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 10
+
         };
 
         vm.dzCallbacks = {
@@ -37,16 +45,21 @@
 
             }   
 	};
-
         vm.dzMethods = {};
         vm.removeNewFile = function () {
-            vm.dzMethods.removeFile(vm.newFile); //We got $scope.newFile from 'addedfile' event callback
+            vm.dzMethods.removeAllFiles(); //We got $scope.newFile from 'addedfile' event callback
+        }
+
+        function subirFotos() {
+
+            vm.dzMethods.processQueue();
+
         }
 
 
 
-        
 
+        //myDropzone.processQueue()
         activate();
 
         function activate() {
