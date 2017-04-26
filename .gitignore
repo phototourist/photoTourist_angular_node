@@ -4,7 +4,7 @@ node_modules/
 bower_components/
 build/
 src/server/media/
-
+src/server/resize/
 
 #other
 .tmp

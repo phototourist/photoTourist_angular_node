@@ -20,6 +20,8 @@ var cors = require('cors');
 var environment = process.env.NODE_ENV;
 var ControllerUsers = require('./users/users.controller');
 var multer = require('multer');
+var im = require('imagemagick');
+var watermark = require('image-watermark');
 
 
 app.use(favicon(__dirname + '/favicon.ico'));
@@ -60,10 +62,8 @@ var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {        
         cb(null, 'src/server/media/')
     },
-    filename: function (req, file, cb) {
-        console.log(file);
-        var datetimestamp = Date.now();
-        console.log(datetimestamp);
+    filename: function (req, file, cb) {       
+        var datetimestamp = Date.now();       
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
 });
@@ -71,20 +71,39 @@ var upload = multer({ //multer settings
     storage: storage
 }).any();
 /** API path that will upload the files */
-app.post('/uploadCamtourist', function (req, res) {
-    console.log(req);
-    upload(req, res, function (err) {
+app.post('/api/uploadCamtourist', function (req, res) {
+   
+    upload(req, res, function (err) {       
         if (err) {
             console.log(err);
             res.json({ error_code: 1, err_desc: err });
             return;
         }
-        res.json({ error_code: 0, err_desc: null });
+
+        console.log(req.files);
+
+        for (var i = 0; i < req.files.length; i++) {
+           
+            var options = {
+                'text': 'PhotoTourist CopyRight',
+                'dstPath': 'src/server/resize/' + req.files[i].filename,
+                'resize': '100%'
+            };
+
+            watermark.embedWatermarkWithCb(req.files[i].path, options, function (err) {
+                if (!err) {
+                    console.log('Succefully embeded watermark'); res.json({ error: 0, err_desc: null });
+                } else {
+                    console.log(err);
+                    res.json({ error_code: 1, err_desc: err });
+                }
+            });      
+
+
+        }              
+
     })
-});
-
-
-
+}); 
 
 
 /////////////////////////////////////////////////////////////////////////////////

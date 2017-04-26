@@ -10,20 +10,20 @@
     function CamtouristDeskController($translatePartialLoader, logger) {
         var vm = this;
         vm.title = 'CamtouristDesk';
-        Dropzone.autoDiscover = false;
+        Dropzone.autoDiscover = false;        
         vm.verCrear = false;
         vm.verSubir = false;
         vm.inputEmail = '';        
         vm.subirFotos = subirFotos;
-
+        var data = {};
         $translatePartialLoader.addPart('camtourisDesk');
 
         vm.dzOptions = {
-            url: '/uploadCamtourist',
-            paramName: 'foto',
+            url: 'api/uploadCamtourist',
+            //paramName: vm.inputEmail,
             maxFilesize: '10',
             acceptedFiles: 'image/jpeg, images/jpg, image/png',
-            addRemoveLinks: true,  
+            addRemoveLinks: true,
             dictDefaultMessage: 'Pulsa o arrastra las fotos que quieras subir',
             dictFileTooBig: 'La foto es demasiado grande',
             autoProcessQueue: false,
@@ -51,6 +51,12 @@
         }
 
         function subirFotos() {
+
+            data = { email: vm.inputEmail };                     
+
+            vm.dzOptions = { paramName: data.email };
+                
+            console.log(data.email);
 
             vm.dzMethods.processQueue();
 
