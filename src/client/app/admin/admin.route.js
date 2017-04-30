@@ -23,10 +23,11 @@
                 settings: {
                     nav: 2,
                     content: '<i class="fa fa-lock" ></i> Admin'
-                },
+                }/*,
                 ncyBreadcrumb: {
-                    label: 'Admin page'
-                }
+                    parent: 'dashboard',
+                    label: 'Admin'
+                }*/
             }
         }];
     }

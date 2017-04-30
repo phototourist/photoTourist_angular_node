@@ -25,7 +25,7 @@
                     content: '<i class="fa fa-dashboard"></i> Home'
                 },
                 ncyBreadcrumb: {
-                    label: 'Home page'
+                    label: '{{ "BREAD_HOME" | translate }}'
                 }
             }
         }];

@@ -163,7 +163,8 @@ ul.button li a{
 }
 .active,
 ul.button li a:hover{
-	background:#fff;
+	/*background:#fff;*/
+  background: none;
 	color:#666;
 }
 /*-----//top-nav----*/

@@ -24,6 +24,10 @@
           settings: {
             nav: 3,
             content: '<i class="fa fa-envelope"></i> Contact'
+          },
+          ncyBreadcrumb: {
+              parent: 'dashboard',
+              label: '{{ "BREAD_CONTACT" | translate }}'
           }
         }
       }
