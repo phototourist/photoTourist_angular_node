@@ -5,7 +5,7 @@
   //console.log(connection);
   var usersModel = {};
 
-  usersModel.localSignup = function(email, pass_, callback) {
+  usersModel.localSignup = function(email, pass_, token, callback) {
       console.log('mysql');
       if (mysql.connection) {
           mysql.connection.query('select * from users where email = "' + email + '"', function(err, rows) {
@@ -24,11 +24,11 @@
 
                   newUserMysql.email = email;
                   newUserMysql.password = pass_;
+                  newUserMysql.token = token;
 
-                  var insertQuery = 'INSERT INTO users (email, pass) values ("' + email + '","' + pass_ + '")';
+                  var insertQuery = 'INSERT INTO users (email, pass, token) values ("' + email + '","' + pass_ + '","'+ token +'")';
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
-
                       callback(null, newUserMysql, true);
                   });
               }

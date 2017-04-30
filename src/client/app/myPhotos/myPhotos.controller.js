@@ -5,9 +5,9 @@
         .module('app.myPhotos')
         .controller('MyPhotosController', MyPhotosController);
 
-    MyPhotosController.$inject = ['$scope', '$q', '$translatePartialLoader', 'logger', 'dataservice', '$rootScope', 'toastr'];
+    MyPhotosController.$inject = ['$state', '$stateParams', '$scope', '$q', '$translatePartialLoader', 'logger', 'dataservice', '$rootScope', 'toastr'];
     /* @ngInject */
-    function MyPhotosController($scope, $q, $translatePartialLoader, logger, dataservice, $rootScope, toastr) {
+    function MyPhotosController($state, $stateParams, $scope, $q, $translatePartialLoader, logger, dataservice, $rootScope, toastr) {
         var vm = this;
         vm.title = 'MYPHOTOS';
         vm.imagenes = [];
@@ -24,13 +24,25 @@
                
 
         activate();
-
+        
         function activate() {            
-            
+            var token = $stateParams.token;
+            console.log(token);
             var promises = [dataservice.isLoggedin()];
 
             return $q.all(promises).then(function () {  
-                getPhotos();
+
+                if ($rootScope.authUser != false) {
+                    getPhotos();
+                } else if (token){
+                    console.log('token');
+                    //getPhotos();
+                    getPhotosByCamtourist(token);
+                }
+                else {
+                    console.log('token');
+                    //$state.go('404');
+                }                
                 
                logger.info('Activated myPhotos View');
            });
@@ -50,13 +62,12 @@
 
         function getPhotos() {
            
-            console.log($rootScope.authUser.email);
+            console.log($rootScope.authUser);
             var data = {email: $rootScope.authUser.email};
 
             console.log(data);
 
-            dataservice.getPhotos(data).then(function (response) {
-              
+            dataservice.getPhotos(data).then(function (response) {              
 
                 if (response.data.length > 0) {                    
                     vm.imagenes = response.data;                    
@@ -69,11 +80,30 @@
 
                 }
                 
-
-
-
             });            
         }
+
+        function getPhotosByCamtourist(token) {
+
+            var data = { token: token };                       
+
+            dataservice.getPhotosByCamtourist(data).then(function (response) {
+
+                if (response.data.length > 0) {
+                    vm.imagenes = response.data;
+                    $scope.totalItems = vm.imagenes.length;
+
+                    setPagingData($scope.currentPage);
+
+                } else {
+                    toastr.error('No hay fotos para este usuario', 'Error');
+
+                }
+
+            });
+        }
+
+
 
         function verFoto(path) {            
 

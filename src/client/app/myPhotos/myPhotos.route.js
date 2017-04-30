@@ -22,6 +22,20 @@
           controllerAs: 'vm',
           title: 'MYPHOTOS'          
         }
+        },
+         {
+          state: 'myPhotosCamtourist',
+          config: {
+              url: '/myPhotos/:token',
+              templateUrl: 'app/myPhotos/myPhotos.html',
+              controller: 'MyPhotosController',
+              controllerAs: 'vm',
+              title: 'MYPHOTOS',
+              //resolve: {
+              //    console.log();
+              //    //facebook: dataservice.signupSocial
+              //}
+          } 
       }
     ];
   }

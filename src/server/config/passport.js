@@ -6,7 +6,7 @@ var passport = require('passport');
 var mysql = require('./database');
 var password = require('../users/utils/password');
 var usersModel = require('../users/users.model');
-
+var crypto = require('crypto');   
 
 
 module.exports = function() {
@@ -63,8 +63,17 @@ module.exports = function() {
         function(req, email, pass, done) {
 
             var pass_ = password.generateHash(pass);
+            
+                //var token = crypto.randomBytes(20, function (err, buf) {
+                //    var token = buf.toString('hex');
+                //    //done(err, token);
+                //    //console.log(token);
+                //    return token;
+                //});
 
-            return usersModel.localSignup(email, pass_, done);
+            var token = crypto.randomBytes(20).toString('hex');                         
+
+            return usersModel.localSignup(email, pass_, token, done);
 
 
 

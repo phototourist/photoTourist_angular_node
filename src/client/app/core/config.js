@@ -31,6 +31,8 @@
 
         uibPaginationConfig.nextText = 'Siguiente';
         uibPaginationConfig.previousText = 'Anterior';
+        
+
 
 
         $translateProvider.registerAvailableLanguageKeys(['ca', 'en', 'es'], {

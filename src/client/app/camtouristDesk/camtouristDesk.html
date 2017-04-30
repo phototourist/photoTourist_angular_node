@@ -11,7 +11,7 @@
 
         
     </div>
-    <form id="camtouristView" name="camtouristView" class="camtouristView" >
+    <form id="camtouristView" name="vm.camtouristView" class="camtouristView" >
         <fieldset ng-show="vm.verCrear || vm.verSubir">
             <legend>Area de trabajo</legend>
             <div class="form-group" >
@@ -19,8 +19,8 @@
                 <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail"
                        placeholder="Email" class="" maxlength="100"
                        ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
-                <span class="error_input" ng-show="camtouristView.inputEmail.$error.required && (camtouristView.inputEmail.$dirty || camtouristView.inputEmail.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
-                <span class="error_input" ng-show="camtouristView.inputEmail.$error.email">{{'ERROR-2-SIGNUP' | translate}}</span>
+                <span class="error_input" ng-show="vm.camtouristView.inputEmail.$error.required && (vm.camtouristView.inputEmail.$dirty || vm.camtouristView.inputEmail.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
+                <span class="error_input" ng-show="vm.camtouristView.inputEmail.$error.email">{{'ERROR-2-SIGNUP' | translate}}</span>
 
             </div>
 
@@ -31,14 +31,14 @@
 
             <div class="">
                 <button type="Submit" id="" name="" class="btn btn-primary btn-lg centrado" value="Subir fotos"
-                        ng-show="camtouristView.inputEmail.$valid && vm.verSubir" ng-click="vm.subirFotos()">
+                        ng-show="vm.camtouristView.inputEmail.$valid && vm.verSubir" ng-click="vm.subirFotos()">
                    {{'SUBIR_FOTOS' | translate}}
                 </button>
             </div>
 
             <div class="">
                 <button type="Submit" id="registrarUsuario" name="registrarUsuario" class="btn btn-primary btn-lg centrado" value="Registrar nuevo usuario"
-                        ng-show="camtouristView.inputEmail.$valid && vm.verCrear" ng-click="vm.registrarUsuarios()">
+                        ng-show="vm.camtouristView.inputEmail.$valid && vm.verCrear" ng-click="vm.registrarUsuarios()">
                     Registrar nuevo usuario
                 </button>
             </div>

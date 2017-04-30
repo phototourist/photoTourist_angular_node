@@ -1,26 +1,27 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.camtouristDesk')
         .controller('CamtouristDeskController', CamtouristDeskController);
 
-    CamtouristDeskController.$inject = ['$translatePartialLoader', 'logger'];
+    CamtouristDeskController.$inject = ['$translatePartialLoader', 'logger', 'dataservice', '$timeout'];
     /* @ngInject */
-    function CamtouristDeskController($translatePartialLoader, logger) {
+    function CamtouristDeskController($translatePartialLoader, logger, dataservice, $timeout) {
         var vm = this;
         vm.title = 'CamtouristDesk';
-        Dropzone.autoDiscover = false;        
+        Dropzone.autoDiscover = false;
         vm.verCrear = false;
         vm.verSubir = false;
-        vm.inputEmail = '';        
+        vm.inputEmail = '';
         vm.subirFotos = subirFotos;
-        var data = {};
+        vm.guardarFotosUsuario = guardarFotosUsuario;
+
         $translatePartialLoader.addPart('camtourisDesk');
 
         vm.dzOptions = {
             url: 'api/uploadCamtourist',
-            //paramName: vm.inputEmail,
+            paramName: 'foto',
             maxFilesize: '10',
             acceptedFiles: 'image/jpeg, images/jpg, image/png',
             addRemoveLinks: true,
@@ -33,18 +34,20 @@
         };
 
         vm.dzCallbacks = {
-            'addedfile': function (file) {                
+            'addedfile': function (file) {
                 vm.newFile = file;
             },
-            'success': function (file, xhr) {
-                console.log(file, xhr);
+            'successmultiple': function (file, xhr) {
+                console.log(xhr);
                 vm.removeNewFile();
+                vm.guardarFotosUsuario(xhr.fotos);
             },
             'error': function (file, err) {
                 console.log(err);
 
-            }   
-	};
+            }
+        };
+
         vm.dzMethods = {};
         vm.removeNewFile = function () {
             vm.dzMethods.removeAllFiles(); //We got $scope.newFile from 'addedfile' event callback
@@ -52,13 +55,43 @@
 
         function subirFotos() {
 
-            data = { email: vm.inputEmail };                     
-
-            vm.dzOptions = { paramName: data.email };
-                
-            console.log(data.email);
-
             vm.dzMethods.processQueue();
+
+        }
+
+        function guardarFotosUsuario(fotos) {
+
+            console.log(fotos);
+
+            var data = {
+                fotos: fotos,
+                from: '',
+                to: vm.inputEmail,
+                type: 'camtourist'
+            };
+                
+            dataservice.guardarFotosUsuario(data).then(function (response) {
+                console.log(response);
+
+                        if (response) {
+
+                            vm.inputEmail = '';
+                            $timeout(function () {
+
+                                //vm.camtouristView.inputEmail.$error.required = false;
+                                vm.camtouristView.inputEmail.$error.required = false;
+
+                            }, 30);                          
+                            
+
+                        } else {
+                            vm.class = 'alert alert-success';
+                            vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
+                        }
+                    });
+
+               
+           
 
         }
 
