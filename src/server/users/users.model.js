@@ -26,7 +26,7 @@
                   newUserMysql.password = pass_;
                   newUserMysql.token = token;
 
-                  var insertQuery = 'INSERT INTO users (email, pass, token) values ("' + email + '","' + pass_ + '","'+ token +'")';
+                  var insertQuery = 'INSERT INTO users (email, pass, token) values ("' + email + '","' + pass_ + '","' + token + '")';
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
                       callback(null, newUserMysql, true);
@@ -40,16 +40,18 @@
   usersModel.localLogin = function(email, pass, callback) {
       if (mysql.connection) {
           mysql.connection.query('select * from users where email = "' + email + '"', function(err, rows) {
-
+              console.log(rows);
               if (err) {
                   return callback(err);
               }
 
               // if no user is found, return the message
               if (!rows.length) {
+                  console.log('sdadasdasdsadaasdasdadaadsadsasadadsdsadsad');
                   return callback(null, false, 'Usuario no encontrado');
               }
               if (!password.validPassword(pass, rows[0].pass)) {
+                  console.log('CZXCZCZCX')
                   return callback(null, false, 'El password utilizado no es valido');
               }
               // all is well, return users
