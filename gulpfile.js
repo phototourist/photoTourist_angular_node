@@ -4,6 +4,7 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({ lazy: true });
@@ -72,6 +73,23 @@ gulp.task('styles', ['clean-styles'], function() {
 });
 
 /**
+ * Compile sass to css
+ * @return {Stream}
+ */
+gulp.task('styles_sass', ['clean-styles'], function () {
+    log('Compiling Sass --> CSS');
+    console.log(config.sass);
+    return gulp
+        .src(config.sass)
+        .pipe($.plumber()) // exit gracefully if something fails after this
+        .pipe(sass())
+        //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
+        .pipe($.autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
+        .pipe(gulp.dest('src/client/styles/sass'));
+});
+
+
+/**
  * Copy fonts
  * @return {Stream}
  */
@@ -96,9 +114,14 @@ gulp.task('images', ['clean-images'], function() {
     .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('less-watcher', function() {
+gulp.task('less-watcher',  function() {
   gulp.watch([config.less], ['styles']);
 });
+
+gulp.task('sass-watcher', function () {
+    gulp.watch([config.sass], ['styles_sass']);
+});
+
 
 /**
  * Create $templateCache from the html templates
@@ -494,6 +517,8 @@ function startBrowserSync(isDev, specRunner) {
   // If build: watches the files, builds, and restarts browser-sync.
   // If dev: watches less, compiles it to css, browser-sync handles reload
   if (isDev) {
+      gulp.watch([config.sass], ['styles_sass'])
+          .on('change', changeEvent);
     gulp.watch([config.less], ['styles'])
       .on('change', changeEvent);
   } else {
