@@ -32,7 +32,6 @@
             dataservice.submitSignUp(data).then(function(response) {
 
                 if (response.data) {
-                    //console.log("tete" +response);
                     toastr.success('El usuario se ha dado de alta correctamente, revise su correo', 'Alta');
                     $state.go('dashboard');
                 } else {

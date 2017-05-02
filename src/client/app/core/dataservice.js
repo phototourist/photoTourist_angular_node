@@ -18,7 +18,9 @@
       submitSignUp: submitSignUp,
       login: login,
       signupSocial: signupSocial,
-      isLoggedin: isLoggedin
+      isLoggedin: isLoggedin,
+      getProfile: getProfile,
+      submitProfile: submitProfile
     };
     return service;
 
@@ -182,7 +184,41 @@
 
 
       function fail(e) {
-      return exception.catcher('XHR Failed for /auth/facebook')(e);
+        return exception.catcher('XHR Failed for /auth/facebook')(e);
+      }
+    }
+
+    //Función para mostrar marcadores según ciudad
+    function getProfile(email) {
+      return $http.get('/api/getProfile/' + email)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        //console.log("dataservice.getProfile.success: ");
+        return response.data;
+      }
+
+      function fail(e) {
+        //console.log("dataservice.getProfile.fail: ");
+        return exception.catcher('XHR Failed for camtouristCiudad')(e);
+      }
+    }
+
+//Función para actualizar Profile al pulsar botón actualizar
+    function submitProfile(data) {
+      console.log(data);
+      return $http.post('/api/submitProfile', data)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        console.log(response);
+        return response;
+      }
+
+      function fail() {
+        return false;
       }
     }
   }

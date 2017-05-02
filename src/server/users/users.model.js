@@ -172,5 +172,51 @@
       });
 
   };
+  //Obtenemos el profile
+  usersModel.getProfile = function(email,callback){
+
+
+      if (mysql.connection) {
+          var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
+          console.log('getProfile');
+          mysql.connection.query(sql, function(error, row) {
+              if(error){
+                  throw error;
+              }else{
+                  callback(null, row);
+              }
+          });
+      }
+  };
+
+  //Actualizamos el profile
+  usersModel.submitProfile = function(data,callback){
+      if (mysql.connection) {
+        //update the user
+        console.log(data.surname);
+
+        var updateUserMysql = {}; //= new Object();
+
+        updateUserMysql.name = data.name;
+        updateUserMysql.last_name = data.surname;
+        updateUserMysql.address = data.adress;
+        updateUserMysql.cp = data.cp;
+        updateUserMysql.email = data.email;
+
+        var changes = 'name = "' + data.name + '", ';
+        changes += 'last_name = "' + data.surname + '", ';
+        changes += 'address = "' + data.adress + '", ';
+        changes += 'cp = "' + data.cp + '"';
+
+        console.log(changes);
+
+        var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
+
+
+        mysql.connection.query(updateQuery, function(err, rows) {
+            callback(null, updateUserMysql, true);
+        });
+      }
+  };
 
   module.exports = usersModel;

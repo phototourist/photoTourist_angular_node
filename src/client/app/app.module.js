@@ -9,6 +9,7 @@
     'app.camtourist',
     'app.layout',
     'app.contact',
-    'app.login'
+    'app.login',
+    'app.profile',
   ]);
 })();

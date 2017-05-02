@@ -1,0 +1,19 @@
+{
+    "WELCOME_PROFILE": "Intenta tener tus datos al día ;)",
+    "ERROR-1-PROFILE": "El campo es requerido",
+    "ERROR-2-PROFILE": "Email no válido",
+    "ERROR-3-PROFILE": "Password no válido",
+    "ERROR-4-PROFILE": "Nombre no válido",
+    "ERROR-5-PROFILE": "Código Postal no válido",
+    "NAME_PROFILE": "Nombre *",
+    "SURNAME_PROFILE": "Apellido",
+    "ADRESS_PROFILE": "Dirección",
+    "POSTAL_PROFILE": "Código Postal",
+    "PW_PROFILE": "Contraseña *",
+    "PLACEHOLDER-NAME-PROFILE": "Nombre",
+    "PLACEHOLDER-SURNAME-PROFILE": "Apellido",
+    "PLACEHOLDER-ADRESS-PROFILE": "Dirección",
+    "PLACEHOLDER-POSTAL-PROFILE": "Código Postal",
+    "PLACEHOLDER-PW-PROFILE": "Contraseña",
+    "PROFILE_BUTTON": "Actualizar"
+}
