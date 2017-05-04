@@ -25,8 +25,7 @@ module.exports = function() {
 
         if (id != 'undefined') {
             console.log('DESERIALIZE USER ' + id);
-            mysql.connection.query('select * from users where id = ' + id, function(err, rows) {
-                console.log("sdadasd ", rows);
+            mysql.connection.query('select * from users where id = ' + id, function(err, rows) {               
                 if (err) { return done(err); }
 
                 // if no user is found, return the message
@@ -38,7 +37,8 @@ module.exports = function() {
                         email: rows[0].email,
                         name: rows[0].name,
                         avatar: rows[0].avatar,
-                        id: rows[0].id
+                        id: rows[0].id,
+                        type: rows[0].tipo
                     }; //= new Object();
                     /*
                                                 newUserMysql.email = rows[0].email;
