@@ -1,3 +1,4 @@
+<div ncy-breadcrumb></div>
 <section id="profile">
     <div class="titulo">
         <p class="lead">{{'WELCOME_PROFILE' | translate}}
@@ -5,35 +6,34 @@
         <hr>
     </div>
     <form id="profile_form" name="profile_form" class="">
-
         <div class="control_profile">
-          <div class="control_inputs">
-              <label>{{'NAME_PROFILE' | translate}}</label>
-              <input required ng-model="vm.profileName" type="input" id="profileName" name="profileName" placeholder="{{'PLACEHOLDER-NAME-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i" ng-change="change_profile()">
-              <span class="error_input" ng-show="profile_form.profileName.$error.required && (profile_form.profileName.$dirty || profile_form.profileName.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
-              <span class="error_input" ng-show="profile_form.profileName.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
-          </div>
+            <div class="control_inputs">
+                <label>{{'NAME_PROFILE' | translate}}</label>
+                <input required ng-model="vm.profileName" type="input" id="profileName" name="profileName" placeholder="{{'PLACEHOLDER-NAME-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i" ng-change="change_profile()">
+                <span class="error_input" ng-show="profile_form.profileName.$error.required && (profile_form.profileName.$dirty || profile_form.profileName.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
+                <span class="error_input" ng-show="profile_form.profileName.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
+            </div>
 
-          <div class="control_inputs">
-              <label>{{'SURNAME_PROFILE' | translate}}</label>
-              <input required ng-model="vm.profileSurname" type="input" id="profileSurname" name="profileSurname" placeholder="{{'PLACEHOLDER-SURNAME-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i" ng-change="change_profile()">
-              <span class="error_input" ng-show="profile_form.profileSurname.$error.required && (profile_form.profileSurname.$dirty || profile_form.profileSurname.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
-              <span class="error_input" ng-show="profile_form.profileSurname.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
-          </div>
+            <div class="control_inputs">
+                <label>{{'SURNAME_PROFILE' | translate}}</label>
+                <input required ng-model="vm.profileSurname" type="input" id="profileSurname" name="profileSurname" placeholder="{{'PLACEHOLDER-SURNAME-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i" ng-change="change_profile()">
+                <span class="error_input" ng-show="profile_form.profileSurname.$error.required && (profile_form.profileSurname.$dirty || profile_form.profileSurname.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
+                <span class="error_input" ng-show="profile_form.profileSurname.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
+            </div>
 
-          <div class="control_inputs">
-              <label>{{'ADRESS_PROFILE' | translate}}</label>
-              <input required ng-model="vm.profileAdress" type="input" id="profileAdress" name="profileAdress" placeholder="{{'PLACEHOLDER-ADRESS-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[a-z0-9- -.]+$/i" ng-change="change_profile()">
-              <span class="error_input" ng-show="profile_form.profileAdress.$error.required && (profile_form.profileAdress.$dirty || profile_form.profileAdress.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
-              <span class="error_input" ng-show="profile_form.profileAdress.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
-          </div>
+            <div class="control_inputs">
+                <label>{{'ADDRESS_PROFILE' | translate}}</label>
+                <input required ng-model="vm.profileAddress" type="input" id="profileAddress" name="profileAddress" placeholder="{{'PLACEHOLDER-ADDRESS-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[a-z0-9- -.]+$/i" ng-change="change_profile()">
+                <span class="error_input" ng-show="profile_form.profileAddress.$error.required && (profile_form.profileAddress.$dirty || profile_form.profileAddress.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
+                <span class="error_input" ng-show="profile_form.profileAddress.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
+            </div>
 
-          <div class="control_inputs">
-              <label>{{'POSTAL_PROFILE' | translate}}</label>
-              <input required ng-model="vm.profilePostal" type="input" id="profilePostal" name="profilePostal" placeholder="{{'PLACEHOLDER-POSTAL-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^(0[1-9]|5[0-2]|[0-4][0-9])[0-9]{3}$/i" ng-change="change_profile()">
-              <span class="error_input" ng-show="profile_form.profilePostal.$error.required && (profile_form.profilePostal.$dirty || profile_form.profilePostal.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
-              <span class="error_input" ng-show="profile_form.profilePostal.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
-          </div>
+            <div class="control_inputs">
+                <label>{{'POSTAL_PROFILE' | translate}}</label>
+                <input required ng-model="vm.profilePostal" type="input" id="profilePostal" name="profilePostal" placeholder="{{'PLACEHOLDER-POSTAL-PROFILE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^(0[1-9]|5[0-2]|[0-4][0-9])[0-9]{3}$/i" ng-change="change_profile()">
+                <span class="error_input" ng-show="profile_form.profilePostal.$error.required && (profile_form.profilePostal.$dirty || profile_form.profilePostal.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
+                <span class="error_input" ng-show="profile_form.profilePostal.$error.pattern">{{'ERROR-4-PROFILE' | translate}}</span>
+            </div>
 
             <div class="control_inputs">
                 <label>Email</label>
@@ -41,12 +41,25 @@
                 <span class="error_input" ng-show="profile_form.profileEmail.$error.required && (profile_form.profileEmail.$dirty || profile_form.profileEmail.$touched)">{{'ERROR-1-PROFILE' | translate}}</span>
                 <span class="error_input" ng-show="profile_form.profileEmail.$error.email">{{'ERROR-2-PROFILE' | translate}}</span>
             </div>
+
             <br/>
+
+            <!--<div class="control_inputs">
+              <img ng-src="src/server/users/avatars/{{vm.profileAvatar}}" style="width:60px;"/>
+            </div>-->
+
+            <div class="control_inputs">
+                <label>Avatar</label>
+                <img ng-src="src/server/users/avatars/{{vm.profileAvatar}}" style="width:60px;"/>
+                <ng-dropzone class="dropzone" options="vm.dzOptions" callbacks="vm.dzCallbacks" methods="vm.dzMethods"></ng-dropzone>
+            </div>
+
+            <hr>
 
             <div class="control_submit">
                 <button type="Submit" id="profile_user" name="profile_user" class="btn btn-primary btn-lg centrado" ng-click="vm.submitProfile()">{{'PROFILE_BUTTON' | translate}}</button>
             </div>
-            <div class=""><hr></div>
+            <!--<div class=""><hr></div>-->
             <!--/.row-->
         </div>
 

@@ -7,13 +7,15 @@
     "ERROR-5-PROFILE": "Código Postal no válido",
     "NAME_PROFILE": "Nombre *",
     "SURNAME_PROFILE": "Apellido",
-    "ADRESS_PROFILE": "Dirección",
+    "ADDRESS_PROFILE": "Dirección",
     "POSTAL_PROFILE": "Código Postal",
     "PW_PROFILE": "Contraseña *",
     "PLACEHOLDER-NAME-PROFILE": "Nombre",
     "PLACEHOLDER-SURNAME-PROFILE": "Apellido",
-    "PLACEHOLDER-ADRESS-PROFILE": "Dirección",
+    "PLACEHOLDER-ADDRESS-PROFILE": "Dirección",
     "PLACEHOLDER-POSTAL-PROFILE": "Código Postal",
     "PLACEHOLDER-PW-PROFILE": "Contraseña",
-    "PROFILE_BUTTON": "Actualizar"
+    "UPLOAD_PHOTO": "Subir Foto",
+    "PROFILE_BUTTON": "Actualizar",
+    "BREAD_PROFILE": "Perfil"
 }

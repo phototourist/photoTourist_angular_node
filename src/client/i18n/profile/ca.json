@@ -7,13 +7,15 @@
     "ERROR-5-PROFILE": "Códi Postal no válid",
     "NAME_PROFILE": "Nom *",
     "SURNAME_PROFILE": "Cognom",
-    "ADRESS_PROFILE": "Direcció",
+    "ADDRESS_PROFILE": "Direcció",
     "POSTAL_PROFILE": "Codi Postal",
     "PW_PROFILE": "Contrasenya *",
     "PLACEHOLDER-NAME-PROFILE": "Nom",
     "PLACEHOLDER-SURNAME-PROFILE": "Cognom",
-    "PLACEHOLDER-ADRESS-PROFILE": "Direcció",
+    "PLACEHOLDER-ADDRESS-PROFILE": "Direcció",
     "PLACEHOLDER-POSTAL-PROFILE": "Codi Postal",
     "PLACEHOLDER-PW-PROFILE": "Contrasenya",
-    "PROFILE_BUTTON": "Actualitzar"
+    "UPLOAD_PHOTO": "Pujar Foto",
+    "PROFILE_BUTTON": "Actualitzar",
+    "BREAD_PROFILE": "Perfil"
 }

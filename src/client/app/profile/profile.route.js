@@ -5,13 +5,13 @@
         .module('app.profile')
         .run(appRun);
 
-    appRun.$inject = ['routerHelper', 'dataservice', '$rootScope'];
+    appRun.$inject = ['routerHelper', '$translatePartialLoader', 'dataservice', '$rootScope'];
     /* @ngInject */
-    function appRun(routerHelper, dataservice, $rootScope) {
-        routerHelper.configureStates(getStates(dataservice, $rootScope));
+    function appRun(routerHelper, translatePartialLoader, dataservice, $rootScope) {
+        routerHelper.configureStates(getStates(dataservice, translatePartialLoader, $rootScope));
     }
 
-    function getStates(dataservice, $rootScope) {
+    function getStates(dataservice, translatePartialLoader, $rootScope) {
         return [
           {
             state: 'profile',
@@ -27,7 +27,7 @@
               },*/
               ncyBreadcrumb: {
                   parent: 'dashboard',
-                  label: '{{ "BREAD_CONTACT" | translate }}'
+                  label: '{{ "BREAD_PROFILE" | translate }}'
               }
             }
           }

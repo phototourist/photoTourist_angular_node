@@ -20,7 +20,9 @@
       signupSocial: signupSocial,
       isLoggedin: isLoggedin,
       getProfile: getProfile,
-      submitProfile: submitProfile
+      submitProfile: submitProfile,
+      saveAvatar: saveAvatar,
+      sendChangePassword: sendChangePassword
     };
     return service;
 
@@ -220,6 +222,39 @@
       function fail() {
         return false;
       }
+    }
+
+    //Función para guardar Avatar
+    function saveAvatar(data) {
+        return $http.post('/api/saveAvatar', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            console.log('dataservice.saveAvatar.data: ' + data);
+            console.log('dataservice.saveAvatar.response:'  + response);
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
+    }
+
+    function sendChangePassword(data) {
+        return $http.post('/api/sendChangePassword', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            console.log('dataservice.saveAvatar.data: ' + data);
+            console.log('dataservice.saveAvatar.response:'  + response);
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
     }
   }
 })();

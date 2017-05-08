@@ -30,4 +30,6 @@ module.exports = function(app) {
     /////////////////////////////////////////////////////////////////////////////
     app.get('/api/getProfile/:email', ControllerUsers.getProfile);
     app.post('/api/submitProfile',  ControllerUsers.submitProfile);
+    app.post('/api/saveAvatar', ControllerUsers.saveAvatar);
+    app.post('/api/sendChangePassword', ControllerUsers.sendChangePassword);
 };

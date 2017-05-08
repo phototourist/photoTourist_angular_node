@@ -1,3 +1,4 @@
+
 (function() {
     'use strict';
 
@@ -6,19 +7,25 @@
         .controller('LoginController', LoginController);
 
     LoginController.$inject = ['$translatePartialLoader', 'toastr', '$uibModal',
-        '$rootScope', 'logger', 'dataservice', '$state'
+        '$rootScope', 'logger', 'dataservice', '$state', '$timeout'
     ];
     /* @ngInject */
     function LoginController($translatePartialLoader, toastr, $uibModal,
-        $rootScope, logger, dataservice, $state) {
+        $rootScope, logger, dataservice, $state, $timeout) {
         var vm = this;
         vm.title = 'Login';
         vm.inputEmail = '';
         vm.inputPass = '';
+        vm.recoveryEmail = '';
         vm.submitSignUp = submitSignUp;
         vm.login = login;
         vm.close = close;
         vm.error = false;
+        vm.showRecovery = false;
+        vm.recovery = recovery;
+        vm.sendRecovery = sendRecovery;
+        vm.class = '';
+        vm.message = '';
 
         $translatePartialLoader.addPart('login');
 
@@ -42,12 +49,10 @@
             });
         }
 
-
         function close() {
             //console.log("close");
             $rootScope.modalInstance.close('a');
         }
-
 
         function login() {
             close();
@@ -72,6 +77,37 @@
             });
         }
 
+        function recovery() {
+            //console.log("recovery");
+
+            vm.showRecovery = true;
+        }
+
+        function sendRecovery() {
+            //console.log("sendRecovery");
+
+            //Enviar mail al usuario para nueva contraseña
+            var data = {
+                from: '',
+                to: vm.recoveryEmail,
+                type: 'modify'
+            };
+
+            dataservice.sendChangePassword(data).then(function (response) {
+                console.log(response);
+
+                if (response) {
+                    vm.inputEmail = '';
+                    $timeout(function () {
+                        //vm.modal_recovery.recoveryEmail.$error.required = false;
+                        close();
+                    }, 30);
+                } else {
+                    vm.class = 'alert alert-success';
+                    vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
+                }
+            });
+        }
 
         activate();
 

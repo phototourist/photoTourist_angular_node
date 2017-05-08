@@ -7,13 +7,15 @@
     "ERROR-5-PROFILE": "Postal Code is not valid",
     "NAME_PROFILE": "Name *",
     "SURNAME_PROFILE": "Surname",
-    "ADRESS_PROFILE": "Adress",
+    "ADDRESS_PROFILE": "Address",
     "POSTAL_PROFILE": "Postal Code",
     "PW_PROFILE": "Password *",
     "PLACEHOLDER-NAME-PROFILE": "Name",
     "PLACEHOLDER-SURNAME-PROFILE": "Surname",
-    "PLACEHOLDER-ADRESS-PROFILE": "Adress",
+    "PLACEHOLDER-ADDRESS-PROFILE": "Address",
     "PLACEHOLDER-POSTAL-PROFILE": "Postal Code",
     "PLACEHOLDER-PW-PROFILE": "Password",
-    "PROFILE_BUTTON": "Update"
+    "UPLOAD_PHOTO": "Upload Photo",
+    "PROFILE_BUTTON": "Update",
+    "BREAD_PROFILE": "Profile"
 }

@@ -8,7 +8,7 @@
   usersModel.localSignup = function(email, pass_, callback) {
       console.log('mysql');
       if (mysql.connection) {
-          mysql.connection.query('select * from users where email = "' + email + '"', function(err, rows) {
+          mysql.connection.query('SELECT * FROM users WHERE email = "' + email + '"', function(err, rows) {
               //console.log("req"+ req);
               //  console.log("rows"+ rows);
               //  console.log("aove row object");
@@ -25,7 +25,7 @@
                   newUserMysql.email = email;
                   newUserMysql.password = pass_;
 
-                  var insertQuery = 'INSERT INTO users (email, pass) values ("' + email + '","' + pass_ + '")';
+                  var insertQuery = 'INSERT INTO users (email, pass, avatar) VALUES ("' + email + '","' + pass_ + '", "default.png")';
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
 
@@ -39,7 +39,7 @@
 
   usersModel.localLogin = function(email, pass, callback) {
       if (mysql.connection) {
-          mysql.connection.query('select * from users where email = "' + email + '"', function(err, rows) {
+          mysql.connection.query('SELECT * FROM users WHERE email = "' + email + '"', function(err, rows) {
 
               if (err) {
                   return callback(err);
@@ -78,11 +78,10 @@
       console.log(req.user.photos[0].value);
       console.log(req.user.gender);
 
-      mysql.connection.query('select * from users where email = "' +
+      mysql.connection.query('SELECT * FROM users WHERE email = "' +
           req.user.emails[0].value + '"',
 
           function(err, rows) {
-
               if (err) {
                   return done(err);
               }
@@ -90,35 +89,42 @@
               if (rows.length) {
                   //  console.log("rows.length"+ rows.length);
 
-
-
                   newUserMysql.email = rows[0].email;
-                  newUserMysql.idFacebook = rows[0].idFacebook;
+                  newUserMysql.idFacebook = rows[0].id_facebook;
                   newUserMysql.name = rows[0].name;
                   newUserMysql.user = rows[0].user;
                   newUserMysql.avatar = rows[0].avatar;
                   newUserMysql.id = rows[0].id;
                   console.log(rows[0].email);
 
+                  if (newUserMysql.idFacebook == undefined || newUserMysql.idFacebook == null ||
+                    newUserMysql.idFacebook.length == 0 || newUserMysql.idFacebook == '0'){
+                      var updateIdFacebookQuery = 'UPDATE users SET id_facebook = "' +
+                          req.user.id + '" WHERE email = "' + newUserMysql.email + '"';
+
+                      mysql.connection.query(updateIdFacebookQuery, function(err, rows) {
+                          newUserMysql.idFacebook = req.user.id;
+                          return done(null, newUserMysql, 'Bienvenido a PhotoTourist');
+                      });
+                  }
+
                   return done(null, newUserMysql, 'Bienvenido a PhotoTourist');
               } else {
-                  //var newUserMysql = new Object();
-
                   newUserMysql.email = req.user.emails[0].value;
                   newUserMysql.idFacebook = req.user.id;
                   newUserMysql.name = req.user.name.givenName;
                   newUserMysql.displayName = req.user.displayName;
                   newUserMysql.avatar = req.user.photos[0].value;
 
-                  var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook) values ("' +
+                  var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook) VALUES ("' +
                       req.user.name.givenName + '","' + req.user.emails[0].value + '", "' +
-                      req.user.photos[0].value + '","' + req.user.id + '")';
+                      //req.user.photos[0].value + '","' + req.user.id + '")';
+                      'default.png","' + req.user.id + '")';
                   //console.log("insertQuery"+ insertQuery);
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
                       console.log('facebookLogin ' + rows.insertId);
                       return done(null, newUserMysql, true);
-
                   });
               }
           });
@@ -136,7 +142,7 @@
       console.log(req.user.photos[0].value);
       //console.log(req.user.gender);
 
-      mysql.connection.query('select * from users where user = "' + req.user.username + '"', function(err, rows) {
+      mysql.connection.query('SELECT * FROM users WHERE user = "' + req.user.username + '"', function(err, rows) {
 
           if (err) {
               return done(err);
@@ -152,15 +158,13 @@
 
               return done(null, newUserMysql, 'Bienvenido a PhotoTourist');
           } else {
-
-              //var newUserMysql = new Object();
-
               newUserMysql.name = req.user.displayName;
               newUserMysql.avatar = req.user.photos[0].value;
               newUserMysql.user = req.user.username;
 
-              var insertQuery = 'INSERT INTO users (name, user, avatar ) values ("' +
-                  req.user.displayName + '","' + req.user.username + '","' + req.user.photos[0].value + '")';
+              var insertQuery = 'INSERT INTO users (name, user, avatar ) VALUES ("' +
+                  //req.user.displayName + '","' + req.user.username + '","' + req.user.photos[0].value + '")';
+                  req.user.displayName + '","' + req.user.username + '","default.png")';
               //console.log('insertQuery' + insertQuery);
               mysql.connection.query(insertQuery, function(err, rows) {
                   newUserMysql.id = rows.insertId;
@@ -174,8 +178,6 @@
   };
   //Obtenemos el profile
   usersModel.getProfile = function(email,callback){
-
-
       if (mysql.connection) {
           var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
           console.log('getProfile');
@@ -192,30 +194,40 @@
   //Actualizamos el profile
   usersModel.submitProfile = function(data,callback){
       if (mysql.connection) {
-        //update the user
-        console.log(data.surname);
-
         var updateUserMysql = {}; //= new Object();
 
         updateUserMysql.name = data.name;
-        updateUserMysql.last_name = data.surname;
-        updateUserMysql.address = data.adress;
+        updateUserMysql.surname = data.surname;
+        updateUserMysql.address = data.address;
         updateUserMysql.cp = data.cp;
         updateUserMysql.email = data.email;
+        updateUserMysql.avatar = data.avatar;
 
         var changes = 'name = "' + data.name + '", ';
         changes += 'last_name = "' + data.surname + '", ';
-        changes += 'address = "' + data.adress + '", ';
-        changes += 'cp = "' + data.cp + '"';
-
-        console.log(changes);
+        changes += 'address = "' + data.address + '", ';
+        changes += 'cp = "' + data.cp + '", ';
+        changes += 'avatar = "' + data.avatar + '"';
 
         var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
-
 
         mysql.connection.query(updateQuery, function(err, rows) {
             callback(null, updateUserMysql, true);
         });
+      }
+  };
+
+  usersModel.changeToken = function (email, token, callback) {
+      if (mysql.connection) {
+          var sql = 'UPDATE users SET token = "' + token + '" WHERE email = "' + email + '"';
+
+          mysql.connection.query(sql, function (err, rows) {
+              if (err) { throw err; }
+              else {
+                  console.log(rows);
+                  callback(null, rows);
+              }
+          });
       }
   };
 

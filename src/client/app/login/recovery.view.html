@@ -1,0 +1,42 @@
+<div ncy-breadcrumb></div>
+<section id="recovery_page">
+  <div class="titulo">
+      <p class="lead">{{'WELCOME' | translate}}
+      </p>
+      <hr>
+  </div>
+
+  <form id="recovery_form" name="recovery_form" class="">
+    <div class="control_signup">
+      <div class="control_inputs">
+          <label>{{'LABEL' | translate}}</label><br>
+          <input ng-model="vm.inputRecoveryPass1" ng-pattern="/^.{6,12}$/" ng-change="change_signup()" type="password" id="recoveryPass1" name="recoveryPass1" placeholder="{{'PLACEHOLDER-SIGNUP' | translate}}" class="form-inputs" value="" required><br>
+          <span class="error_input" ng-show="recovery_form.recoveryPass1.$error.required && (recovery_form.recoveryPass1.$dirty || recovery_form.recoveryPass1.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
+          <span class="error_input" ng-show="recovery_form.recoveryPass1.$error.pattern">{{'ERROR-3-SIGNUP' | translate}}</span>
+
+          <div id="e_singup_password"></div>
+      </div>
+      <br/>
+
+      <div class="control_inputs">
+            <label>{{'LABEL' | translate}}</label><br>
+            <input ng-model="vm.inputRecoveryPass2" ng-pattern="/^.{6,12}$/" ng-change="change_signup()" type="password" id="recoveryPass2" name="recoveryPass2" placeholder="{{'PLACEHOLDER-SIGNUP' | translate}}" class="form-inputs" value="" required><br>
+            <span class="error_input" ng-show="recovery_form.recoveryPass2.$error.required && (recovery_form.recoveryPass2.$dirty || recovery_form.recoveryPass2.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
+            <span class="error_input" ng-show="recovery_form.recoveryPass2.pattern">{{'ERROR-3-SIGNUP' | translate}}</span>
+
+            <div id="e_singup_password"></div>
+      </div>
+        <br/>
+
+      <div class="control_submit">
+        <button type="Submit" id="submitRecovery" name="submitRecovery" class="btn btn-primary btn-lg centrado" value="ENVIAR"
+        ng-show="recovery_form.recoveryPass1.$valid && recovery_form.recoveryPass2.$valid && (recovery_form.recoveryPass1 == recovery_form.recoveryPass2)" ng-click="vm.submitRecoveryPassword()" >{{'RECOVERY_BUTTON' | translate}}</button>
+      </div>
+      <div class=""><hr></div>
+        <!--/.row-->
+    </div>
+
+</form>
+    <!--/.container-->
+</section>
+<!--/#contact-page-->

@@ -30,6 +30,20 @@
                     facebook: dataservice.signupSocial
                 }
             }
+        },
+        {
+          state: 'recovery',
+          config: {
+            url: '/recovery',
+            templateUrl: 'app/login/recovery.view.html',
+            controller: 'LoginController',
+            controllerAs: 'vm',
+            title: 'PROFILE',
+            ncyBreadcrumb: {
+                //parent: 'profile',
+                label: '{{ "BREAD_RECOVERY" | translate }}'
+            }
+          }
         }];
     }
 })();
