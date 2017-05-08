@@ -10,6 +10,7 @@ module.exports.getProfile = getProfile;
 module.exports.submitProfile = submitProfile;
 module.exports.saveAvatar = saveAvatar;
 module.exports.sendChangePassword = sendChangePassword;
+module.exports.recoveryPassword = recoveryPassword;
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
@@ -104,16 +105,23 @@ function saveAvatar(req, res) {
 }
 
 function sendChangePassword(req, res) {
-    var email = req.body['to'];
-    var token = crypto.randomBytes(20).toString('hex');
-    var send = require('../utils/email.js');
+    Users.submitProfile(req.body,
+        function(err, profile) {
+            if (err){res.send(err);}
+            console.log(profile);
+            res.json(profile);
+        }
+    );
+}
 
-    Users.changeToken(email, token,
-        function (err, callback) {
-            if (err) { res.send(err); }
-
-            console.log(token);
-            send.sendEmail(req, res, token);
+//Funcion para actualizar password
+function recoveryPassword(req, res) {
+  console.log(req.body);
+    Users.recoveryPassword(req.body,
+        function(err, profile) {
+            if (err){res.send(err);}
+            console.log(profile);
+            res.json(profile);
         }
     );
 }

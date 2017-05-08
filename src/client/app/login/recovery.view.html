@@ -14,7 +14,6 @@
           <span class="error_input" ng-show="recovery_form.recoveryPass1.$error.required && (recovery_form.recoveryPass1.$dirty || recovery_form.recoveryPass1.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
           <span class="error_input" ng-show="recovery_form.recoveryPass1.$error.pattern">{{'ERROR-3-SIGNUP' | translate}}</span>
 
-          <div id="e_singup_password"></div>
       </div>
       <br/>
 
@@ -24,13 +23,12 @@
             <span class="error_input" ng-show="recovery_form.recoveryPass2.$error.required && (recovery_form.recoveryPass2.$dirty || recovery_form.recoveryPass2.$touched)">{{'ERROR-1-SIGNUP' | translate}}</span>
             <span class="error_input" ng-show="recovery_form.recoveryPass2.pattern">{{'ERROR-3-SIGNUP' | translate}}</span>
 
-            <div id="e_singup_password"></div>
       </div>
         <br/>
 
       <div class="control_submit">
         <button type="Submit" id="submitRecovery" name="submitRecovery" class="btn btn-primary btn-lg centrado" value="ENVIAR"
-        ng-show="recovery_form.recoveryPass1.$valid && recovery_form.recoveryPass2.$valid && (recovery_form.recoveryPass1 == recovery_form.recoveryPass2)" ng-click="vm.submitRecoveryPassword()" >{{'RECOVERY_BUTTON' | translate}}</button>
+        ng-show="recovery_form.recoveryPass1.$valid && recovery_form.recoveryPass2.$valid && (vm.inputRecoveryPass1 == vm.inputRecoveryPass2)" ng-click="vm.submitRecoveryPassword()" >{{'RECOVERY_BUTTON' | translate}}</button>
       </div>
       <div class=""><hr></div>
         <!--/.row-->

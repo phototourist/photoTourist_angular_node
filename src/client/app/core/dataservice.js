@@ -22,7 +22,8 @@
       getProfile: getProfile,
       submitProfile: submitProfile,
       saveAvatar: saveAvatar,
-      sendChangePassword: sendChangePassword
+      sendChangePassword: sendChangePassword,
+      recoveryPassword: recoveryPassword
     };
     return service;
 
@@ -256,5 +257,21 @@
             return false;
         }
     }
+
+    function recoveryPassword(data) {
+      console.log(data);
+        return $http.post('/api/recoveryPassword', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
+    }
+
   }
 })();

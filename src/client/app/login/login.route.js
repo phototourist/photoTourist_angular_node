@@ -34,7 +34,7 @@
         {
           state: 'recovery',
           config: {
-            url: '/recovery',
+            url: '/recovery/:token',
             templateUrl: 'app/login/recovery.view.html',
             controller: 'LoginController',
             controllerAs: 'vm',

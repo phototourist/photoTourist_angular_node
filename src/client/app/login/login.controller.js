@@ -7,11 +7,11 @@
         .controller('LoginController', LoginController);
 
     LoginController.$inject = ['$translatePartialLoader', 'toastr', '$uibModal',
-        '$rootScope', 'logger', 'dataservice', '$state', '$timeout'
+        '$rootScope', 'logger', 'dataservice', '$state','$stateParams', '$timeout'
     ];
     /* @ngInject */
     function LoginController($translatePartialLoader, toastr, $uibModal,
-        $rootScope, logger, dataservice, $state, $timeout) {
+        $rootScope, logger, dataservice, $state, $stateParams, $timeout) {
         var vm = this;
         vm.title = 'Login';
         vm.inputEmail = '';
@@ -24,6 +24,8 @@
         vm.showRecovery = false;
         vm.recovery = recovery;
         vm.sendRecovery = sendRecovery;
+        vm.submitRecoveryPassword = submitRecoveryPassword;
+        vm.inputRecoveryPass1 ='';
         vm.class = '';
         vm.message = '';
 
@@ -106,6 +108,20 @@
                     vm.class = 'alert alert-success';
                     vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
                 }
+            });
+        }
+
+        function submitRecoveryPassword() {
+          var token = $stateParams.token;
+            //console.log("login");
+            var data = {
+                'pass': vm.inputRecoveryPass1,
+                'token':token,
+            };
+            console.log(data);
+            dataservice.recoveryPassword(data).then(function(response) {
+                console.log(response);
+
             });
         }
 

@@ -231,4 +231,21 @@
       }
   };
 
+  //Actualizamos password
+  usersModel.recoveryPassword = function(data,callback){
+    console.log(data.pass);
+      if (mysql.connection) {
+        var updateUserMysql = {};
+
+        var cryptoPass = password.generateHash(data.pass);
+        console.log(cryptoPass);
+
+        var updateQuery = 'UPDATE users SET pass = "' + cryptoPass + '" WHERE token = "' + data.token + '"';
+
+        mysql.connection.query(updateQuery, function(err, rows) {
+            callback(null, 'Su contraseña se ha cambiado correctamente');
+        });
+      }
+  };
+
   module.exports = usersModel;
