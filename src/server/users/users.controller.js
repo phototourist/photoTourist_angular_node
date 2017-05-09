@@ -19,7 +19,7 @@ function signupUser(req, res, next) {
 
 function login(req, res, next) {
     console.log('login');
-    console.log(req);
+    //console.log(req);
     passport.authenticate('local-login', function(err, user, info) {
         var rows = {
             rows: user,
@@ -35,8 +35,8 @@ function login(req, res, next) {
                 return next(err);
             }
             res.send(rows);
-            console.log('log' + JSON.stringify(req.user));
-            console.log('Session ' + JSON.stringify(req.session));
+            //console.log('log' + JSON.stringify(req.user));
+            //console.log('Session ' + JSON.stringify(req.session));
 
         });
     })(req, res, next);

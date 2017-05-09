@@ -1,13 +1,13 @@
 {
-    "DASHBOARD": "<i class='fa fa-dashboard'></i>Inicio",
-    "CONTACT": "<i class='fa fa-envelope'></i>Contactar",
+    "DASHBOARD": "<i class='fa fa-dashboard'></i> Inicio",
+    "CONTACT": "<i class='fa fa-envelope'></i> Contactar",
     "CAMTOURIST": "<i class='fa fa-map-marker'></i> Camtourist",
     "ADMIN": " <i class='fa fa-lock' ></i> Admin",
     "LANGUAGE_BUTTON": "Idioma",
 
     "LOGIN": "Entrar",
     "HI": "Hola",
-    "LOGOUT":"Salir",
+    "LOGOUT": "Salir",
     "ERROR-1-LOGIN": "El campo es requerido",
     "ERROR-2-LOGIN": "Email no válido",
     "ERROR-3-LOGIN": "Contraseña no válida",

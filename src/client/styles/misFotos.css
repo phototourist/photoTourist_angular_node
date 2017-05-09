@@ -1,10 +1,12 @@
-﻿body {
-    background: #959796 url(../images/wood_bg.jpg);
-}
+﻿body {}
 
 .gallery {
     width: 700px;
     margin: 40px auto;
+}
+
+#matter {
+    background: #959796 url(../images/wood_bg.jpg);
 }
 
 .gallery figure {
