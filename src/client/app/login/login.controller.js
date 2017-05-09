@@ -104,9 +104,12 @@
                         //vm.modal_recovery.recoveryEmail.$error.required = false;
                         close();
                     }, 30);
+                    toastr.success('PhotoTourist te ha enviado un correo. Por favor, sigue las indicaciones', 'Recuperar Password');
+
                 } else {
                     vm.class = 'alert alert-success';
-                    vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
+                    //vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
+                    toastr.error('Error al enviar el email, vuelva a intentarlo mas tarde', 'Error');
                 }
             });
         }
@@ -120,8 +123,12 @@
             };
             console.log(data);
             dataservice.recoveryPassword(data).then(function(response) {
-                console.log(response);
-
+              if (response.data) {
+                      toastr.success('Su contraseña ha sido modificad correctamente', 'Alta');
+                      $state.go('dashboard');
+                  } else {
+                      toastr.error('Error, intentelo de nuevo mas tarde', 'Error');
+                  }
             });
         }
 
