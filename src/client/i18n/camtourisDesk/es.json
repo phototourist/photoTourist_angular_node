@@ -1,0 +1,13 @@
+﻿{
+  "WELCOME": "Forma parte de la Familia PhotoTourist ;)",
+  "ERROR-1-SIGNUP": "El campo es requerido",
+  "ERROR-2-SIGNUP": "Email no válido",
+  "ERROR-3-SIGNUP": "Password no válido",
+  "LABEL": "Contraseña *",
+  "PLACEHOLDER-SIGNUP": "Contraseña",
+  "SIGNUP_BUTTON": "Registrarse",
+  "LOGIN-BUTTON-MODAL": "ACCEDER",
+  "CAMTOURIST-INFO": "Ventana de trabajo del CamTourist",
+  "SUBIR_FOTOS": "Subir fotos",
+  "OPCION": "Elige una opción"
+}

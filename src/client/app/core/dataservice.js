@@ -18,7 +18,10 @@
       submitSignUp: submitSignUp,
       login: login,
       signupSocial: signupSocial,
-      isLoggedin: isLoggedin
+      isLoggedin: isLoggedin,
+      getPhotos: getPhotos,
+      getPhotosByCamtourist: getPhotosByCamtourist,
+      guardarFotosUsuario: guardarFotosUsuario
     };
     return service;
 
@@ -180,10 +183,58 @@
          }
        }
 
-
       function fail(e) {
       return exception.catcher('XHR Failed for /auth/facebook')(e);
       }
+    }
+
+    function getPhotos(data) {
+        console.log(data);
+        return $http.post('/api/getPhotos', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            console.log(response);
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
+    }
+
+    function getPhotosByCamtourist(data) {
+        console.log(data);
+        return $http.post('/api/getPhotosByCamtourist', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            console.log(response);
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
+    }
+    
+
+    function guardarFotosUsuario(data) {
+        console.log(data);
+        return $http.post('/api/guardarFotosUsuario', data)
+            .then(success)
+            .catch(fail);
+
+        function success(response) {
+            console.log(response);
+            return response;
+        }
+
+        function fail() {
+            return false;
+        }
     }
   }
 })();

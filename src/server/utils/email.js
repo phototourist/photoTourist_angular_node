@@ -2,22 +2,26 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
 
-exports.sendEmail = function (req, res) {
+exports.sendEmail = function (req, res, token) {
 
   //template contact recieve
   var emailTo = '';
   var emailFrom = '';
-  var body='';
+  var subject = ' ';
+  var text = ' ';
 
+  var body='';  
+  console.log(req.body.type);
   switch (req.body.type) {
 
       case 'user':
           emailTo = req.body.from;
           emailFrom = 'phototourist.contact@gmail.com';
+          subject = req.body.subject;
 
            body = '<body>' +
                   '<div id="contact-email">' +
-                  '<div> <h1>Contacto con PhotoTourist</h1> <h4>Sugerencia: ' + req.body.subject +
+                  '<div> <h1>Contacto con PhotoTourist</h1> <h4>Sugerencia: ' + subject +
                   '</h4></div>' +
                   '<section>' +
                   '<p>Su petición ha sido recibida por'+
@@ -27,11 +31,34 @@ exports.sendEmail = function (req, res) {
                   '</div>' +
                   ' </body>';
 
+           break;
+
+      case 'camtourist':
+          emailTo = req.body.to;
+          emailFrom = 'phototourist.contact@gmail.com';
+
+          body = '<body>' +
+              '<div id="contact-email">' +
+              '<div> <h1>Tus fotos estan listas con PhotoTourist</h1>'  + 
+              '</div>' +
+              '<section>' +
+              '<p>Su fotos estan listas para ver' +
+              '</p>' +
+              '<p>Para verlas en PhotoTourist pulse en el siguiente enlace' +
+              '<a href="http://localhost:3000/myPhotos/' + token +'"> aqu&iacute;</a></p>' +
+              '</div>' +
+              ' </body>';
+
+          console.log('<a href="http://localhost:3000/Photos/' + token + '"> aqu&iacute;</a></p>');
+
           break;
+
+
       case 'admin':
 
           emailTo = 'phototourist.contact@gmail.com';
           emailFrom = req.body.from;
+          text = req.body.text;
 
            body = '<body>' +
                   '<div id="contact-email">' +
@@ -40,7 +67,7 @@ exports.sendEmail = function (req, res) {
                   '<section>' +
                   'Nombre:<p>' + req.body.name + '</p>' +
                   'Email: <p>' + req.body.from + '</p>' +
-                  'Mensaje:<p>' + req.body.text + '</p></section>' +
+                  'Mensaje:<p>' + text + '</p></section>' +
                   '</div>' +
                   ' </body>';
 
@@ -104,8 +131,8 @@ exports.sendEmail = function (req, res) {
  var email = {
    from: emailFrom,
    to:  emailTo,
-   subject: req.body.subject,
-   text: req.body.text,
+   subject: subject,
+   text: text,
    html: template
  };
 
@@ -116,7 +143,8 @@ exports.sendEmail = function (req, res) {
      }//process.env.SENDMAIL_SECRET_KEY
  };
  var mailer = nodemailer.createTransport(sgTransport(options));
- mailer.sendMail(email, function(error, info){
+ mailer.sendMail(email, function (error, info) {
+     console.log(error);
      if(error){
          res.status('401').json({err: info});
      }else{

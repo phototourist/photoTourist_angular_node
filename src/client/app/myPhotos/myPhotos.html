@@ -1,0 +1,34 @@
+﻿<link rel="stylesheet" href="../../styles/sass/misFotos.css" type='text/css' />
+<link rel="stylesheet" href="../../styles/modalTemplate.css" type='text/css' />
+<section class="mainbar">
+    <section id="matter" class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet">
+                    <div ht-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content user">
+                        <h3>{{'myPhotos-INFO' | translate}}</h3>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <section class="gallery">
+                    <figure ng-repeat="imagen in vm.imagenesSlice" ng-class="'pic-' + ($index + 1) ">
+                        <img style="width:280px; height:180px" ng-src="{{imagen.Path}}" alt="Hipopótamo" ng-click="vm.verFoto(imagen.Path)" />
+                        <figcaption>España</figcaption>
+                    </figure>
+
+                </section>
+                <!--<ht-widget-header show ="vm.mostrarModal" width="750px" height="60%"></ht-widget-header>-->
+                <modal-dialog show="vm.mostrarModal" path="vm.path" width="750px" height="60%"></modal-dialog>
+            </div>
+            <div class="row paginador">
+                <div class="col-lg-12 col-lg-offset-5">
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

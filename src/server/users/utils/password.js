@@ -1,17 +1,22 @@
-var bcrypt   = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt-nodejs');
 
 module.exports.generateHash = generateHash;
 module.exports.validPassword = validPassword;
 
-function generateHash(pass){
+function generateHash(pass) {
 
-return bcrypt.hashSync(pass, bcrypt.genSaltSync(8), null);
+    return bcrypt.hashSync(pass, bcrypt.genSaltSync(8), null);
 
 }
 
 
-function validPassword(pass, password){
+function validPassword(pass, password) {
 
-return bcrypt.compareSync(pass, password);
+    if (password == null) {
+        console.log("password " + password);
+        return false;
+    } else {
+        return bcrypt.compareSync(pass, password);
+    }
 
 }

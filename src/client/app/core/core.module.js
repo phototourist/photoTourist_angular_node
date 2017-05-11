@@ -5,7 +5,7 @@
         .module('app.core', [
             'ngAnimate', 'ngSanitize', 'ngCookies', 'LocalStorageModule',
             'blocks.exception', 'blocks.logger', 'blocks.router',
-            'ui.router', 'ngplus', 'ui.bootstrap', 'pascalprecht.translate', 'ncy-angular-breadcrumb'
+            'ui.router', 'ngplus', 'ui.bootstrap', 'pascalprecht.translate', 'thatisuday.dropzone'
         ])
         //Factoria para detectar los errores en la traduccion
         .factory('MyErrorHandler', function($q, $log) {

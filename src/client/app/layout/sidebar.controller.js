@@ -16,6 +16,7 @@
 
         vm.isCurrent = isCurrent;
         vm.openModal = openModal;
+        //vm.myPhotos = myPhotos;
 
         vm.setLang = setLang;
         $translatePartialLoader.addPart('layout');
@@ -33,7 +34,7 @@
         }
 
         function getNavRoutes() {
-            vm.navRoutes = states.filter(function(r) {
+            vm.navRoutes = states.filter(function (r) {               
                 return r.settings && r.settings.nav;
             }).sort(function(r1, r2) {
                 return r1.settings.nav - r2.settings.nav;
@@ -67,6 +68,12 @@
                 size: 'lg'
             });
         }
+
+        //function myPhotos() {
+        //    console.log('fotos');
+        //    $state.go('myPhotos');
+            
+        //}
 
         function setLang(langKey) {
             // You can change the language during runtime
