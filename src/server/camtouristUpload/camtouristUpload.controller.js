@@ -8,10 +8,10 @@ module.exports.upload = upload;
 module.exports.guardarFotosUsuario = guardarFotosUsuario;
 
 var storage = multer.diskStorage({ //multers disk storage settings
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'src/server/media/')
     },
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         var datetimestamp = Date.now();
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
@@ -21,11 +21,11 @@ var uploads = multer({ //multer settings
 }).any();
 
 
-function upload (req, res, next) {        
+function upload(req, res, next) {
 
-    uploads(req, res, function (err) {
+    uploads(req, res, function(err) {
         if (err) {
-            //console.log(err);
+            console.log(err);
             res.json({ error_code: 1, err_desc: err });
             return;
         }
@@ -35,11 +35,11 @@ function upload (req, res, next) {
 
         //    res.send({ callback });
         //});
-
+        console.log('resize');
         resize(req.files);
 
     })
-        
+
 }
 
 function guardarFotosUsuario(req, res, next) {
@@ -50,11 +50,11 @@ function guardarFotosUsuario(req, res, next) {
     var send = require('../utils/email.js');
 
     for (var i = 0; i < req.body.fotos.length; i++) {
-        fotosPath.push([email, 'src/server/resize/' + req.body.fotos[i].filename, token]);       
+        fotosPath.push([email, 'src/server/resize/' + req.body.fotos[i].filename, token]);
     }
     console.log(fotosPath);
     camtouristUpload.insertPhotos(email, fotosPath,
-        function (err, callback) {
+        function(err, callback) {
             if (err) { res.send(err); }
 
             console.log(callback[0].token);
@@ -64,12 +64,12 @@ function guardarFotosUsuario(req, res, next) {
 
 
 
-    }
+}
 
 
-function resize(files, callback) {     
-   
-    for (var i = 0; i < files.length; i++) {       
+function resize(files, callback) {
+    console.log('dentro resize');
+    for (var i = 0; i < files.length; i++) {
 
         var options = {
             'text': 'PhotoTourist CopyRight',
@@ -78,13 +78,13 @@ function resize(files, callback) {
             'color': ' #285416'
         };
 
-        watermark.embedWatermarkWithCb(files[i].path, options, function (err) {
+        watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
             if (!err) {
-                console.log('Succefully embeded watermark');           
-                              
-            } 
+                console.log('Succefully embeded watermark');
+
+            }
         });
-       
-    }   
-    
+
+    }
+
 }
