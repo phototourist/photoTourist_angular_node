@@ -44,7 +44,7 @@ function upload(req, res, next) {
 }
 
 function guardarFotosUsuario(req, res, next) {
-    //email.sendEmail(req, res);
+    console.log('guardar');;
     var fotosPath = [];
     var email = req.body.to;
     var token = crypto.randomBytes(20).toString('hex');
