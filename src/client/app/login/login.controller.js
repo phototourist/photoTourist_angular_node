@@ -39,15 +39,13 @@
             };
 
             dataservice.submitSignUp(data).then(function(response) {
-
+                console.log(response);
                 if (response.data) {
                     toastr.success('El usuario se ha dado de alta correctamente, revise su correo', 'Alta');
                     $state.go('dashboard');
                 } else {
-                    toastr.error('Error, intentelo de nuevo mas tarde', 'Error');
+                    toastr.error('El nombre de usuario ya exixte', 'Error');
                 }
-
-
             });
         }
 

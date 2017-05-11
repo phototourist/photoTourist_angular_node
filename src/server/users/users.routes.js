@@ -8,14 +8,12 @@ module.exports = function(app) {
     app.post('/api/login',  ControllerUsers.login);
     /////////////////////////////////////////////////////////////////////////////
     app.get('/auth/facebook', ControllerUsers.singinFacebook);
-    app.get('/auth/facebook/callback', passport.authenticate('facebook',
-    { successRedirect : '/successSocial', failureRedirect : '/404'}));
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/successSocial', failureRedirect: '/404' }));
     /////////////////////////////////////////////////////////////////////////////
-    app.get('/auth/success', function(req, res) {res.send(req.user);});
+    app.get('/auth/success', function(req, res) { res.send(req.user); });
     //////////////////////////////////////////////////////////////////////////////
-    app.get('/auth/twitter',   ControllerUsers.singinTwitter);
-    app.get('/auth/twitter/callback', passport.authenticate('twitter',
-     { successRedirect : '/successSocial', failureRedirect : '/404'}));
+    app.get('/auth/twitter', ControllerUsers.singinTwitter);
+    app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/successSocial', failureRedirect: '/404' }));
     //////////////////////////////////////////////////////////////////////////////
     app.get('/api/loggedin', function(req, res) {
       console.log('Logged in EXPRESS'+JSON.stringify(req.user));

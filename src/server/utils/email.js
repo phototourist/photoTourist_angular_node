@@ -11,6 +11,7 @@ exports.sendEmail = function (req, res, token) {
   var text = ' ';
 
   var body ='';
+
   console.log(req.body.type);
   switch (req.body.type) {
 
@@ -50,6 +51,7 @@ exports.sendEmail = function (req, res, token) {
           console.log('<a href="http://localhost:3000/Photos/' + token + '"> aqu&iacute;</a></p>');
 
           break;
+
 
       case 'admin':
           emailTo = 'phototourist.contact@gmail.com';

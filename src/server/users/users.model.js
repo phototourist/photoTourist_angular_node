@@ -5,7 +5,7 @@
   //console.log(connection);
   var usersModel = {};
 
-  usersModel.localSignup = function(email, pass_, callback) {
+  usersModel.localSignup = function(email, pass_, token, callback) {
       console.log('mysql');
       if (mysql.connection) {
           mysql.connection.query('SELECT * FROM users WHERE email = "' + email + '"', function(err, rows) {
@@ -24,11 +24,11 @@
 
                   newUserMysql.email = email;
                   newUserMysql.password = pass_;
+                  newUserMysql.token = token;
 
-                  var insertQuery = 'INSERT INTO users (email, pass, avatar) VALUES ("' + email + '","' + pass_ + '", "default.png")';
+                  var insertQuery = 'INSERT INTO users (email, pass, token, tipo, avatar) values ("' + email + '","' + pass_ + '","' + token + '", "cliente", "default.png")';
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
-
                       callback(null, newUserMysql, true);
                   });
               }
@@ -50,6 +50,7 @@
                   return callback(null, false, 'Usuario no encontrado');
               }
               if (!password.validPassword(pass, rows[0].pass)) {
+                  console.log('ddddddd');
                   return callback(null, false, 'El password utilizado no es valido');
               }
               // all is well, return users
@@ -61,6 +62,7 @@
                   newUserMysql.name = rows[0].name;
                   newUserMysql.avatar = rows[0].avatar;
                   newUserMysql.id = rows[0].id;
+                  newUserMysql.type = rows[0].tipo
 
                   return callback(null, newUserMysql, 'Bienvenido a PhotoTourist');
               }
@@ -95,7 +97,9 @@
                   newUserMysql.user = rows[0].user;
                   newUserMysql.avatar = rows[0].avatar;
                   newUserMysql.id = rows[0].id;
-                  console.log(rows[0].email);
+                  newUserMysql.type = rows[0].tipo;
+
+                  console.log(newUserMysql);
 
                   if (newUserMysql.idFacebook == undefined || newUserMysql.idFacebook == null ||
                     newUserMysql.idFacebook.length == 0 || newUserMysql.idFacebook == '0'){
@@ -115,15 +119,17 @@
                   newUserMysql.name = req.user.name.givenName;
                   newUserMysql.displayName = req.user.displayName;
                   newUserMysql.avatar = req.user.photos[0].value;
+                  newUserMysql.type = 'cliente';
 
-                  var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook) VALUES ("' +
+                  console.log(newUserMysql.displayName);
+
+          var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook, tipo) VALUES ("' +
                       req.user.name.givenName + '","' + req.user.emails[0].value + '", "' +
-                      //req.user.photos[0].value + '","' + req.user.id + '")';
-                      'default.png","' + req.user.id + '")';
+                      req.user.photos[0].value + 'default.png","' + req.user.id + '", "cliente")';
                   //console.log("insertQuery"+ insertQuery);
                   mysql.connection.query(insertQuery, function(err, rows) {
                       newUserMysql.id = rows.insertId;
-                      console.log('facebookLogin ' + rows.insertId);
+                      //console.log(newUserMysql);
                       return done(null, newUserMysql, true);
                   });
               }
@@ -154,17 +160,18 @@
               newUserMysql.displayName = rows[0].displayName;
               newUserMysql.avatar = rows[0].avatar;
               newUserMysql.id = rows[0].id;
-              console.log(rows[0].email);
+              newUserMysql.type = rows[0].tipo;
 
               return done(null, newUserMysql, 'Bienvenido a PhotoTourist');
           } else {
               newUserMysql.name = req.user.displayName;
               newUserMysql.avatar = req.user.photos[0].value;
               newUserMysql.user = req.user.username;
+              newUserMysql.type = 'cliente';
 
-              var insertQuery = 'INSERT INTO users (name, user, avatar ) VALUES ("' +
-                  //req.user.displayName + '","' + req.user.username + '","' + req.user.photos[0].value + '")';
-                  req.user.displayName + '","' + req.user.username + '","default.png")';
+
+              var insertQuery = 'INSERT INTO users (name, user, avatar, tipo) values ("' +
+                  req.user.displayName + '","' + req.user.username + '","' + req.user.photos[0].value + '","default.png", "cliente")';
               //console.log('insertQuery' + insertQuery);
               mysql.connection.query(insertQuery, function(err, rows) {
                   newUserMysql.id = rows.insertId;

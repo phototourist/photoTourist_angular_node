@@ -1,8 +1,9 @@
-CREATE DATABASE  IF NOT EXISTS `photoTouristBD` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `photoTouristBD`;
--- MySQL dump 10.13  Distrib 5.5.55, for debian-linux-gnu (x86_64)
+
+CREATE DATABASE  IF NOT EXISTS `phototouristbd` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `phototouristbd`;
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: photoTouristBD
+-- Host: 127.0.0.1    Database: phototouristbd
 -- ------------------------------------------------------
 -- Server version	5.5.55-0ubuntu0.14.04.1
 
@@ -39,7 +40,7 @@ CREATE TABLE `camtourist` (
   `principal` bit(1) NOT NULL,
   `imagen` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +55,6 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `photos`
---
 
 DROP TABLE IF EXISTS `photos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -74,11 +74,10 @@ CREATE TABLE `photos` (
 
 LOCK TABLES `photos` WRITE;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `photos` VALUES (98,'josando210182@gmail.com','src/server/resize/foto[0]-1493563291216.JPG','0e76886f9d329e6aea7224690892246d26abc657');
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -101,17 +100,13 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('Pedro','','wozniak@hihi.es','','','$2y$10$.tho9j7ZPUvUxTQeii.e5.a42C/iM8QGwWWxjiTnEMca5qYhzj6Fq','https://www.gravatar.com/avatar/8445ae66763802e315dc48322656e7be8445ae66763802e315dc48322656e7be?s=400&d=identicon&r=g','client',0,'Ver6e2bfbcad3f8b70c437bc5dfec361f45',NULL,2,NULL),(NULL,NULL,'vidijds@hfjf.es',NULL,NULL,'$2a$08$bQtr2GVmcYqQDbktv4q92OMqHtCJnPnKjjfZK/nPaizhK7C1weO/C',NULL,NULL,NULL,NULL,NULL,3,NULL),(NULL,NULL,'vieslo82@gmail.com',NULL,NULL,'$2a$08$bo26iQD39WL8LjGiRN1Sx.ZVaGSsYt1Cj16wcaeaSgim1tz5zbyCG',NULL,NULL,NULL,NULL,NULL,4,NULL),('Vicent','Esparza','vieslo@hotmail.es','Av Almaig 8',NULL,'$2a$08$Z7TEINfp7MJ9rF3hzNWezOGC5yK1648qCOQm37Ulev.nCnO8v9YMK','foto-1494265499702.png',NULL,NULL,'0f2f9c132bb2a3b43b24333d79aa6286b411c615',2147483647,10,'46870');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

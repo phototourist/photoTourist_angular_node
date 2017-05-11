@@ -19,8 +19,10 @@ var flash = require('connect-flash');
 var cors = require('cors');
 var environment = process.env.NODE_ENV;
 var ControllerUsers = require('./users/users.controller');
+var multer = require('multer');
+var im = require('imagemagick');
+var watermark = require('image-watermark');
 
-//app.use(cors());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({
@@ -53,6 +55,13 @@ require('./config/routes').routes(app, passport);
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
 
 /*
 switch (environment) {

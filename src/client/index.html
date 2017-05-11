@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
 
-  <head>
+<head>
     <style>
-      /* This helps the ng-show/ng-hide animations start at the right place. */
-      /* Since Angular has this but needs to load, this gives us the class early. */
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
 
-      .ng-hide {
-        display: none!important;
-      }
-
+        .ng-hide {
+            display: none!important;
+        }
     </style>
     <title ng-bind="title">photoTourist</title>
     <meta charset="utf-8"/>
@@ -41,32 +40,34 @@
     <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyBR-8gQxDQ9y5A6JrC1M0cRUoT7Eh9p_-M'></script>
 
     <!-- Código para definir estilo CSS general de la página-->
-    <link href="src/client/styles/style.css" rel='stylesheet' type='text/css'/>
-    <link href="src/client/styles/users.css" rel='stylesheet' type='text/css'/>
+    <link href="src/client/styles/style.css" rel='stylesheet' type='text/css' />
+    <link href="src/client/styles/users.css" rel='stylesheet' type='text/css' />
+    <link href="src/client/styles/menu.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="src/client/styles/signup_view/signup.css" />
     <link rel="stylesheet" href="src/client/styles/custom.css">
     <!-- Código para obtener las tipografías elegidas de Google Font-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
-    <link href="src/client/styles/print.css" media="print" rel='stylesheet' type='text/css'/>
+    <link href="src/client/styles/print.css" media="print" rel='stylesheet' type='text/css' />
 
-  </head>
-  <body>
-      <div>
+</head>
 
-      <div ng-include="'app/layout/shell.html'"></div>
+<body>
+    <div>
 
-      <div id="splash-page" ng-show="showSplash">
-        <div class="page-splash">
-          <div class="page-splash-message">
-            photoTourist
-          </div>
-          <div class="progress progress-striped active page-progress-bar">
-            <div class="bar"></div>
-          </div>
+        <div ng-include="'app/layout/shell.html'"></div>
+
+        <div id="splash-page" ng-show="showSplash">
+            <div class="page-splash">
+                <div class="page-splash-message">
+                    photoTourist
+                </div>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div class="bar"></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- build:js js/lib.js -->
@@ -112,12 +113,14 @@
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/camtourist/camtourist.module.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.module.js"></script>
     <script src="/src/client/app/contact/contact.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/login/login.module.js"></script>
     <script src="/src/client/app/profile/profile.module.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
@@ -127,6 +130,8 @@
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
     <script src="/src/client/app/camtourist/camtourist.controller.js"></script>
     <script src="/src/client/app/camtourist/camtourist.route.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.controller.js"></script>
+    <script src="/src/client/app/camtouristDesk/camtouristDesk.route.js"></script>
     <script src="/src/client/app/contact/contact.controller.js"></script>
     <script src="/src/client/app/contact/contact.route.js"></script>
     <script src="/src/client/app/core/config.js"></script>
@@ -142,14 +147,17 @@
     <script src="/src/client/app/login/login.route.js"></script>
     <script src="/src/client/app/profile/profile.controller.js"></script>
     <script src="/src/client/app/profile/profile.route.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.controller.js"></script>
+    <script src="/src/client/app/myPhotos/myPhotos.route.js"></script>
     <script src="/src/client/app/widgets/configApiGoogleMaps.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
+    <script src="/src/client/app/widgets/modal-dialog.directive.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->
     <!-- endinject -->
     <!-- endbuild -->
-  </body>
+</body>
 
 </html>

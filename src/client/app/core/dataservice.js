@@ -23,7 +23,10 @@
       submitProfile: submitProfile,
       saveAvatar: saveAvatar,
       sendChangePassword: sendChangePassword,
-      recoveryPassword: recoveryPassword
+      recoveryPassword: recoveryPassword,
+      getPhotos: getPhotos,
+      getPhotosByCamtourist: getPhotosByCamtourist,
+      guardarFotosUsuario: guardarFotosUsuario
     };
     return service;
 
@@ -185,7 +188,6 @@
          }
        }
 
-
       function fail(e) {
         return exception.catcher('XHR Failed for /auth/facebook')(e);
       }
@@ -208,7 +210,7 @@
       }
     }
 
-//Función para actualizar Profile al pulsar botón actualizar
+    //Función para actualizar Profile al pulsar botón actualizar
     function submitProfile(data) {
       console.log(data);
       return $http.post('/api/submitProfile', data)
@@ -243,35 +245,83 @@
     }
 
     function sendChangePassword(data) {
-        return $http.post('/api/sendChangePassword', data)
-            .then(success)
-            .catch(fail);
+            return $http.post('/api/sendChangePassword', data)
+                .then(success)
+                .catch(fail);
 
-        function success(response) {
-            console.log('dataservice.saveAvatar.data: ' + data);
-            console.log('dataservice.saveAvatar.response:'  + response);
-            return response;
-        }
+            function success(response) {
+                console.log('dataservice.saveAvatar.data: ' + data);
+                console.log('dataservice.saveAvatar.response:'  + response);
+                return response;
+            }
 
-        function fail() {
-            return false;
+            function fail() {
+                return false;
+            }
         }
-    }
 
     function recoveryPassword(data) {
-      console.log(data);
-        return $http.post('/api/recoveryPassword', data)
+              console.log(data);
+                return $http.post('/api/recoveryPassword', data)
+                    .then(success)
+                    .catch(fail);
+
+                function success(response) {
+                    return response;
+                }
+
+                function fail() {
+                    return false;
+                }
+    }
+
+    function getPhotos(data) {
+            console.log(data);
+            return $http.post('/api/getPhotos', data)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                console.log(response);
+                return response;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
+
+    function getPhotosByCamtourist(data) {
+        console.log(data);
+        return $http.post('/api/getPhotosByCamtourist', data)
+          .then(success)
+          .catch(fail);
+
+        function success(response) {
+        console.log(response);
+          return response;
+        }
+
+        function fail() {
+          return false;
+        }
+    }
+
+
+    function guardarFotosUsuario(data) {
+        console.log(data);
+          return $http.post('/api/guardarFotosUsuario', data)
             .then(success)
             .catch(fail);
 
         function success(response) {
-            return response;
+          console.log(response);
+          return response;
         }
 
         function fail() {
-            return false;
+          return false;
         }
     }
-
   }
 })();

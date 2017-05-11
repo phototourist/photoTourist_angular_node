@@ -20,14 +20,15 @@
                 controller: 'AdminController',
                 controllerAs: 'vm',
                 title: 'ADMIN',
-                settings: {
-                    nav: 2,
-                    content: '<i class="fa fa-lock" ></i> Admin'
-                }/*,
-                ncyBreadcrumb: {
-                    parent: 'dashboard',
-                    label: 'Admin'
-                }*/
+                //settings: {
+                //nav: 2,
+                //content: '<i class="fa fa-lock" ></i> Admin'
+                //}
+                /*,
+                  ncyBreadcrumb: {
+                      parent: 'dashboard',
+                      label: 'Admin'
+                  }*/
             }
         }];
     }

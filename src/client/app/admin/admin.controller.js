@@ -9,6 +9,8 @@
     /* @ngInject */
     function AdminController($translatePartialLoader, logger) {
         var vm = this;
+
+
         vm.title = 'Admin';
 
         $translatePartialLoader.addPart('admin');

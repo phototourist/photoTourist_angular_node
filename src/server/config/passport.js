@@ -6,7 +6,7 @@ var passport = require('passport');
 var mysql = require('./database');
 var password = require('../users/utils/password');
 var usersModel = require('../users/users.model');
-
+var crypto = require('crypto');
 
 
 module.exports = function() {
@@ -18,37 +18,38 @@ module.exports = function() {
     // passport needs ability to serialize and unserialize users out of session
 
     passport.serializeUser(function(user, done) {
-        if (user) { done(null, user.id); }
-
+        if (user) { done(null, user.id); } else done(null, 'undefined');;
         console.log('SERIALIZE USER ' + user.id);
     });
     passport.deserializeUser(function(id, done) {
-        console.log('DESERIALIZE USER ' + id);
-        mysql.connection.query('SELECT * FROM users WHERE id = ' + id, function(err, rows) {
+        if (id != 'undefined') {
+            console.log('DESERIALIZE USER ' + id);
+            mysql.connection.query('select * from users where id = ' + id, function(err, rows) {
+                if (err) { return done(err); }
 
-            if (err) { done(err); }
+                // if no user is found, return the message
+                if (!rows) { return done(null, null); }
+                // all is well, return user
+                else {
 
-            // if no user is found, return the message
-            if (!rows.length) { done(null, null); }
-            // all is well, return user
-            else {
+                    var newUserMysql = {
+                        email: rows[0].email,
+                        name: rows[0].name,
+                        avatar: rows[0].avatar,
+                        id: rows[0].id,
+                        type: rows[0].tipo
+                    }; //= new Object();
+                    /*
+                                                newUserMysql.email = rows[0].email;
+                                                newUserMysql.name = rows[0].name;
+                                                newUserMysql.avatar = rows[0].avatar;
+                                                newUserMysql.id = rows[0].id;
+                    */
+                    return done(err, newUserMysql);
+                }
 
-                var newUserMysql = {
-                    email: rows[0].email,
-                    name: rows[0].name,
-                    avatar: rows[0].avatar,
-                    id: rows[0].id
-                }; //= new Object();
-                /*
-                                            newUserMysql.email = rows[0].email;
-                                            newUserMysql.name = rows[0].name;
-                                            newUserMysql.avatar = rows[0].avatar;
-                                            newUserMysql.id = rows[0].id;
-                */
-                done(err, newUserMysql);
-            }
-
-        });
+            });
+        } else done(null, null);
     });
 
     // =========================================================================
@@ -63,7 +64,9 @@ module.exports = function() {
         function(req, email, pass, done) {
             var pass_ = password.generateHash(pass);
 
-            return usersModel.localSignup(email, pass_, done);
+            var token = crypto.randomBytes(20).toString('hex');
+
+            return usersModel.localSignup(email, pass_, token, done);
         }));
 
     // =========================================================================

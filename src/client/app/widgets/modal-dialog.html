@@ -1,0 +1,11 @@
+﻿<div class='ng-modal' ng-show="show">       
+    <div class='ng-modal-overlay' ng-click="hideModal()"></div>
+    <div class='ng-modal-dialog' ng-style="dialogStyle">
+        <div class='ng-modal-close' ng-click="hideModal()">X</div>
+        <div class='ng-modal-dialog-content' ng-transclude>
+           <img  class='ng-modal-dialog-img' src="{{path}}"/>
+            <br/> <br />
+            <a href="" ng-controller="SidebarController as vm" ng-click="vm.openModal(); hideModal()">QUIERO ESTA FOTO!!</a>
+        </div>
+    </div>
+</div>

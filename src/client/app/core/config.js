@@ -22,12 +22,18 @@
     core.config(configure);
 
     configure.$inject = ['$translatePartialLoaderProvider', '$translateProvider',
-        '$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'
+        '$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider', 'uibPaginationConfig'
     ];
 
     //FUNCIONES TRADUCCION
     function configure($translatePartialLoaderProvider, $translateProvider,
-        $logProvider, routerHelperProvider, exceptionHandlerProvider) {
+        $logProvider, routerHelperProvider, exceptionHandlerProvider, uibPaginationConfig) {
+
+        uibPaginationConfig.nextText = 'Siguiente';
+        uibPaginationConfig.previousText = 'Anterior';
+        
+
+
 
         $translateProvider.registerAvailableLanguageKeys(['ca', 'en', 'es'], {
             'ca-ES': 'ca',

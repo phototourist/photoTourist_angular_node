@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\report\\coverage",
-    "\\report\\coverage\\report-html",
+    "\\report\\coverage\\report-html\\app",
     "\\src",
-    "\\src\\server",
-    "\\src\\server\\users"
+    "\\src\\client",
+    "\\src\\client\\styles"
   ],
-  "SelectedNode": "\\src\\server\\users\\users.controller.js",
+  "SelectedNode": "\\src\\client\\app",
   "PreviewInSolutionExplorer": false
 }
