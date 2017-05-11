@@ -10,7 +10,8 @@ exports.sendEmail = function (req, res, token) {
   var subject = ' ';
   var text = ' ';
 
-  var body='';  
+  var body ='';
+
   console.log(req.body.type);
   switch (req.body.type) {
 
@@ -23,7 +24,6 @@ exports.sendEmail = function (req, res, token) {
                   '<div id="contact-email">' +
                   '<div> <h1>Contacto con PhotoTourist</h1> <h4>Sugerencia: ' + subject +
                   '</h4></div>' +
-                  '<section>' +
                   '<p>Su petición ha sido recibida por'+
                   ' el equipo de PhotoTourist, le atenderemos lo antes posible.</p>' +
                   '<p>Para volver a PhotoTourist pulse en el siguiente enlace'+
@@ -39,9 +39,8 @@ exports.sendEmail = function (req, res, token) {
 
           body = '<body>' +
               '<div id="contact-email">' +
-              '<div> <h1>Tus fotos estan listas con PhotoTourist</h1>'  + 
+              '<div> <h1>Tus fotos estan listas con PhotoTourist</h1>'  +
               '</div>' +
-              '<section>' +
               '<p>Su fotos estan listas para ver' +
               '</p>' +
               '<p>Para verlas en PhotoTourist pulse en el siguiente enlace' +
@@ -55,12 +54,11 @@ exports.sendEmail = function (req, res, token) {
 
 
       case 'admin':
-
           emailTo = 'phototourist.contact@gmail.com';
           emailFrom = req.body.from;
           text = req.body.text;
 
-           body = '<body>' +
+          body = '<body>' +
                   '<div id="contact-email">' +
                   '<div> <h1>Contacto con PhotoTourist</h1> <h4>Sugerencia: ' + req.body.subject +
                   '</h4></div>' +
@@ -72,7 +70,21 @@ exports.sendEmail = function (req, res, token) {
                   ' </body>';
 
           break;
+
       case 'modify':
+          emailTo = req.body.to;
+          emailFrom = 'phototourist.contact@gmail.com';
+          subject = 'Recuperar Contraseña PhotoTourist';
+
+          body = '<body>' +
+              '<div id="contact-email">' +
+              '<div> <h1>Contacto con PhotoTourist</h1> <h4>Sugerencia: ' + subject +
+              '</h4></div>' +
+              '<p>Su contraseña puede ser modificada a través del siguiente enlace' +
+              '<a href="http://localhost:3000/recovery/' + token +'"> aqu&iacute;</a></p>' +
+              //'<a href="http://josando.tk/recovery/' + token +'"> aqu&iacute;</a></p>' +
+              '</div>' +
+              ' </body>';
 
           break;
       case 'signup':

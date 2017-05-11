@@ -1,0 +1,21 @@
+{
+    "WELCOME_PROFILE": "Try to keep your data up to date ;)",
+    "ERROR-1-PROFILE": "The field is required",
+    "ERROR-2-PROFILE": "Email is not valid",
+    "ERROR-3-PROFILE": "Password is not valid",
+    "ERROR-4-PROFILE": "Name is not valid",
+    "ERROR-5-PROFILE": "Postal Code is not valid",
+    "NAME_PROFILE": "Name *",
+    "SURNAME_PROFILE": "Surname",
+    "ADDRESS_PROFILE": "Address",
+    "POSTAL_PROFILE": "Postal Code",
+    "PW_PROFILE": "Password *",
+    "PLACEHOLDER-NAME-PROFILE": "Name",
+    "PLACEHOLDER-SURNAME-PROFILE": "Surname",
+    "PLACEHOLDER-ADDRESS-PROFILE": "Address",
+    "PLACEHOLDER-POSTAL-PROFILE": "Postal Code",
+    "PLACEHOLDER-PW-PROFILE": "Password",
+    "UPLOAD_PHOTO": "Upload Photo",
+    "PROFILE_BUTTON": "Update",
+    "BREAD_PROFILE": "Profile"
+}

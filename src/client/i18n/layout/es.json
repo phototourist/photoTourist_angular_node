@@ -24,5 +24,7 @@
     "FOOTER-TERMS": "Términos",
     "FOOTER-PAYMENT": "Pagos",
     "FOOTER-SHIPPING": "Envíos",
-    "FOOTER-CONTACT": "Contacto"
+    "FOOTER-CONTACT": "Contacto",
+    "RECOVERY":"Recuperar Contraseña",
+    "RECOVERY-BUTTON-MODAL": "Enviar"
 }

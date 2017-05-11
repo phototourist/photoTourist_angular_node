@@ -22,10 +22,9 @@ module.exports = function() {
         console.log('SERIALIZE USER ' + user.id);
     });
     passport.deserializeUser(function(id, done) {
-
         if (id != 'undefined') {
             console.log('DESERIALIZE USER ' + id);
-            mysql.connection.query('select * from users where id = ' + id, function(err, rows) {               
+            mysql.connection.query('select * from users where id = ' + id, function(err, rows) {
                 if (err) { return done(err); }
 
                 // if no user is found, return the message
@@ -63,22 +62,11 @@ module.exports = function() {
             passReqToCallback: true
         },
         function(req, email, pass, done) {
-
             var pass_ = password.generateHash(pass);
-
-            //var token = crypto.randomBytes(20, function (err, buf) {
-            //    var token = buf.toString('hex');
-            //    //done(err, token);
-            //    //console.log(token);
-            //    return token;
-            //});
 
             var token = crypto.randomBytes(20).toString('hex');
 
             return usersModel.localSignup(email, pass_, token, done);
-
-
-
         }));
 
     // =========================================================================
@@ -98,10 +86,7 @@ module.exports = function() {
             }
             // asynchronous
             process.nextTick(function() {
-
                 return usersModel.localLogin(email, pass, done);
-
-
             });
         }));
 
@@ -117,11 +102,7 @@ module.exports = function() {
             passReqToCallback: true
         },
         function(req, token, refreshToken, profile, done) {
-
-
             return usersModel.facebookLogin(req, profile, done);
-
-
         }));
 
     // =========================================================================
@@ -139,7 +120,5 @@ module.exports = function() {
 
             return usersModel.twitterLogin(req, profile, done);
             //  done(null, profile);
-
-
         }));
 };

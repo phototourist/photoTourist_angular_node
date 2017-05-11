@@ -137,7 +137,7 @@
         }
 
         //Funcion para mostrar al mapa los marcadores especificos ciudad
-        $scope.getCityMap = function() { //Preguntar a PERE el Scope
+        $scope.getCityMap = function() { 
             return dataservice.getCityMap($scope.selectedCities.ciudad).then(function(data) {
                 vm.camtourists = data;
                 console.log('getCityMap.data = ' + data);

@@ -6,5 +6,7 @@
     "LABEL": "Password *",
     "PLACEHOLDER-SIGNUP": "Password",
     "SIGNUP_BUTTON": "Sign Up",
-    "LOGIN-BUTTON-MODAL": "ACCESS"
+    "LOGIN-BUTTON-MODAL": "ACCESS",
+    "RECOVERY-BUTTON": "SEND",
+    "BREAD_RECOVERY": "PASSWORD RECOVERY"
 }

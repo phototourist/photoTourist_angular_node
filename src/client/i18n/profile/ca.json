@@ -1,0 +1,21 @@
+{
+    "WELCOME_PROFILE": "Intenta tenir les teves dades al día ;)",
+    "ERROR-1-PROFILE": "El camp es requerit",
+    "ERROR-2-PROFILE": "Email es requerit",
+    "ERROR-3-PROFILE": "Contrasenya no vàlid",
+    "ERROR-4-PROFILE": "Nom no vàlid",
+    "ERROR-5-PROFILE": "Códi Postal no válid",
+    "NAME_PROFILE": "Nom *",
+    "SURNAME_PROFILE": "Cognom",
+    "ADDRESS_PROFILE": "Direcció",
+    "POSTAL_PROFILE": "Codi Postal",
+    "PW_PROFILE": "Contrasenya *",
+    "PLACEHOLDER-NAME-PROFILE": "Nom",
+    "PLACEHOLDER-SURNAME-PROFILE": "Cognom",
+    "PLACEHOLDER-ADDRESS-PROFILE": "Direcció",
+    "PLACEHOLDER-POSTAL-PROFILE": "Codi Postal",
+    "PLACEHOLDER-PW-PROFILE": "Contrasenya",
+    "UPLOAD_PHOTO": "Pujar Foto",
+    "PROFILE_BUTTON": "Actualitzar",
+    "BREAD_PROFILE": "Perfil"
+}
