@@ -24,6 +24,11 @@
                 //nav: 2,
                 //content: '<i class="fa fa-lock" ></i> Admin'
                 //}
+                /*,
+                  ncyBreadcrumb: {
+                      parent: 'dashboard',
+                      label: 'Admin'
+                  }*/
             }
         }];
     }

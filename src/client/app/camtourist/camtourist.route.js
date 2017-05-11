@@ -23,6 +23,10 @@
                 settings: {
                     nav: 3,
                     content: '<i class="fa fa-map-marker"></i> Camtourist'
+                },
+                ncyBreadcrumb: {
+                    parent: 'dashboard',
+                    label: 'Camtourist'
                 }
             }
         }];

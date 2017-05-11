@@ -10,5 +10,6 @@
     "SUBJECT-5": "Email is not valid",
     "PLACEHOLDER-1": "Name *",
     "PLACEHOLDER-2": "Message *",
-    "SEND": "Send"
+    "SEND": "Send",
+    "BREAD_CONTACT": "Contact"
 }

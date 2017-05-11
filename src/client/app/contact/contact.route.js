@@ -22,7 +22,11 @@
                 title: 'CONTACT',
                 settings: {
                     nav: 3,
-                    content: '<i class="fa fa-envelope"> </i> Contact'
+                    content: '<i class="fa fa-envelope"></i> Contact'
+                },
+                ncyBreadcrumb: {
+                    parent: 'dashboard',
+                    label: '{{ "BREAD_CONTACT" | translate }}'
                 }
             }
         }];
