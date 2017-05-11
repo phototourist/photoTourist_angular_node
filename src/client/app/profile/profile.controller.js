@@ -13,14 +13,14 @@
         $rootScope, logger, dataservice, $q, $state) {
         var vm = this;
         vm.title = 'Profile';
-        vm.profileName= '';
-        vm.profileSurname= '';
-        vm.profileAddress= '';
-        vm.profilePostal= '';
+        vm.profileName = '';
+        vm.profileSurname = '';
+        vm.profileAddress = '';
+        vm.profilePostal = '';
         vm.profileEmail = '';
-        vm.profileAvatar ='';
+        vm.profileAvatar = '';
         vm.previousAvatar = '';
-        vm.newAvatar ='';
+        vm.newAvatar = '';
         vm.submitProfile = submitProfile;
         Dropzone.autoDiscover = false;
         vm.inputEmail = '';
@@ -34,10 +34,10 @@
         //Funcion para cargar profile
         function getProfile(email) {
             return dataservice.getProfile(email).then(function(data) {
-                vm.profileName= data[0].name;
-                vm.profileSurname= data[0].last_name;
-                vm.profileAddress= data[0].address;
-                vm.profilePostal= data[0].cp;
+                vm.profileName = data[0].name;
+                vm.profileSurname = data[0].last_name;
+                vm.profileAddress = data[0].address;
+                vm.profilePostal = data[0].cp;
                 vm.profileEmail = data[0].email;
                 vm.previousAvatar = data[0].avatar;
                 vm.profileAvatar = vm.previousAvatar;
@@ -55,21 +55,23 @@
                 'email': vm.profileEmail
             };
 
-            if (vm.newAvatar.length == 0){
-              data['avatar'] = vm.previousAvatar;
+            if (vm.newAvatar.length == 0) {
+                data['avatar'] = vm.previousAvatar;
             } else {
-              data['avatar'] = vm.newAvatar;
+                data['avatar'] = vm.newAvatar;
             }
 
             console.log(data);
 
             dataservice.submitProfile(data).then(function(response) {
                 if (response.data) {
+                    console.log(data.avatar);
                     $rootScope.authUser.avatar = data.avatar;
-                    vm.profileName= data.name;
-                    vm.profileSurname= data.surname;
-                    vm.profileAddress= data.address;
-                    vm.profilePostal= data.cp;
+                    console.log($rootScope.authUser.avatar);
+                    vm.profileName = data.name;
+                    vm.profileSurname = data.surname;
+                    vm.profileAddress = data.address;
+                    vm.profilePostal = data.cp;
                     vm.profileAvatar = vm.previousAvatar;
 
                     //$state.go('dashboard');//ir a modulo MIS FOTOS
@@ -96,21 +98,21 @@
         };
 
         vm.dzCallbacks = {
-            'success': function (file, xhr) {
+            'success': function(file, xhr) {
                 console.log(xhr);
                 vm.newAvatar = xhr.avatar[0].filename;
             },
-            'error': function (file, err) {
+            'error': function(file, err) {
                 console.log(err);
             },
-            'removedfile': function (file, err) {
+            'removedfile': function(file, err) {
                 console.log(err);
                 vm.newAvatar = '';
             }
         };
 
         vm.dzMethods = {};
-        vm.removeNewFile = function () {
+        vm.removeNewFile = function() {
             vm.dzMethods.removeAllFiles(); //We got $scope.newFile from 'addedfile' event callback
         }
 
@@ -125,7 +127,7 @@
                 avatar: avatar
             };
 
-            dataservice.saveAvatar(data).then(function (response) {
+            dataservice.saveAvatar(data).then(function(response) {
                 console.log(response);
                 if (response) {
 
@@ -139,10 +141,10 @@
         activate();
 
         function activate() {
-          var promises = []; // ahi dentro todas las promesas
-          if ($rootScope.authUser !== undefined && $rootScope.authUser != null)
+            var promises = []; // ahi dentro todas las promesas
+            if ($rootScope.authUser !== undefined && $rootScope.authUser != null)
             //console.log('$rootScope.authUser.email: ' + $rootScope.authUser.email);
-            promises = [getProfile($rootScope.authUser.email)];
+                promises = [getProfile($rootScope.authUser.email)];
             return $q.all(promises).then(function() {
                 logger.info('Activated Camtourist View');
             });

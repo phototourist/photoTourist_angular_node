@@ -1,4 +1,3 @@
-
 <div class="header-top" id="home">
     <nav class="navbar navbar">
         <div class="container-fluid">
@@ -45,9 +44,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li class="nav-item" id="userAuthInfo" ng-show="$root.authUser" ui-sref="admin">
-                        <a href="/profile">{{'HI' | translate}}
-                          {{$root.authUser.name }} <img style="width: 25px;" src="{{ $root.authUser.avatar}}" /></a>
+                    <li class="nav-item" id="userAuthInfo" ng-show="$root.authUser">
+                        <a href="/profile">{{'HI' | translate}} {{$root.authUser.name }} <img style="width: 25px;" src="{{ $root.authUser.avatar}}" /></a>
                     </li>
 
                     <!-- Logout button -->

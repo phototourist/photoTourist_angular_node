@@ -102,7 +102,7 @@
                   console.log(newUserMysql);
 
                   if (newUserMysql.idFacebook == undefined || newUserMysql.idFacebook == null ||
-                    newUserMysql.idFacebook.length == 0 || newUserMysql.idFacebook == '0'){
+                      newUserMysql.idFacebook.length == 0 || newUserMysql.idFacebook == '0') {
                       var updateIdFacebookQuery = 'UPDATE users SET id_facebook = "' +
                           req.user.id + '" WHERE email = "' + newUserMysql.email + '"';
 
@@ -123,7 +123,7 @@
 
                   console.log(newUserMysql.displayName);
 
-          var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook, tipo) VALUES ("' +
+                  var insertQuery = 'INSERT INTO users (name, email, avatar, id_facebook, tipo) VALUES ("' +
                       req.user.name.givenName + '","' + req.user.emails[0].value + '", "' +
                       req.user.photos[0].value + 'default.png","' + req.user.id + '", "cliente")';
                   //console.log("insertQuery"+ insertQuery);
@@ -184,14 +184,14 @@
 
   };
   //Obtenemos el profile
-  usersModel.getProfile = function(email,callback){
+  usersModel.getProfile = function(email, callback) {
       if (mysql.connection) {
           var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
           console.log('getProfile');
           mysql.connection.query(sql, function(error, row) {
-              if(error){
+              if (error) {
                   throw error;
-              }else{
+              } else {
                   callback(null, row);
               }
           });
@@ -199,38 +199,37 @@
   };
 
   //Actualizamos el profile
-  usersModel.submitProfile = function(data,callback){
+  usersModel.submitProfile = function(data, callback) {
       if (mysql.connection) {
-        var updateUserMysql = {}; //= new Object();
+          var updateUserMysql = {}; //= new Object();
 
-        updateUserMysql.name = data.name;
-        updateUserMysql.surname = data.surname;
-        updateUserMysql.address = data.address;
-        updateUserMysql.cp = data.cp;
-        updateUserMysql.email = data.email;
-        updateUserMysql.avatar = data.avatar;
+          updateUserMysql.name = data.name;
+          updateUserMysql.surname = data.surname;
+          updateUserMysql.address = data.address;
+          updateUserMysql.cp = data.cp;
+          updateUserMysql.email = data.email;
+          updateUserMysql.avatar = data.avatar;
 
-        var changes = 'name = "' + data.name + '", ';
-        changes += 'last_name = "' + data.surname + '", ';
-        changes += 'address = "' + data.address + '", ';
-        changes += 'cp = "' + data.cp + '", ';
-        changes += 'avatar = "' + data.avatar + '"';
+          var changes = 'name = "' + data.name + '", ';
+          changes += 'last_name = "' + data.surname + '", ';
+          changes += 'address = "' + data.address + '", ';
+          changes += 'cp = "' + data.cp + '", ';
+          changes += 'avatar = "src/server/users/avatars/' + data.avatar + '"';
 
-        var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
-
-        mysql.connection.query(updateQuery, function(err, rows) {
-            callback(null, updateUserMysql, true);
-        });
+          var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
+          console.log(updateQuery);
+          mysql.connection.query(updateQuery, function(err, rows) {
+              callback(null, updateUserMysql, true);
+          });
       }
   };
 
-  usersModel.changeToken = function (email, token, callback) {
+  usersModel.changeToken = function(email, token, callback) {
       if (mysql.connection) {
           var sql = 'UPDATE users SET token = "' + token + '" WHERE email = "' + email + '"';
 
-          mysql.connection.query(sql, function (err, rows) {
-              if (err) { throw err; }
-              else {
+          mysql.connection.query(sql, function(err, rows) {
+              if (err) { throw err; } else {
                   console.log(rows);
                   callback(null, rows);
               }
@@ -239,19 +238,19 @@
   };
 
   //Actualizamos password
-  usersModel.recoveryPassword = function(data,callback){
-    console.log(data.pass);
+  usersModel.recoveryPassword = function(data, callback) {
+      console.log(data.pass);
       if (mysql.connection) {
-        var updateUserMysql = {};
+          var updateUserMysql = {};
 
-        var cryptoPass = password.generateHash(data.pass);
-        console.log(cryptoPass);
+          var cryptoPass = password.generateHash(data.pass);
+          console.log(cryptoPass);
 
-        var updateQuery = 'UPDATE users SET pass = "' + cryptoPass + '" WHERE token = "' + data.token + '"';
+          var updateQuery = 'UPDATE users SET pass = "' + cryptoPass + '" WHERE token = "' + data.token + '"';
 
-        mysql.connection.query(updateQuery, function(err, rows) {
-            callback(null, 'Su contraseña se ha cambiado correctamente');
-        });
+          mysql.connection.query(updateQuery, function(err, rows) {
+              callback(null, 'Su contraseña se ha cambiado correctamente');
+          });
       }
   };
 
