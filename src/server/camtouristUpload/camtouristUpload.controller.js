@@ -80,6 +80,7 @@ function resize(files, callback) {
         };
 
         watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
+            console.log(err);
             if (!err) {
                 console.log('Succefully embeded watermark');
 
