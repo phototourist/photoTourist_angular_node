@@ -97,6 +97,8 @@
 
             dataservice.sendChangePassword(data).then(function (response) {
                 console.log(response);
+                console.log(data);
+
 
                 if (response) {
                     vm.inputEmail = '';
@@ -104,7 +106,7 @@
                         //vm.modal_recovery.recoveryEmail.$error.required = false;
                         close();
                     }, 30);
-                    toastr.success('PhotoTourist te ha enviado un correo. Por favor, sigue las indicaciones', 'Recuperar Password');
+                    //toastr.success('PhotoTourist te ha enviado un correo. Por favor, sigue las indicaciones', 'Recuperar Password');
 
                 } else {
                     vm.class = 'alert alert-success';
@@ -124,7 +126,7 @@
             console.log(data);
             dataservice.recoveryPassword(data).then(function(response) {
               if (response.data) {
-                      toastr.success('Su contraseña ha sido modificad correctamente', 'Alta');
+                      toastr.success('Su contraseña ha sido modificada correctamente', 'Alta');
                       $state.go('dashboard');
                   } else {
                       toastr.error('Error, intentelo de nuevo mas tarde', 'Error');
