@@ -19,6 +19,11 @@
       login: login,
       signupSocial: signupSocial,
       isLoggedin: isLoggedin,
+      getProfile: getProfile,
+      submitProfile: submitProfile,
+      saveAvatar: saveAvatar,
+      sendChangePassword: sendChangePassword,
+      recoveryPassword: recoveryPassword,
       getPhotos: getPhotos,
       getPhotosByCamtourist: getPhotosByCamtourist,
       guardarFotosUsuario: guardarFotosUsuario
@@ -184,18 +189,53 @@
        }
 
       function fail(e) {
-      return exception.catcher('XHR Failed for /auth/facebook')(e);
+        return exception.catcher('XHR Failed for /auth/facebook')(e);
       }
     }
 
-    function getPhotos(data) {
-        console.log(data);
-        return $http.post('/api/getPhotos', data)
+    //Función para mostrar marcadores según ciudad
+    function getProfile(email) {
+      return $http.get('/api/getProfile/' + email)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        //console.log("dataservice.getProfile.success: ");
+        return response.data;
+      }
+
+      function fail(e) {
+        //console.log("dataservice.getProfile.fail: ");
+        return exception.catcher('XHR Failed for camtouristCiudad')(e);
+      }
+    }
+
+    //Función para actualizar Profile al pulsar botón actualizar
+    function submitProfile(data) {
+      console.log(data);
+      return $http.post('/api/submitProfile', data)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        console.log(response);
+        return response;
+      }
+
+      function fail() {
+        return false;
+      }
+    }
+
+    //Función para guardar Avatar
+    function saveAvatar(data) {
+        return $http.post('/api/saveAvatar', data)
             .then(success)
             .catch(fail);
 
         function success(response) {
-            console.log(response);
+            console.log('dataservice.saveAvatar.data: ' + data);
+            console.log('dataservice.saveAvatar.response:'  + response);
             return response;
         }
 
@@ -203,37 +243,84 @@
             return false;
         }
     }
+
+    function sendChangePassword(data) {
+            return $http.post('/api/sendChangePassword', data)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                console.log('dataservice.saveAvatar.data: ' + data);
+                console.log('dataservice.saveAvatar.response:'  + response);
+                return response;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
+
+    function recoveryPassword(data) {
+              console.log(data);
+                return $http.post('/api/recoveryPassword', data)
+                    .then(success)
+                    .catch(fail);
+
+                function success(response) {
+                    return response;
+                }
+
+                function fail() {
+                    return false;
+                }
+    }
+
+    function getPhotos(data) {
+            console.log(data);
+            return $http.post('/api/getPhotos', data)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                console.log(response);
+                return response;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
 
     function getPhotosByCamtourist(data) {
         console.log(data);
         return $http.post('/api/getPhotosByCamtourist', data)
-            .then(success)
-            .catch(fail);
+          .then(success)
+          .catch(fail);
 
         function success(response) {
-            console.log(response);
-            return response;
+        console.log(response);
+          return response;
         }
 
         function fail() {
-            return false;
+          return false;
         }
     }
-    
+
 
     function guardarFotosUsuario(data) {
         console.log(data);
-        return $http.post('/api/guardarFotosUsuario', data)
+          return $http.post('/api/guardarFotosUsuario', data)
             .then(success)
             .catch(fail);
 
         function success(response) {
-            console.log(response);
-            return response;
+          console.log(response);
+          return response;
         }
 
         function fail() {
-            return false;
+          return false;
         }
     }
   }

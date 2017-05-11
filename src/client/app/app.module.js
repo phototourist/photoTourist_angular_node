@@ -10,8 +10,8 @@
     'app.layout',
     'app.contact',
     'app.login',
-      'app.myPhotos',
-      'app.camtouristDesk'
-
+    'app.profile',
+    'app.myPhotos',
+    'app.camtouristDesk'
   ]);
 })();
