@@ -217,7 +217,7 @@
           changes += 'avatar = "src/server/users/avatars/' + data.avatar + '"';
 
           var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
-          console.log(updateQuery);
+          //console.log(updateQuery);
           mysql.connection.query(updateQuery, function(err, rows) {
               callback(null, updateUserMysql, true);
           });
