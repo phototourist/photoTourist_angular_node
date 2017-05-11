@@ -29,7 +29,7 @@ function upload(req, res, next) {
             res.json({ error_code: 1, err_desc: err });
             return;
         }
-        res.send({ error_code: 0, fotos: req.files });
+
         //resize(req.files, function (err, callback) {         
         //    if (err) res.json({ error_code: 1, err_desc: err });
 
@@ -37,6 +37,7 @@ function upload(req, res, next) {
         //});
         console.log('resize');
         resize(req.files);
+        res.send({ error_code: 0, fotos: req.files });
 
     })
 
