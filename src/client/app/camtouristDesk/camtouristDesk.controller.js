@@ -41,7 +41,7 @@
                 console.log(xhr);
                 vm.removeNewFile();
                 console.log('fotos guardadas con exito');
-                //vm.guardarFotosUsuario(xhr.fotos);
+                vm.guardarFotosUsuario(xhr.fotos);
             },
             'error': function(file, err) {
                 console.log(err);
