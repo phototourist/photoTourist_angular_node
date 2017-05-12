@@ -36,8 +36,8 @@ function upload(req, res, next) {
         //    res.send({ callback });
         //});
         console.log('resize');
-        resize(req.files);
-        res.send({ error_code: 0, fotos: req.files });
+        resize(req.files, res);
+        //res.send({ error_code: 0, fotos: req.files });
 
     })
 
@@ -68,7 +68,7 @@ function guardarFotosUsuario(req, res, next) {
 }
 
 
-function resize(files, callback) {
+function resize(files, res) {
     console.log('dentro resize');
     for (var i = 0; i < files.length; i++) {
 
@@ -83,7 +83,10 @@ function resize(files, callback) {
             console.log(err);
             if (!err) {
                 console.log('Succefully embeded watermark');
-
+                res.send({ error_code: 0, fotos: true });
+            } else {
+                console.log('fallo');
+                res.send({ error_code: 1, fotos: false });
             }
         });
 

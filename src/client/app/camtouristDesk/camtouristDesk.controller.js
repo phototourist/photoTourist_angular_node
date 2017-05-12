@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -34,22 +34,23 @@
         };
 
         vm.dzCallbacks = {
-            'addedfile': function (file) {
+            'addedfile': function(file) {
                 vm.newFile = file;
             },
-            'successmultiple': function (file, xhr) {
+            'successmultiple': function(file, xhr) {
                 console.log(xhr);
                 vm.removeNewFile();
-                vm.guardarFotosUsuario(xhr.fotos);
+                console.log('fotos guardadas con exito');
+                //vm.guardarFotosUsuario(xhr.fotos);
             },
-            'error': function (file, err) {
+            'error': function(file, err) {
                 console.log(err);
 
             }
         };
 
         vm.dzMethods = {};
-        vm.removeNewFile = function () {
+        vm.removeNewFile = function() {
             vm.dzMethods.removeAllFiles(); //We got $scope.newFile from 'addedfile' event callback
         }
 
@@ -69,29 +70,29 @@
                 to: vm.inputEmail,
                 type: 'camtourist'
             };
-                
-            dataservice.guardarFotosUsuario(data).then(function (response) {
+
+            dataservice.guardarFotosUsuario(data).then(function(response) {
                 console.log(response);
 
-                        if (response) {
+                if (response) {
 
-                            vm.inputEmail = '';
-                            $timeout(function () {
+                    vm.inputEmail = '';
+                    $timeout(function() {
 
-                                //vm.camtouristView.inputEmail.$error.required = false;
-                                vm.camtouristView.inputEmail.$error.required = false;
+                        //vm.camtouristView.inputEmail.$error.required = false;
+                        vm.camtouristView.inputEmail.$error.required = false;
 
-                            }, 30);                          
-                            
+                    }, 30);
 
-                        } else {
-                            vm.class = 'alert alert-success';
-                            vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
-                        }
-                    });
 
-               
-           
+                } else {
+                    vm.class = 'alert alert-success';
+                    vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
+                }
+            });
+
+
+
 
         }
 
