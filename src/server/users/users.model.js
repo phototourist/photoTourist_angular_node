@@ -186,7 +186,8 @@
   //Obtenemos el profile
   usersModel.getProfile = function(email, callback) {
       if (mysql.connection) {
-          var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
+          var sql = 'SELECT COALESCE(name, \'\') AS name, COALESCE(last_name, \'\') AS last_name, COALESCE(email, \'\') AS email, COALESCE(address, \'\') AS address, COALESCE(avatar, \'\') AS avatar, COALESCE(cp, \'\') AS cp FROM users WHERE email = "' + email + '"';
+          //var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
           console.log('getProfile');
           mysql.connection.query(sql, function(error, row) {
               if (error) {
@@ -226,14 +227,39 @@
 
   usersModel.changeToken = function(email, token, callback) {
       if (mysql.connection) {
-          var sql = 'UPDATE users SET token = "' + token + '" WHERE email = "' + email + '"';
+          var sql = 'SELECT * FROM users WHERE email = "' + email + '"';
+
+          mysql.connection.query(sql, function(err, rows) {
+              if (err) {
+                  throw err;
+              } else if (rows.length === 0){
+                  //callback(null, rows);
+                  var error = {};
+                  error.messageError = 'El mail introducido no existe en nuestra base de datos';
+                  callback(null, error);
+              }
+               else {
+                  var sql2 = 'UPDATE users SET token = "' + token + '" WHERE email = "' + email + '"';
+
+                  mysql.connection.query(sql2, function(err2, rows2) {
+                       if (err2) {
+                          throw err2;
+                       } else {
+                          console.log(rows2);
+                          callback(null, rows2);
+                       }
+                  });
+              }
+          });
+
+          /*var sql = 'UPDATE users SET token = "' + token + '" WHERE email = "' + email + '"';
 
           mysql.connection.query(sql, function(err, rows) {
               if (err) { throw err; } else {
                   console.log(rows);
                   callback(null, rows);
               }
-          });
+          });*/
       }
   };
 

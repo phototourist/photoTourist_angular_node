@@ -10,7 +10,8 @@
                 <a>
                     {{'HI' | translate}}
                     {{$root.authUser.name }}
-                    <img src="{{ $root.authUser.avatar}}" />
+                    <!--<img src="{{ $root.authUser.avatar}}" />-->
+                    <img ng-src="src/server/users/avatars/{{$root.authUser.avatar}}" style="width:20px;"/>
                 </a>
             </div>
             <div class="clearfix"></div>

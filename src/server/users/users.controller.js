@@ -74,7 +74,6 @@ function singinTwitter(req, res, next) {
 function getProfile(req, res) {
     Users.getProfile(req.params['email'],
         function(err, profile) {
-          console.log('users.controller.getprofile');
             if (err){res.send(err);}
             res.json(profile);
         }
@@ -105,13 +104,22 @@ function saveAvatar(req, res) {
 }
 
 function sendChangePassword(req, res) {
-    Users.submitProfile(req.body,
-        function(err, profile) {
-            if (err){res.send(err);}
-            console.log(profile);
-            res.json(profile);
-        }
-    );
+  var email = req.body['to'];
+  var token = crypto.randomBytes(20).toString('hex');
+  var send = require('../utils/email.js');
+
+  Users.changeToken(email, token,
+      function (err, callback) {
+          if (err) {
+              res.send(err);
+          }
+          if (!callback.messageError)
+          {
+            send.sendEmail(req, res, token);
+          }
+          res.json(callback);
+      }
+  );
 }
 
 //Funcion para actualizar password

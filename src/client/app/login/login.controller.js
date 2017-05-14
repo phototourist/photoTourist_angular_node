@@ -26,8 +26,6 @@
         vm.sendRecovery = sendRecovery;
         vm.submitRecoveryPassword = submitRecoveryPassword;
         vm.inputRecoveryPass1 ='';
-        vm.class = '';
-        vm.message = '';
 
         $translatePartialLoader.addPart('login');
 
@@ -94,21 +92,17 @@
             };
 
             dataservice.sendChangePassword(data).then(function (response) {
-                console.log(response);
-                console.log(data);
-
-
                 if (response) {
-                    vm.inputEmail = '';
-                    $timeout(function () {
-                        //vm.modal_recovery.recoveryEmail.$error.required = false;
-                        close();
-                    }, 30);
-                    //toastr.success('PhotoTourist te ha enviado un correo. Por favor, sigue las indicaciones', 'Recuperar Password');
-
+                    if (!response.data.messageError) {
+                        vm.inputEmail = '';
+                        $timeout(function () {
+                            close();
+                          }, 30);
+                          toastr.success('PhotoTourist te ha enviado un correo. Por favor, sigue las indicaciones', 'Recuperar Password');
+                    } else {
+                        toastr.error(response.data.messageError, 'Error');
+                    }
                 } else {
-                    vm.class = 'alert alert-success';
-                    //vm.message = 'Error al enviar el email, vuelva a intentarlo mas tarde';
                     toastr.error('Error al enviar el email, vuelva a intentarlo mas tarde', 'Error');
                 }
             });
@@ -116,12 +110,10 @@
 
         function submitRecoveryPassword() {
           var token = $stateParams.token;
-            //console.log("login");
             var data = {
                 'pass': vm.inputRecoveryPass1,
                 'token':token,
             };
-            console.log(data);
             dataservice.recoveryPassword(data).then(function(response) {
               if (response.data) {
                       toastr.success('Su contraseña ha sido modificada correctamente', 'Alta');
