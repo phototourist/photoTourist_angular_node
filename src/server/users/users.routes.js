@@ -1,4 +1,4 @@
- var ControllerUsers = require('./users.controller');
+var ControllerUsers = require('./users.controller');
 var passport = require('passport');
 
 module.exports = function(app) {
@@ -22,7 +22,7 @@ module.exports = function(app) {
     /////////////////////////////////////////////////////////////////////////////
     app.get('/api/logout', function (req, res){
       req.session.destroy(function (err) {
-        res.redirect('/'); //Inside a callback… bulletproof!
+        res.redirect('/');
       });
     });
     /////////////////////////////////////////////////////////////////////////////

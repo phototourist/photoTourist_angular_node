@@ -255,8 +255,9 @@
                 return response;
             }
 
-            function fail() {
+            function fail(response) {
                 return false;
+                //return { error: response };
             }
         }
 
