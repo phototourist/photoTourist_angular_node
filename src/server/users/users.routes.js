@@ -31,4 +31,6 @@ module.exports = function(app) {
     app.post('/api/saveAvatar', ControllerUsers.saveAvatar);
     app.post('/api/sendChangePassword', ControllerUsers.sendChangePassword);
     app.post('/api/recoveryPassword', ControllerUsers.recoveryPassword);
+    app.get('/api/getUsersToAdmin', ControllerUsers.getUsersToAdmin);
+    app.post('/api/deleteUserToAdmin', ControllerUsers.deleteUserToAdmin);
 };

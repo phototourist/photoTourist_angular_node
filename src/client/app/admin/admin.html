@@ -1,19 +1,71 @@
 <!--<div ncy-breadcrumb></div>-->
 <section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wviolet">
-                    <div ht-widget-header title="{{vm.title}}"></div>
-
-                    <div class="widget-content user">
-                        <h3>{{'ADMIN-INFO' | translate}}</h3>
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
-                    </div>
+    <section style="float:left; width:20%; height:500px;">
+      <ul>
+        <li><a href="#" ng-click="vm.cambiarCrud('users')"><i class="fa fa-users"></i>  {{'USERS' | translate}}</a></li>
+        <li><a href="#" ng-click="vm.cambiarCrud('camtourist')"><i class="fa fa-camera"></i>  CAMTOURIST</a></li>
+        <li><a href="#" ng-click="vm.cambiarCrud('photos')"><i class="fa fa-picture-o"></i>  {{'PHOTOS' | translate}}</a></li>
+      </ul>
+    </section>
+    <section style="display: inline-block; width: 74%;">
+        <!-- USERS -->
+        <div class="widget wgreen" style="width:auto;" ng-show="vm.crud == 'users'">
+            <div ht-widget-header title="{{'YOUR_SIMULATIONS' | translate}}" allow-collapse="true"></div>
+                <div class="widget-content text-center text-info">
+                    <table class="table table-condensed table-striped" style="text-align: left;">
+                        <thead>
+                            <tr>
+                                <!--<th>Id</th>-->
+                                <th>{{'USER_NAME' | translate}}</th>
+                                <th>{{'USER_LAST_NAME' | translate}}</th>
+                                <th>{{'USER_EMAIL' | translate}}</th>
+                                <th>{{'USER_TYPE' | translate}}</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in vm.users">
+                                <!--<td>
+                                    <a style="cursor: pointer;" ui-sref="userEdit({idUser: user.$id})">{{$index+1}}
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </td>-->
+                                <td>{{user.name}}</td>
+                                <td>{{user.last_name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.tipo}}</td>
+                                <td>
+                                    <a title="{{'USER_DETAIL' | translate}}">
+                                        <i class="fa fa-user" style="cursor: pointer;" ng-click="vm.leerUsuario(user)" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a title="{{'USER_EDIT' | translate}}">
+                                        <i class="fa fa-pencil" style="cursor: pointer;" ng-click="vm.editarUsuario(user)" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a title="{{'USER_DELETE' | translate}}">
+                                        <i class="fa fa-trash-o" style="cursor: pointer;" ng-click="vm.eliminarUsuario(user)" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </section>
+            <!-- CAMTOURIST -->
+            <div ng-show="vm.crud == 'camtourist'">
+                CAMTOURIST
+            </div>
+            <!-- PHOTOS -->
+            <div ng-show="vm.crud == 'photos'">
+                PHOTOS
+            </div>
+        </section>
+        <div class="widget-foot">
+            <div class="clearfix"></div>
+      </div>
 </section>

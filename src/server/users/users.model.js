@@ -280,4 +280,33 @@
       }
   };
 
+
+
+  usersModel.getUsersToAdmin = function(callback){
+      if (mysql.connection) {
+          mysql.connection.query('SELECT * FROM users ORDER BY id', function(error, rows) {
+              if(error){
+                  throw error;
+              }else{
+                console.log(rows);
+                  callback(null, rows);
+              }
+          });
+      }
+  };
+
+  usersModel.deleteUserToAdmin = function(data, callback){
+      if (mysql.connection) {
+          mysql.connection.query('DELETE FROM users WHERE id = ' + data.id, function(error, rows) {
+              if(error){
+                  throw error;
+              }else{
+                console.log(rows);
+                  callback(null, rows);
+              }
+          });
+      }
+  };
+
+
   module.exports = usersModel;

@@ -19,6 +19,15 @@
                             <i class="fa fa-sign-in"></i> {{'LOGIN' | translate}}
                         </a>
                     </li>
+
+
+                    <li ng-show="$root.authUser.type == 'admin'">
+                        <a role="button" href="/admin">
+                            <i class="fa fa-key"></i> Admin
+                        </a>
+                    </li>
+
+
                     <li ng-show="$root.authUser.type == 'cliente'">
                         <a role="button" ui-sref="myPhotos">
                             <i class="fa fa-sign-in"></i> {{'MyPhotos' | translate}}

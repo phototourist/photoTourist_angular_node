@@ -1,3 +1,14 @@
 {
-    "ADMIN-INFO": "Hello ADMIN ;)"
+    "ADMIN-INFO": "Hello ADMIN ;)",
+    "USERS":"USERS",
+    "PHOTOS":"PHOTOS",
+    "USER_NAME":"Name",
+    "USER_LAST_NAME":"Last Name",
+    "USER_EMAIL":"Email",
+    "USER_TYPE":"Type",
+    "USER_DETAIL":"View",
+    "USER_EDIT":"Edit",
+    "USER_DELETE":"Delete",
+    "USER":"User",
+    "USER_MODAL_BUTTON":"MODIFY"
 }
