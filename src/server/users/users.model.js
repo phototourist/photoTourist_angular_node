@@ -210,12 +210,15 @@
           updateUserMysql.cp = data.cp;
           updateUserMysql.email = data.email;
           updateUserMysql.avatar = data.avatar;
+          updateUserMysql.type = data.type;
 
           var changes = 'name = "' + data.name + '", ';
           changes += 'last_name = "' + data.surname + '", ';
           changes += 'address = "' + data.address + '", ';
           changes += 'cp = "' + data.cp + '", ';
-          changes += 'avatar = "src/server/users/avatars/' + data.avatar + '"';
+          //changes += 'avatar = "src/server/users/avatars/' + data.avatar + '", ';
+          changes += 'avatar = "' + data.avatar + '", ';
+          changes += 'tipo = "' + data.type + '"';
 
           var updateQuery = 'UPDATE users SET ' + changes + ' WHERE email = "' + data.email + '"';
           //console.log(updateQuery);

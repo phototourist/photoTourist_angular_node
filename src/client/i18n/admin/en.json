@@ -4,11 +4,14 @@
     "PHOTOS":"PHOTOS",
     "USER_NAME":"Name",
     "USER_LAST_NAME":"Last Name",
+    "USER_ADDRESS":"Address",
+    "USER_POSTAL_CODE":"Postal Code",
     "USER_EMAIL":"Email",
     "USER_TYPE":"Type",
     "USER_DETAIL":"View",
     "USER_EDIT":"Edit",
     "USER_DELETE":"Delete",
     "USER":"User",
-    "USER_MODAL_BUTTON":"MODIFY"
+    "USER_MODAL_BUTTON":"MODIFY",
+    "ERROR_MODAL": "Field is not valid"
 }

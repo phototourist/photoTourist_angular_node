@@ -16,6 +16,16 @@
                         <thead>
                             <tr>
                                 <!--<th>Id</th>-->
+                                <th><input ng-model="vm.filterUser.name" type="input" placeholder="{{'USER_NAME' | translate}}" class="form_inputs" ng-change="vm.filterUsers()"></th>
+                                <th><input ng-model="vm.filterUser.last_name" type="input" placeholder="{{'USER_LAST_NAME' | translate}}" class="form_inputs" ng-change="vm.filterUsers()"></th>
+                                <th><input ng-model="vm.filterUser.email" type="input" placeholder="{{'USER_EMAIL' | translate}}" class="form_inputs" ng-change="vm.filterUsers()"></th>
+                                <th><input ng-model="vm.filterUser.type" type="input" placeholder="{{'USER_TYPE' | translate}}" class="form_inputs" ng-change="vm.filterUsers()"></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <!--<th>Id</th>-->
                                 <th>{{'USER_NAME' | translate}}</th>
                                 <th>{{'USER_LAST_NAME' | translate}}</th>
                                 <th>{{'USER_EMAIL' | translate}}</th>
@@ -26,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in vm.users">
+                            <tr ng-repeat="user in vm.usersFilterPagined">
                                 <!--<td>
                                     <a style="cursor: pointer;" ui-sref="userEdit({idUser: user.$id})">{{$index+1}}
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -38,7 +48,7 @@
                                 <td>{{user.tipo}}</td>
                                 <td>
                                     <a title="{{'USER_DETAIL' | translate}}">
-                                        <i class="fa fa-user" style="cursor: pointer;" ng-click="vm.leerUsuario(user)" aria-hidden="true"></i>
+                                        <i class="fa fa-eye" style="cursor: pointer;" ng-click="vm.leerUsuario(user)" aria-hidden="true"></i>
                                     </a>
                                 </td>
                                 <td>
@@ -54,6 +64,12 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="row paginador">
+                    <div class="col-lg-12 col-lg-offset-5">
+                        <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></uib-pagination>
+                    </div>
                 </div>
             </div>
             <!-- CAMTOURIST -->

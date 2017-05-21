@@ -4,11 +4,14 @@
     "PHOTOS":"FOTOS",
     "USER_NAME":"Nom",
     "USER_LAST_NAME":"Cognoms",
+    "USER_ADDRESS":"Direcció",
+    "USER_POSTAL_CODE":"Codi Postal",
     "USER_EMAIL":"Email",
     "USER_TYPE":"Tipus",
     "USER_DETAIL":"Vore",
     "USER_EDIT":"Editar",
     "USER_DELETE":"Eliminar",
     "USER":"Usuari",
-    "USER_MODAL_BUTTON":"MODIFICAR"
+    "USER_MODAL_BUTTON":"MODIFICAR",
+    "ERROR_MODAL": "Camp no vàlid"
 }

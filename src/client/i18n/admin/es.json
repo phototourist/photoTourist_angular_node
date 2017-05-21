@@ -4,10 +4,14 @@
     "PHOTOS":"FOTOS",
     "USER_NAME":"Nombre",
     "USER_LAST_NAME":"Apellidos",
+    "USER_ADDRESS":"Dirección",
+    "USER_POSTAL_CODE":"Código Postal",
     "USER_EMAIL":"Email",
+    "USER_TYPE":"Tipo",
     "USER_DETAIL":"Ver",
     "USER_EDIT":"Editar",
     "USER_DELETE":"Eliminar",
     "USER":"Usuario",
-    "USER_MODAL_BUTTON":"MODIFICAR"
+    "USER_MODAL_BUTTON":"MODIFICAR",
+    "ERROR_MODAL": "Campo no válido"
 }

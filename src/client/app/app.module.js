@@ -12,7 +12,6 @@
     'app.login',
     'app.profile',
     'app.myPhotos',
-    'app.camtouristDesk',
-    'app.faq'
+    'app.camtouristDesk'
   ]);
 })();
