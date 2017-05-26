@@ -15,7 +15,7 @@ module.exports.recoveryPassword = recoveryPassword;
 //NO SE MODIFICA RUTA
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, 'src/server/users/avatars/')
+        cb(null, 'build/images/')
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();

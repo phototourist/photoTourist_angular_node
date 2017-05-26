@@ -41,6 +41,7 @@
                 vm.profileEmail = data[0].email;
                 vm.previousAvatar = data[0].avatar;
                 vm.profileAvatar = vm.previousAvatar;
+                console.log(vm.profileAvatar);
 
                 return [vm.profileName, vm.profileSurname, vm.profileAddress,
                   vm.profilePostal, vm.profileEmail, vm.profileAvatar];
