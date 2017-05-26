@@ -4,7 +4,6 @@
   angular.module('app.profile', [
     'app.core',
     'app.widgets',
-    //'app.layout'
   ]);
 
 })();

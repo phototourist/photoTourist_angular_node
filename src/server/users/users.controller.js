@@ -133,3 +133,29 @@ function recoveryPassword(req, res) {
         }
     );
 }
+
+
+exports.getUsersToAdmin = function(req, res) {
+    Users.getUsersToAdmin(
+        function(err, users) {
+            if (err){
+                res.send(err);
+            }
+            console.log(users);
+            res.json(users);
+        }
+    );
+};
+
+
+exports.deleteUserToAdmin = function(req, res) {
+    Users.deleteUserToAdmin(req.body,
+        function(err, users) {
+            if (err){
+              res.send(err);
+            }
+            console.log(users);
+            res.json(true);
+        }
+    );
+};
