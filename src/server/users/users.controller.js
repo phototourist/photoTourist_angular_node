@@ -12,6 +12,7 @@ module.exports.saveAvatar = saveAvatar;
 module.exports.sendChangePassword = sendChangePassword;
 module.exports.recoveryPassword = recoveryPassword;
 
+//NO SE MODIFICA RUTA
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         cb(null, 'src/server/users/avatars/')
