@@ -42,7 +42,8 @@
                 vm.previousAvatar = data[0].avatar;
                 vm.profileAvatar = vm.previousAvatar;
 
-                return [vm.profileName, vm.profileSurname, vm.profileAddress, vm.profilePostal, vm.profileEmail, vm.profileAvatar];
+                return [vm.profileName, vm.profileSurname, vm.profileAddress,
+                  vm.profilePostal, vm.profileEmail, vm.profileAvatar];
             });
         }
 

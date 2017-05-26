@@ -4,38 +4,41 @@
         <div class="col-md-6">
             <div class="login-box well" >
                 <div style="text-align: right;"><button ng-click="modalUserInstance.close()">x</button></div>
-                <form id="modal_user_form" name="modal_user_form">
+                <form id="modal_user_form" name="modal_user_form" class="form-inline">
                     <legend>{{'USER' | translate}}</legend>
-                    <div class="form-group">
-                        <label>{{'USER_NAME' | translate}}</label>
-                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.name" type="input" id="userNameModal" name="userNameModal" placeholder="{{'USER_NAME' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
-                        <span class="error_input" ng-show="modal_user_form.userNameModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
+                    <div class="row">
+
+                      <div class=" col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                          <label class="col-md-4 col-lg-4 col-sm-4 col-xs-4">{{'USER_NAME' | translate}}</label>
+                          <input  ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.name" type="input" id="userNameModal" name="userNameModal" placeholder="{{'USER_NAME' | translate}}" class="col-sm-4 col-md-4 col-md-4 col-xs-4 form_inputs form-control" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
+                          <span class="error_input col-md-4 col-lg-4 col-sm-4 col-xs-4" ng-show="modal_user_form.userNameModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
+                        </div>
+
+
+                    <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label class="col-md-4 col-lg-4 col-sm-4 col-xs-4" >{{'USER_LAST_NAME' | translate}}</label>
+                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.last_name" type="input" id="userLastNameModal" name="userLastNameModal" placeholder="{{'USER_LAST_NAME' | translate}}" class="col-sm-4 col-md-4 col-md-4 col-xs-4 form_inputs form-control" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
+                        <span class="error_input col-md-4 col-lg-4 col-sm-4 col-xs-4" ng-show="modal_user_form.userLastNameModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
                     </div>
 
-                    <div class="form-group">
-                        <label>{{'USER_LAST_NAME' | translate}}</label>
-                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.last_name" type="input" id="userLastNameModal" name="userLastNameModal" placeholder="{{'USER_LAST_NAME' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
-                        <span class="error_input" ng-show="modal_user_form.userLastNameModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
+                    <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label class="col-md-4 col-lg-4 col-sm-4 col-xs-4">{{'USER_ADDRESS' | translate}}</label>
+                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.address" type="input" id="userAddressModal" name="userAddressModal" placeholder="{{'USER_ADDRESS' | translate}}" class="col-sm-4 col-md-4 col-md-4 col-xs-4 form_inputs form-control" maxlength="100" ng-pattern="/^[a-z0-9- -.]+$/i">
+                        <span class="error_input col-md-4 col-lg-4 col-sm-4 col-xs-4" ng-show="modal_user_form.userAddressModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
                     </div>
 
-                    <div class="form-group">
-                        <label>{{'USER_ADDRESS' | translate}}</label>
-                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.address" type="input" id="userAddressModal" name="userAddressModal" placeholder="{{'USER_ADDRESS' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[a-z0-9- -.]+$/i">
-                        <span class="error_input" ng-show="modal_user_form.userAddressModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
+                    <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label class="col-md-4 col-lg-4 col-sm-4 col-xs-4">{{'USER_POSTAL_CODE' | translate}}</label>
+                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.cp" type="input" id="userPostalCodeModal" name="userPostalCodeModal" placeholder="{{'USER_POSTAL_CODE' | translate}}" class="col-sm-4 col-md-4 col-md-4 col-xs-4 form_inputs form-control" maxlength="100" ng-pattern="/^[0-9- -.]+$/i">
+                        <span class="error_input col-md-4 col-lg-4 col-sm-4 col-xs-4" ng-show="modal_user_form.userPostalCodeModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
                     </div>
 
-                    <div class="form-group">
-                        <label>{{'USER_POSTAL_CODE' | translate}}</label>
-                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.cp" type="input" id="userPostalCodeModal" name="userPostalCodeModal" placeholder="{{'USER_POSTAL_CODE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[0-9- -.]+$/i">
-                        <span class="error_input" ng-show="modal_user_form.userPostalCodeModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
+                    <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label class="col-md-4 col-lg-4 col-sm-4 col-xs-4">{{'USER_TYPE' | translate}}</label>
+                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.tipo" type="input" id="userTypeModal" name="userTypeModal" placeholder="{{'USER_TYPE' | translate}}" class="col-sm-4 col-md-4 col-md-4 col-xs-4 form_inputs form-control" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
+                        <span class="error_input col-md-4 col-lg-4 col-sm-4 col-xs-4" ng-show="modal_user_form.userTypeModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
                     </div>
-
-                    <div class="form-group">
-                        <label>{{'USER_TYPE' | translate}}</label>
-                        <input ng-readonly="modalUserInstance.userReadOnly" ng-model="modalUserInstance.userDetails.tipo" type="input" id="userTypeModal" name="userTypeModal" placeholder="{{'USER_TYPE' | translate}}" class="form_inputs" maxlength="100" ng-pattern="/^[A-Za-z]{2,30}$/i">
-                        <span class="error_input" ng-show="modal_user_form.userTypeModal.$error.pattern">{{'ERROR_MODAL' | translate}}</span>
-                    </div>
-
+  </div>
                     <hr>
 
                     <div class="form-group" ng-show="modalUserInstance.userReadOnly == false && modal_user_form.$valid">
