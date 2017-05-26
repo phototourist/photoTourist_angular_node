@@ -7,7 +7,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                 </button>
-                <a href="#/" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
+                <a href="/" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
             </div>
             <div class="collapse navbar-collapse pull-right" id="myNavbar" ng-controller="SidebarController as vm">
                 <ul class="nav navbar-nav">
@@ -19,6 +19,15 @@
                             <i class="fa fa-sign-in"></i> {{'LOGIN' | translate}}
                         </a>
                     </li>
+
+
+                    <li ng-show="$root.authUser.type == 'admin'">
+                        <a role="button" href="/admin">
+                            <i class="fa fa-key"></i> Admin
+                        </a>
+                    </li>
+
+
                     <li ng-show="$root.authUser.type == 'cliente'">
                         <a role="button" ui-sref="myPhotos">
                             <i class="fa fa-sign-in"></i> {{'MyPhotos' | translate}}
@@ -45,7 +54,10 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="nav-item" id="userAuthInfo" ng-show="$root.authUser">
-                        <a href="/profile">{{'HI' | translate}} {{$root.authUser.name }} <img style="width: 25px;" src="{{ $root.authUser.avatar}}" /></a>
+                        <a href="/profile">{{'HI' | translate}} {{$root.authUser.name }}
+                          <!--<img style="width: 25px;" src="{{ $root.authUser.avatar}}" />-->
+                          <img ng-src="src/server/users/avatars/{{$root.authUser.avatar}}" style="width:25px;"/>
+                        </a>
                     </li>
 
                     <!-- Logout button -->

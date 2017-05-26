@@ -26,7 +26,9 @@
       recoveryPassword: recoveryPassword,
       getPhotos: getPhotos,
       getPhotosByCamtourist: getPhotosByCamtourist,
-      guardarFotosUsuario: guardarFotosUsuario
+      guardarFotosUsuario: guardarFotosUsuario,
+      getUsers: getUsers,
+      eliminarUser: eliminarUser,
     };
     return service;
 
@@ -255,8 +257,9 @@
                 return response;
             }
 
-            function fail() {
+            function fail(response) {
                 return false;
+                //return { error: response };
             }
         }
 
@@ -322,6 +325,34 @@
         function fail() {
           return false;
         }
+    }
+
+    function getUsers() { //Función para coger la lista de Usuarios
+      return $http.get('/api/getUsersToAdmin')
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for camtourist')(e);
+      }
+    }
+
+    function eliminarUser(data) { //Función para eliminar un usuario
+      return $http.post('/api/deleteUserToAdmin', data)
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return data.id;
+      }
+
+      function fail(e) {
+        return false;
+      }
     }
   }
 })();

@@ -44,13 +44,9 @@
 
             <br/>
 
-            <!--<div class="control_inputs">
-              <img ng-src="src/server/users/avatars/{{vm.profileAvatar}}" style="width:60px;"/>
-            </div>-->
-
             <div class="control_inputs">
                 <label>Avatar</label>
-                <img ng-src="src/server/users/avatars/{{vm.profileAvatar}}" style="width:60px;"/>
+                <img ng-src="images/{{vm.profileAvatar}}" style="width:60px;"/>
                 <ng-dropzone class="dropzone" options="vm.dzOptions" callbacks="vm.dzCallbacks" methods="vm.dzMethods"></ng-dropzone>
             </div>
 

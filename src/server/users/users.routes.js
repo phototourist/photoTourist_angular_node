@@ -1,4 +1,4 @@
- var ControllerUsers = require('./users.controller');
+var ControllerUsers = require('./users.controller');
 var passport = require('passport');
 
 module.exports = function(app) {
@@ -22,7 +22,7 @@ module.exports = function(app) {
     /////////////////////////////////////////////////////////////////////////////
     app.get('/api/logout', function (req, res){
       req.session.destroy(function (err) {
-        res.redirect('/'); //Inside a callback… bulletproof!
+        res.redirect('/');
       });
     });
     /////////////////////////////////////////////////////////////////////////////
@@ -31,4 +31,6 @@ module.exports = function(app) {
     app.post('/api/saveAvatar', ControllerUsers.saveAvatar);
     app.post('/api/sendChangePassword', ControllerUsers.sendChangePassword);
     app.post('/api/recoveryPassword', ControllerUsers.recoveryPassword);
+    app.get('/api/getUsersToAdmin', ControllerUsers.getUsersToAdmin);
+    app.post('/api/deleteUserToAdmin', ControllerUsers.deleteUserToAdmin);
 };

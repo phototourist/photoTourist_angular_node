@@ -21,10 +21,6 @@
               controller: 'ProfileController',
               controllerAs: 'vm',
               title: 'PROFILE',
-              /*settings: {
-                nav: 10,
-                content: '<i class="fa fa-envelope"></i> Contact'
-              },*/
               ncyBreadcrumb: {
                   parent: 'dashboard',
                   label: '{{ "BREAD_PROFILE" | translate }}'

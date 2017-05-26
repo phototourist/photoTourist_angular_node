@@ -1,0 +1,7 @@
+#!/bin/sh
+
+unset 'GIT_DIR'cd /home/jorge/photoTourist.git
+sudo forever stopall
+#git fetch origin && git pull origin master && bower install --allow-root  && npm install && gulp build && sudo PORT=3000 NODE_ENV=build forever start ./src/server/app.js
+#sudo forever start hooks/hook.js
+#exec git update-server-info
