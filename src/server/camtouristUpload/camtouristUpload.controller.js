@@ -50,7 +50,7 @@ function guardarFotosUsuario(req, res, next) {
     var send = require('../utils/email.js');
 
     for (var i = 0; i < req.body.fotos.length; i++) {
-        fotosPath.push([email, 'src/server/resize/' + req.body.fotos[i].filename, token]);
+        fotosPath.push([email, 'images/' + req.body.fotos[i].filename, token]);
     }
     console.log(fotosPath);
     camtouristUpload.insertPhotos(email, fotosPath,
@@ -73,7 +73,7 @@ function resize(files, callback) {
 
         var options = {
             'text': 'PhotoTourist CopyRight',
-            'dstPath': 'src/server/resize/' + files[i].filename,
+            'dstPath': 'build/images/' + files[i].filename,
             'resize': '30%',
             'color': ' #285416'
         };
