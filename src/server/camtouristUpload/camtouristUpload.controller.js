@@ -36,10 +36,10 @@ function upload(req, res, next) {
         //    res.send({ callback });
         //});
         console.log('resize');
+
         resize(req.files);
         res.send({ error_code: 0, fotos: req.files });
     })
-
 }
 
 function guardarFotosUsuario(req, res, next) {

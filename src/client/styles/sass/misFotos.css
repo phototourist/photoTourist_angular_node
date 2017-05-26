@@ -41,6 +41,10 @@ figcaption {
 .paginador {
   margin-top: 60px; }
 
+.sinFoto img {
+  height: 420px;
+  width: 700px; }
+
 @media screen and (max-width: 769px) {
   .gallery figure {
     float: none;
@@ -69,4 +73,7 @@ figcaption {
       transform: none; }
   .paginador {
     margin-top: 60px;
-    margin-left: 30px; } }
+    margin-left: 30px; }
+  .sinFoto img {
+    height: 200px;
+    width: 400px; } }
