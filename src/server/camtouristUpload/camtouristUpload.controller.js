@@ -3,6 +3,7 @@ var crypto = require('crypto');
 var multer = require('multer');
 var im = require('imagemagick');
 var watermark = require('image-watermark');
+var exec = require('child_process');
 
 module.exports.upload = upload;
 module.exports.guardarFotosUsuario = guardarFotosUsuario;
@@ -78,15 +79,9 @@ function resize(files, callback) {
             'color': ' #285416'
         };
 
+        var command = ['composite', '-dissolve', 'center', '-quality', 100, 'src/client/images/logo.png', files[i].path, 'build/images/' + files[i].filename, ];
 
-        im.resize({
-            srcPath: files[i].path,
-            dstPath: 'build/images/' + files[i].filename,
-            width: 256
-        }, function(err, stdout, stderr) {
-            if (err) throw err;
-            console.log('resized kittens.jpg to fit within 256x256px');
-        });
+        exec(command.join(''), function(err, stdout, stderr) {});
 
         /*
                 watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
