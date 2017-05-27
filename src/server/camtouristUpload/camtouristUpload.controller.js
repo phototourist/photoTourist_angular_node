@@ -77,14 +77,14 @@ function resize(files, callback) {
             'resize': '30%',
             'color': ' #285416'
         };
+        /*
+                watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
+                    console.log(err);
+                    if (!err) {
+                        console.log('Succefully embeded watermark');
 
-        watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
-            console.log(err);
-            if (!err) {
-                console.log('Succefully embeded watermark');
-
-            }
-        });
+                    }
+                });*/
 
     }
 
