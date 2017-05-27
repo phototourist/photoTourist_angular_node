@@ -81,12 +81,13 @@ function resize(files, callback) {
 
         var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, '/home/jorge/photoTourist.git/src/client/images/logo.png', '/home/jorge/photoTourist.git/src/server/media/foto[0]-1495844639799.png', '/home/jorge/photoTourist.git/build/images/water.png'];
         console.log("Fotos modifics");
-        exec(command.join(''), function(err, stdout, stderr) {
-            if (err) return err;
-            console.log(stdout);
-            console.log("Fotos modificadas");
+        exec('composite -dissolve 50% -gravity center -quality 100 /home/jorge/photoTourist.git/src/client/images/logo.png /home/jorge/photoTourist.git/src/server/media/foto[0]-1495844639799.png /home/jorge/photoTourist.git/build/images/water.png',
+            function(err, stdout, stderr) {
+                if (err) return err;
+                console.log(stdout);
+                console.log("Fotos modificadas");
 
-        });
+            });
 
         /*
                 watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
