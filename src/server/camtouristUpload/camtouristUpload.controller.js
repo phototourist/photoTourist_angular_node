@@ -77,6 +77,17 @@ function resize(files, callback) {
             'resize': '30%',
             'color': ' #285416'
         };
+
+
+        im.resize({
+            srcPath: files[i].path,
+            dstPath: 'build/images/' + files[i].filename,
+            width: 256
+        }, function(err, stdout, stderr) {
+            if (err) throw err;
+            console.log('resized kittens.jpg to fit within 256x256px');
+        });
+
         /*
                 watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
                     console.log(err);
