@@ -12,7 +12,7 @@
         var service = {
             showToasts: true,
 
-            //error: error,
+            error: error,
             info: info,
             success: success,
             warning: warning,
@@ -25,7 +25,7 @@
         /////////////////////
 
         function error(message, data, title) {
-            toastr.error(message, title);
+            //toastr.error(message, title);
             $log.error('Error: ' + message, data);
         }
 
