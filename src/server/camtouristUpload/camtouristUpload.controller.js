@@ -79,7 +79,7 @@ function resize(files, callback) {
             'color': ' #285416'
         };
 
-        var command = ['composite', '-dissolve', 'center', '-quality', 100, 'src/client/images/logo.png', files[i].path, 'build/images/' + files[i].filename, ];
+        var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, 'src/client/images/logo.png', files[i].path, 'build/images/' + files[i].filename, ];
 
         exec(command.join(''), function(err, stdout, stderr) {
             if (err) return err;
