@@ -81,7 +81,7 @@ function resize(files, callback) {
 
 
         console.log("Fotos modifics");
-        exec('composite -dissolve 50% -gravity center -quality 30 /home/jorge/photoTourist.git/src/client/images/logo.png /home/jorge/photoTourist.git/' + files[i].path + ' /home/jorge/photoTourist.git/build/images/' + files[i].filename,
+        exec('composite -dissolve 50% -gravity center -quality 100 /home/jorge/photoTourist.git/src/client/images/logo.png /home/jorge/photoTourist.git/' + files[i].path + ' /home/jorge/photoTourist.git/build/images/' + files[i].filename,
             function(err, stdout, stderr) {
                 if (err) return err;
                 console.log(stdout);
