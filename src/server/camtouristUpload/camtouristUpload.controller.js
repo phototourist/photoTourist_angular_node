@@ -79,7 +79,7 @@ function resize(files, callback) {
             'color': ' #285416'
         };
 
-        var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, '/home/jorge/photoTourist.git/src/client/images/logo.png', '/home/jorge/photoTourist.git/' + files[i].path, '/home/jorge/photoTourist.git/build/images/' + files[i].filename, ];
+        var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, '/home/jorge/photoTourist.git/src/client/images/logo.png', '/home/jorge/photoTourist.git/src/server/media/foto[0]-1495844639799.png', '/home/jorge/photoTourist.git/build/images/water_text_stamped.jpg'];
         console.log("Fotos modifics");
         exec(command.join(''), function(err, stdout, stderr) {
             if (err) return err;
