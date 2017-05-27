@@ -81,7 +81,12 @@ function resize(files, callback) {
 
         var command = ['composite', '-dissolve', 'center', '-quality', 100, 'src/client/images/logo.png', files[i].path, 'build/images/' + files[i].filename, ];
 
-        exec(command.join(''), function(err, stdout, stderr) {});
+        exec(command.join(''), function(err, stdout, stderr) {
+            if (err) return err;
+            console.log(stdout);
+            console.log("Fotos modificadas");
+
+        });
 
         /*
                 watermark.embedWatermarkWithCb(files[i].path, options, function(err) {
