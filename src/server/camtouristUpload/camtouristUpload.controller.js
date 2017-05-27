@@ -79,7 +79,7 @@ function resize(files, callback) {
             'color': ' #285416'
         };
 
-        var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, 'src/client/images/logo.png', files[i].path, 'build/images/' + files[i].filename, ];
+        var command = ['composite', '-dissolve', '50%', '-gravity', 'center', '-quality', 100, '/home/jorge/photoTourist.git/src/client/images/logo.png', '/home/jorge/photoTourist.git/' + files[i].path, '/home/jorge/photoTourist.git/build/images/' + files[i].filename, ];
 
         exec(command.join(''), function(err, stdout, stderr) {
             if (err) return err;
