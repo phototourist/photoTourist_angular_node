@@ -3,7 +3,7 @@ var crypto = require('crypto');
 var multer = require('multer');
 var im = require('imagemagick');
 var watermark = require('image-watermark');
-var exec = require('child_process');
+var exec = require('child_process').exec;
 
 module.exports.upload = upload;
 module.exports.guardarFotosUsuario = guardarFotosUsuario;
